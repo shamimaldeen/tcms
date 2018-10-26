@@ -26,10 +26,6 @@
 					<div class="nav-collapse collapse navbar-inverse-collapse">
 						
 						<ul class="nav pull-right">
-							
-							 
-							
-							
 							<li><a href="#">
 								Forgot Password
 							</a></li>
@@ -43,21 +39,31 @@
 		
 		<div class="wrapper">
 			<div class="container">
+
 				<div class="row">
+
 					<div class="module module-login span4 offset4">
-						<form action="dashboard.php" class="form-vertical">
+						 <?php echo form_open_multipart('admin/login',array('class '=>''));?>
 							<div class="module-head">
+								 
+							      <?php if($this->session->success): ?>
+							        <p class="alert alert-success" id="message"><?php echo $this->session->success; ?></p>
+							     <?php endif; ?>
+
+							     <?php if($this->session->error): ?>
+							        <p class="alert alert-error" id="message"><?php echo $this->session->error; ?></p>
+							     <?php endif; ?>
 								<h3>Admin Login</h3>
 							</div>
 							<div class="module-body">
 								<div class="control-group">
 									<div class="controls row-fluid">
-										<input class="span12" type="text" id="inputEmail" placeholder="Username">
+										<input class="span12" name="username" type="text" id="inputEmail" placeholder="Username">
 									</div>
 								</div>
 								<div class="control-group">
 									<div class="controls row-fluid">
-										<input class="span12" type="password" id="inputPassword" placeholder="Password">
+										<input class="span12" name="password" type="password" id="inputPassword" placeholder="Password">
 									</div>
 								</div>
 							</div>

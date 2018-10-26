@@ -36,9 +36,9 @@ class Admin extends CI_Controller {
 		if (!$this->session->has_userdata('login')) {
             redirect('login');
         }
-		$this->load->view('lib/header');
-		$this->load->view('index');
-		$this->load->view('lib/footer');
+		$this->load->view('back/lib/header');
+		$this->load->view('back/dashboard');
+		$this->load->view('back/lib/footer');
 		
 	}
 
@@ -61,11 +61,11 @@ class Admin extends CI_Controller {
 			$data = $status->result_object();
 
 			$this->session->set_userdata(array(
-				'login' 		 => true,
+				'admin' 		 => true,
 				'id' 			 => $data[0]->admin_id,
 				'admin_username' => $data[0]->admin_username,
 				'admin_email'	 => $data[0]->admin_email,
-				'admin_role'     => $data[0]->admin_roll
+				'admin_role'     => $data[0]->admin_role
 			));
 			$this->session->set_flashdata('success', 'Successfully Logged in');
 			redirect('dashboard');

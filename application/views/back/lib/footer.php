@@ -1,7 +1,7 @@
 			<div class="footer">
 				<div class="container">
 					<b class="copyright">&copy; </b> 2018 Training Center Management System
- all right reserved.
+                   all right reserved.
 				</div>
 			</div>
 			<script src="<?php echo base_url(); ?>asset/back/scripts/jquery-1.9.1.min.js"></script>
@@ -17,4 +17,16 @@
 					$('.dataTables_paginate > a:last-child').append('<i class="icon-chevron-right shaded"></i>');
 				} );
 			</script>
+			<script>
+			    $(document).ready(function() {
+			    setTimeout(function(){
+			      $('#message').slideUp(500);
+			    },3000);
+
+			    /*ckeditor enable*/
+			    //CKEDITOR.replace('editor');
+
+
+			     });
+            </script>
 		</body>						
