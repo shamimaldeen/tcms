@@ -1,0 +1,8 @@
+.phpintel/*
+.idea/*
+sql/*
+application/logs/*
+system/cache/*
+query/*
+uploads/notice/*
+uploads/attachment/*
