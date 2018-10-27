@@ -1,5 +1,13 @@
 <div class="wrapper">
 							<div class="container">
+								 <?php if($this->session->success): ?>
+							        <p class="alert alert-success" id="message"><?php echo $this->session->success; ?></p>
+							     <?php endif; ?>
+
+							     <?php if($this->session->error): ?>
+							        <p class="alert alert-error" id="message"><?php echo $this->session->error; ?></p>
+							     <?php endif; ?>
+
 								<div class="row">
 									<!--/.span3-->
 									<div class="span12">

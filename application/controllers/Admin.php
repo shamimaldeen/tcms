@@ -17,9 +17,9 @@ class Admin extends CI_Controller {
 	*/ 
 	public function index()
 	{
-		//if ($this->session->has_userdata('login')) {
-           // redirect('dashboard'); //redirect to dashbaord
-       // }
+		if ($this->session->has_userdata('admin')) {
+            redirect('dashboard'); //redirect to dashbaord
+        }
 
 		$this->load->view('back/login');
 		$this->load->view('back/lib/footer');
@@ -33,8 +33,8 @@ class Admin extends CI_Controller {
 	*/ 
 	public function dashboard()
 	{
-		if (!$this->session->has_userdata('login')) {
-            redirect('login');
+		if (!$this->session->has_userdata('admin')) {
+            redirect('admin');
         }
 		$this->load->view('back/lib/header');
 		$this->load->view('back/dashboard');
@@ -50,11 +50,13 @@ class Admin extends CI_Controller {
 	*/ 
 	public function login()
 	{
-		// echo "<pre>";
-		// print_r($_POST); die;
+		//echo "<pre>";
+		//print_r($_POST); die;
 		$username = $this->input->post('username');
 		$password = $this->input->post('password');
 		$status = $this->loginmodel->login($username, $password);
+		
+
 		$row = $status->result_id->num_rows;
 		if ($row > 0) 
 		{
@@ -67,7 +69,9 @@ class Admin extends CI_Controller {
 				'admin_email'	 => $data[0]->admin_email,
 				'admin_role'     => $data[0]->admin_role
 			));
-			$this->session->set_flashdata('success', 'Successfully Logged in');
+		//echo "<pre>";
+			//print_r($this->session); die;
+			$this->session->set_flashdata('success', 'Successfully Logged in, Dashboard');
 			redirect('dashboard');
 			
 		}else{
@@ -75,6 +79,19 @@ class Admin extends CI_Controller {
            	redirect('login');
 		}
 
+	}
+
+	/*
+	!--------------------------------------------
+	! 		Logout
+	!--------------------------------------------
+	*/ 
+	public function logout()
+	{
+		$this->session->sess_destroy();
+
+		$this->session->set_flashdata('success', 'Logged out Successfully');
+		redirect('admin');
 	}
 
 }

@@ -6,14 +6,20 @@ $route['default_controller'] = 'admin';
 
 /*
 !--------------------------------------------------------------------
-! 					Main Routes
+! 				Admin Routes
 !--------------------------------------------------------------------
 */
-$route['login']     = 'admin/index';
+$route['admin']     = 'admin/index';
 $route['dashboard'] = 'admin/dashboard';
 
 
 
 $route['404_override']         = '';
 $route['translate_uri_dashes'] = FALSE;
+
+/*
+!--------------------------------------------------------------------
+! 				Admin Routes
+!--------------------------------------------------------------------
+*/
 

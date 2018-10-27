@@ -17,7 +17,7 @@
 					<a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
 						<i class="icon-reorder shaded"></i>
 					</a>
-					<a class="brand" href="index.html"> 
+					<a class="brand" href="<?php echo base_url(); ?>dashboard"> 
 						Training Center Management System
 					</a>
 					<div class="nav-collapse collapse navbar-inverse-collapse">
@@ -37,7 +37,7 @@
 							<ul class="dropdown-menu">
 								<li><a href="profile_update.php"> <i class="menu-icon icon-edit"></i>  Profile </a></li>
 								<li class="divider"></li>
-								<li><a href="#"><i class="menu-icon icon-signout"></i>   Logout </a></li>
+								<li><a href="<?php echo base_url(); ?>admin/logout"><i class="menu-icon icon-signout"></i>   Logout </a></li>
 							</ul>
 						</li>
 					</ul>
