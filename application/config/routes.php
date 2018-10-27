@@ -14,12 +14,13 @@ $route['dashboard'] = 'admin/dashboard';
 
 
 
-$route['404_override']         = '';
+$route['404_override']         = 'error404';
 $route['translate_uri_dashes'] = FALSE;
 
 /*
 !--------------------------------------------------------------------
-! 				Admin Routes
+! 				category Routes
 !--------------------------------------------------------------------
 */
+$route['add_account_category']     = 'accountcategory/add_account_category';
 

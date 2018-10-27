@@ -76,7 +76,7 @@ class Admin extends CI_Controller {
 			
 		}else{
 			$this->session->set_flashdata('error', 'Username or Password Not Matched');
-           	redirect('login');
+           	redirect('admin');
 		}
 
 	}
