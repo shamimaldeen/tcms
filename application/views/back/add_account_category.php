@@ -1,29 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Training Center Management System</title>
-		<link type="text/css" href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-		<link type="text/css" href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
-		<link type="text/css" href="css/theme.css" rel="stylesheet">
-		<link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
-		<link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
-	</head>
-	<body>
-		<div class="navbar navbar-fixed-top">
-			<div class="navbar-inner">
-				<div class="container">
-					<a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-						<i class="icon-reorder shaded"></i>
-					</a>
-					<a class="brand" href="index.php"> 
-						Training Center Management System
-					</a>
-					<div class="nav-collapse collapse navbar-inverse-collapse">
-						
-						<div class="wrapper">
-							<div class="container"> 
+<div class="wrapper">
+							<div class="container">
+
+								 <?php if($this->session->success): ?>
+							        <p class="alert alert-success" id="message"><?php echo $this->session->success; ?></p>
+							     <?php endif; ?>
+
+							     <?php if($this->session->error): ?>
+							        <p class="alert alert-error" id="message"><?php echo $this->session->error; ?></p>
+							     <?php endif; ?>
+
 								<div class="row">
 									<div class="span10">
 										<div class="content">
@@ -71,9 +56,57 @@
 											</div><!--/.module-->
 										</div><!--/.content-->
 									</div><!--/.span9-->
-									<div style="margin-top:-20px;" class="span2">
+									<div style="" class="span2">
 										<div class="sidebar">
 											
+								<ul class="widget widget-menu unstyled">
+									
+									<li>
+										<a href="dashboard.php">
+											<i class="menu-icon icon-dashboard"></i>
+											Dashbaord
+										</a>
+									</li>
+									
+									<li>
+										<a href="students_archive.php">
+											<i class="menu-icon icon-user"></i>
+											Student List
+										</a>
+									</li>
+									<li>
+										<a href="courses_current.php">
+											<i class="menu-icon icon-folder-open"></i>
+											Active Course
+										</a>
+									</li>
+									<li>
+										<a href="result_archive.php">
+											<i class="menu-icon icon-list-alt"></i>
+											Result
+										</a>
+									</li>
+									<li>
+										<a href="attendance_record.php">
+											<i class="menu-icon icon-ok"></i>
+											Attendance
+										</a>
+									</li>
+									<li>
+										<a href="staff_list.php">
+											<i class="menu-icon icon-user"></i>
+											Staffs
+										</a>
+									</li>
+									<li>
+										<a href="reports.php">
+											<i class="menu-icon icon-print"></i>
+											Report
+										</a>
+									</li>
+								</ul><!--/.widget-nav-->
+
+
 										</div><!--/.sidebar-->
 									</div>
 								</div>
@@ -82,7 +115,7 @@
 						</div>
 						<!--/.wrapper-->
 						
-				
+						
 					
 						<div id="myModal" class="modal fade" role="dialog">
 							<div class="modal-dialog">
@@ -92,16 +125,8 @@
 										<button type="button" class="close" data-dismiss="modal">&times;</button>
 										<h4 class="modal-title">Add New Transaction </h4>
 									</div>
-
-									 <?php if($this->session->success): ?>
-								        <p class="alert alert-success" id="message"><?php echo $this->session->success; ?></p>
-								     <?php endif; ?>
-
-								     <?php if($this->session->error): ?>
-								        <p class="alert alert-error" id="message"><?php echo $this->session->error; ?></p>
-								     <?php endif; ?>
 									<div class="modal-body">
-							 <?php  echo form_open('accountcategory/save_account_category',array('id'=>'')) ?>
+					<?php  echo form_open_multipart('accountcategory/save_account_category',array('id'=>'')) ?>
 											<div class="row-fluid">
 											 
 													<div class="row-fluid">
@@ -117,13 +142,14 @@
 										 
 										</div>
 									</div>
-								</form>
+								
 							</div>
 							<div class="modal-footer">
 								<center>
 									<button type="submit" class="btn-large btn-success"><i class="menu-icon icon-save"></i> Save</button>
 								</center>
 							</div>
+							</form>
 						</div>
 					</div>
 				</div>		
