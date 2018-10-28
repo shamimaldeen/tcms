@@ -18,7 +18,7 @@
 													<div class="row-fluid">
 														<div class="span12">
 															<a href="students_archive.php" class="btn-box medium span2"><i class="icon-user"></i><b>Students List</b>
-																<a href="course_list.php" class="btn-box medium span2"><i class="icon-file"></i><b>Course Details</b>
+																<a href="<?php echo base_url(); ?>course_list" class="btn-box medium span2"><i class="icon-file"></i><b>Course Details</b>
 																</a>
 																</a><a href="course_applications.php" class="btn-box medium span2"><i class="icon-edit"></i><b> Applications</b>
 															</a>
@@ -34,22 +34,22 @@
 													<div class="span12">
 														</a><a href="attendance_record.php" class="btn-box medium span2"><i class="icon-ok"></i><b>Attendance</b>
 													</a>
-													<a href="routine_list.php" class="btn-box medium span2"><i class="icon-calendar"></i><b>Routine</b>
+													<a href="<?php echo base_url(); ?>routine_list" class="btn-box medium span2"><i class="icon-calendar"></i><b>Routine</b>
 													</a>
 													</a><a href="payment_records.php" class="btn-box medium span2"><i class="icon-ok-circle"></i><b>Payment</b>
 												</a>
 												</a><a href="dues.php" class="btn-box medium span2"><i class="icon-list"></i><b>Dues</b>
 											</a>
-											<a href="staff_list.php" class="btn-box medium span2"><i class="icon-user"></i><b>Staffs</b>
-												<a href="account.php" class="btn-box medium span2"><i class="icon-book"></i><b>Account</b>
+											<a href="<?php echo base_url(); ?>staff_list" class="btn-box medium span2"><i class="icon-user"></i><b>Staffs</b>
+												<a href="<?php echo base_url(); ?>account_list" class="btn-box medium span2"><i class="icon-book"></i><b>Account</b>
 												</a>
 											</div>
 										</div>
 										<div class="row-fluid">
 											<div class="span12">
-												<a href="batch_list.php" class="btn-box medium span2"><i class="icon-asterisk"></i><b>Batch List</b>
+												<a href="<?php echo base_url(); ?>batch_list" class="btn-box medium span2"><i class="icon-asterisk"></i><b>Batch List</b>
 												</a>
-												<a href="notice.php" class="btn-box medium span2"><i class="icon-bullhorn"></i><b>Notice Board</b>
+												<a href="<?php echo base_url(); ?>add_notice" class="btn-box medium span2"><i class="icon-bullhorn"></i><b>Notice Board</b>
 												</a>
 												<a href="inquiry.php" class="btn-box medium span2"><i class="icon-question-sign"></i><b>Inquiry </b>
 												</a>

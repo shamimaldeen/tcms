@@ -13,4 +13,4 @@ $autoload['config'] = array();
 
 $autoload['language'] = array();
 
-$autoload['model'] = array('loginmodel','accountcategorymodel','noticemodel','accountmodel','staffmodel' );
+$autoload['model'] = array('loginmodel','accountcategorymodel','noticemodel','accountmodel','staffmodel','coursemodel','batchmodel','routinemodel');

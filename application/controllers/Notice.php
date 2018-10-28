@@ -16,8 +16,10 @@ class Notice extends CI_Controller {
 
 	public function add_notice()
 	{
+		$this->db->where('notice_id','3');
+		$data['notice'] =  $this->db->get('tbl_notice')->result_object();
         
-		$this->load->view('back/lib/header');
+		$this->load->view('back/lib/header',$data);
 		$this->load->view('back/add_notice');
 		$this->load->view('back/lib/footer');
 
@@ -29,20 +31,15 @@ class Notice extends CI_Controller {
 	!----------------------------------------
 	*/
 
-	public function save_notice()
+	public function update_notice($notice_id)
 	{ 
-
-		$this->noticemodel->save_notice(); 
-		$data = $this->session->set_flashdata('success', 'Added Sucessfully ');
-		$noti_data = $this->db->order_by('notice_id','desc')->limit(1)->get('tbl_notice')->result_object();
-        $notice_id = $noti_data[0]->notice_id;
+		$this->db->set('notice_description',$this->input->post('notice_description'));
+		$this->db->where('notice_id',$notice_id);
+		$this->db->update('tbl_notice');
+		$data = $this->session->set_flashdata('success', 'Notice Updated Sucessfully ');
+        redirect('dashboard');
 
 	}
-
-
-
-
-
 }
 
 ?>

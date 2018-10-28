@@ -9,14 +9,16 @@
         ?>
         <div class="wrapper">
 
-         <?php if($this->session->success): ?>
-					 <p class="alert alert-success" id="message"><?php echo $this->session->success; ?></p>
-			 <?php endif; ?>
-
-			<?php if($this->session->error): ?>
-			  <p class="alert alert-error" id="message"><?php echo $this->session->error; ?></p>
-		 <?php endif; ?>
+     
 							<div class="container"> 
+
+								    <?php if($this->session->success): ?>
+											 <p class="alert alert-success" id="message"><?php echo $this->session->success; ?></p>
+									 <?php endif; ?>
+
+									<?php if($this->session->error): ?>
+									  <p class="alert alert-error" id="message"><?php echo $this->session->error; ?></p>
+								 <?php endif; ?>
 								<div class="row">
 									<div class="span12">
 										<div class="content">
@@ -48,7 +50,7 @@
 														</thead>
 													<tbody>
 
-													<?php $i = 1; foreach($accounts as $account) {?>
+												<?php $i = 1; foreach($accounts as $account) {?>
 														<tr class="odd gradeX">
 															<td nowrap><?php echo $i; ?></td>
 															<td nowrap><?php echo format_date($account->account_date); ?></td>
