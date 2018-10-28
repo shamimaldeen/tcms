@@ -36,7 +36,7 @@
                               <td nowrap><?php echo $batch->batch_title; ?></td>
                               <td nowrap> 
                                  <a href="#" type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal<?php echo $i; ?>"><i class="menu-icon icon-edit"></i> </a>
-                                 <a href="#.php" class="btn btn-danger"><i class="menu-icon icon-trash"></i> </a>
+                                 <a href="<?php echo base_url();?>delete_batch/<?php echo $batch->batch_id; ?>" class="btn btn-danger"><i class="menu-icon icon-trash" onclick="return confirm('are you sure to delete?')"></i> </a>
                               </td>
                            </tr>
                            <!--edit modal start-->

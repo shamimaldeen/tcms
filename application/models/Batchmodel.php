@@ -40,6 +40,21 @@
           return $row; 
  
         }
+
+           /*
+        !----------------------------------------------------
+        !       Delete batch  Model Data Existance Check
+        !----------------------------------------------------
+        */
+
+        public function delete_batch($batch_id)
+        {
+
+          $this->db->where('batch_id',$batch_id);
+          $this->db->delete('tbl_batch');
+             
+        }
+
         
 
        

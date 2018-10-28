@@ -66,6 +66,23 @@ class Batch extends CI_Controller {
 		
     }
 
+       /*
+	!--------------------------------------------
+	! 		delete batch 
+	!--------------------------------------------
+	*/ 
+
+	 public function delete_batch($batch_id)
+    {          
+           
+
+          $this->batchmodel->delete_batch($batch_id);
+    	  $data =array();
+    	  $data = $this->session->set_flashdata('success', 'Deleted Sucessfully ');
+          redirect('batch_list');
+		
+    }
+
 
 	
 

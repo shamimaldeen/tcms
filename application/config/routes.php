@@ -63,6 +63,7 @@ $route['delete_course/(.+)'] = 'course/delete_course/$1';
 !--------------------------------------------------------------------
 */
 $route['batch_list']      = 'batch/batch_list';
+$route['delete_batch/(.+)'] = 'batch/delete_batch/$1';
 /*
 !--------------------------------------------------------------------
 ! 				routine Routes
