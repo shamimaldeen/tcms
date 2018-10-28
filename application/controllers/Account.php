@@ -59,18 +59,14 @@ class Account extends CI_Controller {
 
     	$account_description = $this->input->post('account_description'); 
     	$acc_cat_id          = $this->input->post('acc_cat_id'); 
+
     	$account_cash_in     = $this->input->post('account_cash_in'); 
     	$account_cash_out    = $this->input->post('account_cash_out'); 
 
-	    $row = $this->accountmodel->update_account();
-	    if($row > 0)
-		{
-
-			$this->session->set_flashdata('error', 'Account category no updated');
-			$this->load->view('back/account_list');
-		}else{
-
-			$this->db->set(array(
+	     $this->accountmodel->update_account();
+	      
+	  
+		$this->db->set(array(
 				'account_description'=>$account_description,
 				'acc_cat_id'=>$acc_cat_id,
 				'account_cash_in'=>$account_cash_in,
@@ -80,7 +76,7 @@ class Account extends CI_Controller {
 			$this->db->update('tbl_account');
 			$this->session->set_flashdata('success', 'Updated Sucessfully');
 			redirect('account_list');
-		}
+		
     }
 
       /*

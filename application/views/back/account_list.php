@@ -60,7 +60,7 @@
 															<td nowrap><?php echo $account->account_cash_out; ?></td>
 												 <td nowrap> 
 
-													 <a href="#.php" class="btn btn-success" data-toggle="modal" data-target="#myModal<?php echo $i; ?>"><i class="menu-icon icon-edit"></i>
+													 <a href="#" class="btn btn-success" data-toggle="modal" data-target="#myModal<?php echo $i; ?>"><i class="menu-icon icon-edit"></i>
 													  </a>
 
 													<a href="<?php echo base_url();?>delete_account/<?php echo $account->account_id; ?>" class="btn btn-danger"><i class="menu-icon icon-trash" onclick="return confirm('are you sure to delete?')"></i> 
@@ -76,30 +76,30 @@
 											<div class="modal-content">
 												<div class="modal-header">
 													<button type="button" class="close" data-dismiss="modal">&times;</button>
-													<h4 class="modal-title">Add New Transaction </h4>
+													<h4 class="modal-title"> Update Transaction </h4>
 												</div>
 												<div class="modal-body">
-												<?php  echo form_open_multipart('account/update_account/'.$account->account_id,array('id'=>'')) ?>
+												<?php  echo form_open('account/update_account/'.$account->account_id,array('id'=>'')) ?>
 														<div class="row-fluid">
 															<div class="span12">
 																<div class="form-group">
 																	<label>Category</label>
-																	<select  name="acc_cat_title" class="span12">
-																	 <option value="" disabled="" selected="">Select Category</option>	
-														    <?php  foreach($categories as $category): ?>
-			                                                    <option value="<?php echo $category->acc_cat_id; ?>"><?php echo $category->acc_cat_title; ?></option>
+																	<select name="acc_cat_id" class="span12">
+														 <option value="" disabled="" selected="">Select Category</option>	
+													    <?php  foreach($categories as $category): ?>
+		                                                    <option value="<?php echo $category->acc_cat_id;?>"><?php echo $category->acc_cat_title; ?></option>
 
-			                                               <?php endforeach; ?>						
-																		
-																		
-																	</select>
-																</div>
-															</div>
-																<div class="row-fluid">
+		                                               <?php endforeach; ?>						
+															
+															
+														</select>
+														</div>
+													   </div>
+														<div class="row-fluid">
 															<div class="span12">
 																<div class="form-group">
 																	<label>Description</label>
-																	<input type="text" value="<?php echo $account->account_description;?>" name="account_description" placeholder="Description here" class="span12">
+																	<input type="text" value="<?php echo $account->account_description;?>" name="account_description"  class="span12">
 																</div>
 															</div>
 														</div>
@@ -108,13 +108,13 @@
 															<div class="span6">
 																<div class="form-group">
 																	<label>Cash In</label>
-																	<input type="date" value="<?php echo $account->account_cash_in;?>" name="account_cash_in" placeholder="" class="span12">
+																	<input type="number" value="<?php echo $account->account_cash_in;?>" name="account_cash_in" placeholder="" class="span12">
 																</div>
 															</div>
 															<div class="span6">
 																<div class="form-group">
 																	<label>Cash Out</label>
-																	<input type="date" value="<?php echo $account->account_cash_out;?>" name="account_cash_out" placeholder="" class="span12">
+																	<input type="number" value="<?php echo $account->account_cash_out;?>" name="account_cash_out" placeholder="" class="span12">
 																</div>
 															</div>
 														</div>
@@ -130,7 +130,9 @@
 										</div>
 										</form>
 									</div>
+
 								</div>
+
 							</div>		
 
 					<!---edit  modal end-->		

@@ -89,20 +89,15 @@ class AccountCategory extends CI_Controller {
 
     	$acc_cat_title = $this->input->post('acc_cat_title'); 
 
-	    $row = $this->accountcategorymodel->update_account_category($acc_cat_title);
-	    if($row > 0)
-		{
-
-			$this->session->set_flashdata('error', 'Account category no updated');
-			$this->load->view('back/account_category_list');
-		}else{
+	     $this->accountcategorymodel->update_account_category($acc_cat_title);
+	   
 
 			$this->db->set('acc_cat_title',$acc_cat_title);
 			$this->db->where(array('acc_cat_id'=>$acc_cat_id));
 			$this->db->update('tbl_account_category');
 			$this->session->set_flashdata('success', 'Updated Sucessfully');
 			redirect('account_category_list');
-		}
+		
     }
 
 

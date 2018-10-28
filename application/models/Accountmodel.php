@@ -26,8 +26,14 @@
         !       Update account Data Existance Check
         !----------------------------------------------------
         */
+        
         public function update_account()
         {
+          $account_description = $this->input->post('account_description'); 
+          $acc_cat_id          = $this->input->post('acc_cat_id'); 
+         $account_cash_in     = $this->input->post('account_cash_in'); 
+         $account_cash_out    = $this->input->post('account_cash_out'); 
+
 
           $this->db->where(array(
           	'account_description'=>$account_description,
