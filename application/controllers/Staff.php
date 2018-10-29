@@ -6,6 +6,9 @@ class Staff extends CI_Controller {
 	public function __construct()
 	 {
 		parent::__construct();
+		if (!$this->session->has_userdata('admin')) {
+            redirect('admin');
+        }
 	
 	}
 		/*
@@ -65,7 +68,7 @@ class Staff extends CI_Controller {
 		// logo(image ) upload
         if (!empty($_FILES['staff_image']['name'])) {
 
-            $config['upload_path']   = './uploads/staff/image/';
+            $config['upload_path']   = './uploads/Staff/image/';
             $config['allowed_types'] = 'gif|jpg|png';
             $config['max_size']      = 10000;
             $config['max_width']     = 10000;

@@ -21,31 +21,7 @@
           return $status->result_object();
          
         }
-           /*
-        !----------------------------------------------------
-        !       Update account Data Existance Check
-        !----------------------------------------------------
-        */
-        
-        public function update_account()
-        {
-          $account_description = $this->input->post('account_description'); 
-          $acc_cat_id          = $this->input->post('acc_cat_id'); 
-         $account_cash_in     = $this->input->post('account_cash_in'); 
-         $account_cash_out    = $this->input->post('account_cash_out'); 
 
-
-          $this->db->where(array(
-          	'account_description'=>$account_description,
-          	'acc_cat_id'         =>$acc_cat_id,
-          	'account_cash_in'    =>$account_cash_in,
-          	'account_cash_out'   =>$account_cash_out
-          ));
-          $status = $this->db->get('tbl_account');
-          $row    = $status->result_id->num_rows; 
-          return $row; 
- 
-        }
 
         /*
         !----------------------------------------------------

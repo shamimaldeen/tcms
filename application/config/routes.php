@@ -74,3 +74,10 @@ $route['routine_list']       = 'routine/routine_list';
 $route['edit_routine/(.+)'] = 'routine/edit_routine/$1';
 $route['update_routine/(.+)'] = 'routine/update_routine/$1';
 $route['delete_routine/(.+)'] = 'routine/delete_routine/$1';
+/*
+!--------------------------------------------------------------------
+! 				public  Routes
+!--------------------------------------------------------------------
+*/
+$route['public']       = 'publiccontroller/index';
+$route['confirmation/(.+)']       = 'publiccontroller/confirmation/$1';
