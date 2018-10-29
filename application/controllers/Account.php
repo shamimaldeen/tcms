@@ -40,9 +40,12 @@ class Account extends CI_Controller {
       $data['categories'] = $this->db->get('tbl_account_category')->result_object();
       $this->db->join('tbl_account_category','tbl_account_category.acc_cat_id = tbl_account.acc_cat_id');
       $data['accounts']  = $this->db->get('tbl_account')->result_object();
+
+      //echo "<pre>";
+      //print_r($data['categories']); die;
       
        $this->load->view('back/lib/header');
-       $this->load->view('back/account_list',$data);
+   $this->load->view('back/account_list',$data);
        $this->load->view('back/lib/footer');
    
 	}

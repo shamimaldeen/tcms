@@ -49,11 +49,11 @@
                               <td nowrap><?php echo $staff->staff_fullname; ?></td>
                               <td nowrap><?php echo $staff->staff_designation; ?></td>
                               <td nowrap><?php echo $staff->staff_cnumber; ?></td>
-                              <td nowrap><?php echo format_date($staff->staff_joining_date); ?></td>
+                              <td nowrap><?php echo format_date($staff->staff_joining_date,'Y-m-d'); ?></td>
                               <td nowrap> <a href="<?php base_url ();?>uploads/staff/image/<?php echo $staff->staff_image; ?>" ><i class="menu-icon icon-link"></i>  Photo Link</a></td>
                               <td nowrap>
                                  <a href="#.php" class="btn btn-success" data-toggle="modal" data-target="#myModal<?php echo $i;?>"><i class="menu-icon icon-edit"></i> </a> 
-                                 <a href="<?php echo base_url();?>delete_staff/<?php echo $staff->staff_id; ?>" class="btn btn-danger"><i class="menu-icon icon-trash" onclick="return confirm('are you sure to delete?')"></i> </a>
+                                 <a href="<?php echo base_url();?>delete_staff/<?php echo $staff->staff_id; ?>" class="btn btn-danger"><i class="menu-icon icon-trash" onclick="return (confirm('are you sure to delete?'))"></i> </a>
                               </td>
                            </tr>
                            <!-- edit modal start-->
