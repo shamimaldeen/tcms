@@ -1,75 +1,75 @@
 <div class="wrapper">
-							<div class="container"> 
-								 <?php if($this->session->success): ?>
-						        <p class="alert alert-success" id="message"><?php echo $this->session->success; ?></p>
-						     <?php endif; ?>
+<div class="container"> 
+<?php if($this->session->success): ?>
+<p class="alert alert-success" id="message"><?php echo $this->session->success; ?></p>
+<?php endif; ?>
 
-						     <?php if($this->session->error): ?>
-						        <p class="alert alert-error" id="message"><?php echo $this->session->error; ?></p>
-						     <?php endif; ?>
+<?php if($this->session->error): ?>
+<p class="alert alert-error" id="message"><?php echo $this->session->error; ?></p>
+<?php endif; ?>
 
-								<div class="row">
-									<div class="span12">
-										<div class="content">
-											<div class="module">
-												<div class="module-head">
-													<div class="module-option clearfix">
-														<div class="pull-left">
-															<h3>Account</h3>
-														</div>
-														<div class="pull-right">
-															<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal"> <i class="menu-icon icon-plus"></i> Add New </button> 
-															<a href="<?php echo base_url(); ?>account_category_list" class="btn btn-primary"><i class="menu-icon icon-plus"></i>  Category</a>
-														</div>
-													</div>
-												</div>
-												<div class="module-body table">
-													<table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display" width="100%">
-														<thead>
-															<tr>
-																<th nowrap  >Trans #</th>
-																<th nowrap  >Date #</th>
-																<th  nowrap> Category</th>
-																<th  nowrap> Description</th>
-																<th  nowrap> Cash In</th>
-																<th  nowrap> Cash Out</th>
-															 
-																<th nowrap width="1%"> - </th>
-															</tr>
-														</thead>
-														<tbody>
+<div class="row">
+<div class="span12">
+<div class="content">
+<div class="module">
+<div class="module-head">
+<div class="module-option clearfix">
+<div class="pull-left">
+<h3>Account</h3>
+</div>
+<div class="pull-right">
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal"> <i class="menu-icon icon-plus"></i> Add New </button> 
+<a href="<?php echo base_url(); ?>account_category_list" class="btn btn-primary"><i class="menu-icon icon-plus"></i>  Category</a>
+</div>
+</div>
+</div>
+<div class="module-body table">
+<table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display" width="100%">
+<thead>
+<tr>
+<th nowrap  >Trans #</th>
+<th nowrap  >Date #</th>
+<th  nowrap> Category</th>
+<th  nowrap> Description</th>
+<th  nowrap> Cash In</th>
+<th  nowrap> Cash Out</th>
 
-															<?php $i = 1; foreach($accounts as $account){?>
+<th nowrap width="1%"> - </th>
+</tr>
+</thead>
+<tbody>
 
-
-															<tr class="odd gradeX">
-																<td nowrap><?php echo $i; ?></td>
-																<td nowrap><?php echo $account->account_date; ?></td>
-																<td nowrap><?php echo $account->acc_cat_title; ?></td>
-																<td nowrap><?php echo substr($account->account_description, 0,20); ?></td>
-																<td nowrap><?php echo $account->account_cash_in; ?></td>
-																<td nowrap><?php echo $account->account_cash_out; ?></td>
-																<td nowrap> 
-																 <a href="#" type="button" class="btn btn-success" data-toggle="modal" data-target="#editModal<?php echo $i; ?>"><i class="menu-icon icon-edit"></i> </a>
-																<a href="<?php echo base_url(); ?>delete_account/<?php echo $account->account_id; ?>" class="btn btn-danger"><i class="menu-icon icon-trash" onclick="return(confirm('Are you sure to delete?'))"></i> </a></td>
-															</tr>
+<?php $i = 1; foreach($accounts as $account){?>
 
 
-															<!-- MOdal edit start -->
+<tr class="odd gradeX">
+<td nowrap><?php echo $i; ?></td>
+<td nowrap><?php echo $account->account_date; ?></td>
+<td nowrap><?php echo $account->acc_cat_title; ?></td>
+<td nowrap><?php echo substr($account->account_description, 0,20); ?></td>
+<td nowrap><?php echo $account->account_cash_in; ?></td>
+<td nowrap><?php echo $account->account_cash_out; ?></td>
+<td nowrap> 
+<a href="#" type="button" class="btn btn-success" data-toggle="modal" data-target="#editModal<?php echo $i; ?>"><i class="menu-icon icon-edit"></i> </a>
+<a href="<?php echo base_url(); ?>delete_account/<?php echo $account->account_id; ?>" class="btn btn-danger"><i class="menu-icon icon-trash" onclick="return(confirm('Are you sure to delete?'))"></i> </a></td>
+</tr>
 
-																<div id="editModal<?php echo $i; ?>" class="modal fade" role="dialog">
-																	<div class="modal-dialog">
-																		<!-- Modal content-->
-																		<div class="modal-content">
-																			<div class="modal-header">
-																				<button type="button" class="close" data-dismiss="modal">&times;</button>
-																				<h4 class="modal-title">Update Transaction </h4>
-																			</div>
-																			<div class="modal-body">
-																				<?php echo form_open('account/update_account/'.$account->account_id,array()) ?>
-																					<div class="row-fluid">
-																						<div class="span12">
-																							<div class="form-group">
+
+<!-- MOdal edit start -->
+
+<div id="editModal<?php echo $i; ?>" class="modal fade" role="dialog">
+<div class="modal-dialog">
+<!-- Modal content-->
+<div class="modal-content">
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal">&times;</button>
+	<h4 class="modal-title">Update Transaction </h4>
+</div>
+<div class="modal-body">
+	<?php echo form_open('account/update_account/'.$account->account_id,array()) ?>
+		<div class="row-fluid">
+			<div class="span12">
+				<div class="form-group">
 																								<label>Category</label>
 																									<select  name="acc_cat_id" class="span12">
 																										 <option value="">----</option>

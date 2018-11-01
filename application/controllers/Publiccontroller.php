@@ -52,7 +52,7 @@ class Publiccontroller extends CI_Controller {
 		$data['stu_guardian_mobile']   = $this->input->post('stu_guardian_mobile');
 		$data['stu_mobile']            = $this->input->post('stu_mobile');
 		$data['stu_email']             = $this->input->post('stu_email');
-		$data['stu_password']          = $this->input->post('stu_password');
+		$data['stu_password']          = rand(100000,999999);
 		$data['stu_present_address']   = $this->input->post('stu_present_address');
 		$data['stu_permanent_address'] = $this->input->post('stu_permanent_address');
 		$data['stu_have_experience']   = $this->input->post('stu_have_experience');
@@ -86,8 +86,8 @@ class Publiccontroller extends CI_Controller {
         
       	$message = "Dear ".$data['stu_name'].", Your application has successfully recieved. Your username is ".$data['stu_email']." and password is ".$string_pass;
       	$this->messagemodel->sendMessage($data['stu_name'],$data['stu_mobile'],$message);
-			
-		redirect('confirmation/'.$stu_id);
+	 // echo $string_pass;
+		//redirect('confirmation/'.$stu_id);
 	}
 
 

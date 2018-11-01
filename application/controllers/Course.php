@@ -123,6 +123,52 @@ class Course extends CI_Controller {
           redirect('course_list');
 		
     }
+    /*
+	!----------------------------------------
+	! course application View
+	!----------------------------------------
+	*/
+	public function courseapp()
+	{
+		$this->db->select('tbl_student.stu_id,tbl_courseapply.capply_id,tbl_student.stu_name,tbl_course.course_title,tbl_course.course_duration,tbl_payment.pay_id,tbl_payment.pay_date,tbl_payment.pay_tra_id,tbl_payment.pay_method');
+		$this->db->join("tbl_student","tbl_student.stu_id =  tbl_courseapply.stu_id");
+		$this->db->join("tbl_course","tbl_course.course_id =  tbl_courseapply.course_id");
+		$this->db->join("tbl_payment","tbl_payment.pay_id =  tbl_courseapply.pay_id");
+		$this->db->where('tbl_payment.pay_status','pending');
+		$data['applications'] = $this->db->get('tbl_courseapply')->result_object();
+		$data['batchs']  = $this->db->get('tbl_batch')->result_object();
+
+
+	   $this->load->view('back/lib/header',$data);
+       $this->load->view('back/courseapp');
+       $this->load->view('back/lib/footer');
+	}
+
+		/*
+	!----------------------------------------
+	! course application approved  View
+	!----------------------------------------
+	*/
+	
+	public function save_courseapp($batch_id,$course_id) //here course is for changing pending to approved in payment table
+	{ 
+        $data['capply_id'] = $this->input->post('capply_id');
+        $data['batch_id'] = $this->input->post('batch_id');
+        $this->db->set(array(
+			'capply_id'=>$capply_id,
+            'batch_id'=>$batch_id,
+            
+			));
+        $this->db->where('capply_id',$capply_id);
+        $this->db->update('tbl_courseapply');
+
+       $this->load->view('back/lib/header');
+       $this->load->view('back/courseapp',$data);
+       $this->load->view('back/lib/footer');
+		
+	}
+
+
 
 }
 

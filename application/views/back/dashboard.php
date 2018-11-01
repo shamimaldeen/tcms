@@ -17,10 +17,10 @@
 												<div class="span9">
 													<div class="row-fluid">
 														<div class="span12">
-															<a href="students_archive.php" class="btn-box medium span2"><i class="icon-user"></i><b>Students List</b>
+															<a href="<?php echo base_url(); ?>students_archive" class="btn-box medium span2"><i class="icon-user"></i><b>Students List</b>
 																<a href="<?php echo base_url(); ?>course_list" class="btn-box medium span2"><i class="icon-file"></i><b>Course Details</b>
 																</a>
-																</a><a href="course_applications.php" class="btn-box medium span2"><i class="icon-edit"></i><b> Applications</b>
+																</a><a href="<?php echo base_url(); ?>courseapp" class="btn-box medium span2"><i class="icon-edit"></i><b> Applications</b>
 															</a>
 															</a><a href="courses_current.php" class="btn-box medium span2"><i class="icon-folder-open"></i><b>Active Course</b>
 														</a>

@@ -23,4 +23,8 @@ $autoload['model'] =
 		'batchmodel','routinemodel',
 		'publiccontrollermodel',
 		'messagemodel',
+		'studentsarchivemodel',
+		'studentmodel',
+		'studentcoursemodel',
+		'inquirymodel',
 	);

@@ -8,6 +8,8 @@ class Admin extends CI_Controller {
 		parent::__construct();
 		$this->load->model('loginmodel');
 		date_default_timezone_set('Asia/Dhaka');
+		
+
 	}
 
 	/*

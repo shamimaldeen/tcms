@@ -112,7 +112,7 @@
                   </div>
                </div>
                   <!-- edit modal end-->
-               <?php } ?>
+               <?php $i++; } ?>
                </tbody>
                <tfoot>
                </tfoot>

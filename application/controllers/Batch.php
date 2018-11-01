@@ -36,6 +36,7 @@ class Batch extends CI_Controller {
 	public function batch_list()
 	{  
       $data['batchs']  = $this->db->get('tbl_batch')->result_object();
+     
       
        $this->load->view('back/lib/header');
        $this->load->view('back/batch_list',$data);

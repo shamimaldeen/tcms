@@ -53,11 +53,11 @@
 
 
           $this->db->where(array(
-            'course_title'=>$course_title,
+            'course_title'   =>$course_title,
             'course_duration'=>$course_duration,
-            'course_fee'=>$course_fee,
-            'course_details'=>$course_details,
-            'course_status'=>$course_status,
+            'course_fee'     =>$course_fee,
+            'course_details' =>$course_details,
+            'course_status'  =>$course_status,
           ));
           $status = $this->db->get('tbl_course');
           $row = $status->result_id->num_rows; 
@@ -78,6 +78,8 @@
         
                  
         }
+
+       
       
 
        
