@@ -22,7 +22,7 @@
 																</a>
 																</a><a href="<?php echo base_url(); ?>courseapp" class="btn-box medium span2"><i class="icon-edit"></i><b> Applications</b>
 															</a>
-															</a><a href="courses_current.php" class="btn-box medium span2"><i class="icon-folder-open"></i><b>Active Course</b>
+															</a><a href="<?php echo base_url(); ?>current_course" class="btn-box medium span2"><i class="icon-folder-open"></i><b>Active Course</b>
 														</a>
 														<a href="result_archive.php" class="btn-box medium span2"><i class="icon-list-alt"></i><b>Result</b>
 														</a>

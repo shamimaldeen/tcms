@@ -136,3 +136,11 @@ $route['inquiry'] = 'inquiry/inquiry';
 !--------------------------------------------------------------------
 */
 $route['save_courseapp'] = 'course/save_courseapp';
+$route['select_batch/(.+)/(.+)'] = 'course/select_batch/$1/$2';
+/*
+!--------------------------------------------------------------------
+! 	 About current course   Routes
+!--------------------------------------------------------------------
+*/
+$route['current_course'] = 'course/current_course';
+$route['student_info/(.+)/(.+)'] = 'course/student_info/$1/$2';

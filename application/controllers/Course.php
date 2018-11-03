@@ -135,13 +135,40 @@ class Course extends CI_Controller {
 		$this->db->join("tbl_course","tbl_course.course_id =  tbl_courseapply.course_id");
 		$this->db->join("tbl_payment","tbl_payment.pay_id =  tbl_courseapply.pay_id");
 		$this->db->where('tbl_payment.pay_status','pending');
+		
 		$data['applications'] = $this->db->get('tbl_courseapply')->result_object();
 		$data['batchs']  = $this->db->get('tbl_batch')->result_object();
+		//echo "<pre>";
+		//print_r($data['batchs'] );
 
 
 	   $this->load->view('back/lib/header',$data);
        $this->load->view('back/courseapp');
        $this->load->view('back/lib/footer');
+	}
+
+
+		/*
+	!----------------------------------------
+	! course application approved  View
+	!----------------------------------------
+	*/
+	
+	public function select_batch($capply_id,$pay_id) //here course is for changing pending to approved in payment table
+	{ 
+
+
+	$data['capply_id'] = $capply_id; 
+    $data['pay_id']    = $pay_id;
+
+  
+	$data['batchs']  = $this->db->get('tbl_batch')->result_object();
+
+	
+       $this->load->view('back/lib/header');
+       $this->load->view('back/select_batch',$data);
+       $this->load->view('back/lib/footer');
+		
 	}
 
 		/*
@@ -150,23 +177,86 @@ class Course extends CI_Controller {
 	!----------------------------------------
 	*/
 	
-	public function save_courseapp($batch_id,$course_id) //here course is for changing pending to approved in payment table
+	public function save_courseapply() //here course is for changing pending to approved in payment table
 	{ 
-        $data['capply_id'] = $this->input->post('capply_id');
-        $data['batch_id'] = $this->input->post('batch_id');
-        $this->db->set(array(
-			'capply_id'=>$capply_id,
-            'batch_id'=>$batch_id,
-            
-			));
-        $this->db->where('capply_id',$capply_id);
-        $this->db->update('tbl_courseapply');
-
-       $this->load->view('back/lib/header');
-       $this->load->view('back/courseapp',$data);
-       $this->load->view('back/lib/footer');
+	
 		
+        $data['capply_id'] = $this->input->post('capply_id');
+        $data['pay_id']    = $this->input->post('pay_id');
+        $data['batch_id']    = $this->input->post('batch_id');
+     
+   
+        $this->db->set(array(
+			'batch_id'=> $data['batch_id']
+			));
+
+        
+         $this->db->where('capply_id',$data['capply_id']);
+         $this->db->update('tbl_courseapply');
+
+
+        $this->db->set(array(
+			'pay_status'=>'approved'
+			));
+       
+        $this->db->where('pay_id',$data['pay_id'] );
+        $this->db->update('tbl_payment');
+        $data = $this->session->set_flashdata('success', ' Students Data Approved Sucessfully ');
+        redirect('dashboard');
+
 	}
+
+    /*
+	!----------------------------------------
+	! Current course  View
+	!----------------------------------------
+	*/
+	public function current_course()
+	{
+		$this->db->select('tbl_student.stu_id,tbl_student.stu_sex,tbl_student.stu_mobile,tbl_student.stu_name,tbl_courseapply.capply_id,tbl_course.course_id,tbl_course.course_title,tbl_course.course_duration,tbl_payment.pay_id,tbl_payment.pay_date,tbl_payment.pay_tra_id,tbl_payment.pay_method,tbl_batch.batch_title,tbl_batch.batch_id');
+
+		$this->db->join("tbl_student","tbl_student.stu_id =  tbl_courseapply.stu_id");
+		$this->db->join("tbl_course","tbl_course.course_id =  tbl_courseapply.course_id");
+		$this->db->join("tbl_payment","tbl_payment.pay_id =  tbl_courseapply.pay_id");
+		$this->db->join("tbl_batch","tbl_batch.batch_id =  tbl_courseapply.batch_id");
+		$this->db->where('tbl_payment.pay_status','approved');
+		$this->db->group_by('tbl_courseapply.course_id,tbl_courseapply.batch_id');
+		$data['applications'] = $this->db->get('tbl_courseapply')->result_object();
+		//echo "<pre>";
+		//print_r($data['applications'] );die;
+
+
+	   $this->load->view('back/lib/header',$data);
+       $this->load->view('back/current_course');
+       $this->load->view('back/lib/footer');
+	}
+
+	    /*
+	!----------------------------------------
+	! Current course /Student info  View
+	!----------------------------------------
+	*/
+	public function student_info($course_id,$batch_id)
+	{
+		$this->db->select('tbl_student.stu_id,tbl_student.stu_sex,tbl_student.stu_mobile,tbl_student.stu_name,tbl_courseapply.capply_id,tbl_course.course_id,tbl_course.course_title,tbl_course.course_duration,tbl_payment.pay_id,tbl_payment.pay_date,tbl_payment.pay_tra_id,tbl_payment.pay_method,tbl_batch.batch_title,tbl_batch.batch_id');
+
+		$this->db->join("tbl_student","tbl_student.stu_id =  tbl_courseapply.stu_id");
+		$this->db->join("tbl_course","tbl_course.course_id =  tbl_courseapply.course_id");
+		$this->db->join("tbl_payment","tbl_payment.pay_id =  tbl_courseapply.pay_id");
+		$this->db->join("tbl_batch","tbl_batch.batch_id =  tbl_courseapply.batch_id");
+		$this->db->where(array(
+			'tbl_payment.pay_status'=>'approved',
+			'tbl_courseapply.course_id' => $course_id,
+			'tbl_courseapply.batch_id' => $batch_id
+		));
+	
+		$data['applications'] = $this->db->get('tbl_courseapply')->result_object();
+
+	   $this->load->view('back/lib/header');
+       $this->load->view('back/student_info',$data);
+       $this->load->view('back/lib/footer');
+	}
+
 
 
 

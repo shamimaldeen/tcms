@@ -1,3 +1,7 @@
+<?php 
+	// echo "<pre>";
+	// print_r($applications); die;
+?>
 <div class="wrapper">
 		<div class="container"> 
 			<div class="row">
@@ -27,7 +31,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<?php $i=1;  foreach($applications as $application): ?>
+						<?php  foreach($applications as $application): ?>
 							<tr class="odd gradeX">
 								<td nowrap><?php echo $application->stu_id;?></td>
 								<td nowrap><?php echo $application->stu_name;?></td>
@@ -47,66 +51,20 @@
 								
 								<td nowrap>
 									
-									<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal<?php echo $i; ?>"> <i class="menu-icon icon-ok-circle"></i>Pending</button>
+									<!-- <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal> <i class="menu-icon icon-ok-circle"></i>Pending</button> -->
+									 <a href="<?php echo base_url();?>select_batch/<?php echo $application->capply_id; ?>/<?php echo $application->pay_id; ?>" class="btn btn-warning">
+									 	<i class="menu-icon icon-ok-circle"> Pending</i> 
+									 </a>
 
-									 <a href="#.php" class="btn btn-danger">
+									 <a href="<?php echo base_url();?>select_batch/<?php echo $application->capply_id; ?>/<?php echo $application->pay_id; ?>" class="btn btn-danger">
 									 	<i class="menu-icon icon-trash"></i> 
 									 </a>
 								</td>
 							</tr>
 
-                           <!--Edit modal start-->
-							<div id="myModal<?php echo $i; ?>" class="modal fade" role="dialog">
-									<div class="modal-dialog">
-										
-										<!-- Modal content-->
-										<div class="modal-content">
-											<div class="modal-header">
-												<button type="button" class="close" data-dismiss="modal">&times;</button>
-												<h4 class="modal-title">Course Confirmation</h4>
-											</div>
-											<div class="modal-body">
-												
-												<?php  echo form_open('course/save_courseapp',array('id'=>'')); ?>
-													<div class="row-fluid">
-														<div class="span12">
-															<div class="form-group">
-																<label>Batch</label>
+                          
 
-																<select  name="batch_id" class="span12">
-																<option value="">---</option>
-																<option value="" disabled="" selected="">Select batch</option>
-
-																<?php  foreach($batchs as $batch): ?>
-																	<!-- <input type="hidden"  name="capply_id" value="<?php //echo $capply_id; ?>" /> -->
-														    		<option value="<?php echo $batch->batch_id; ?>"><?php echo $batch->batch_title; ?></option>
-																
-																	
-																<?php endforeach; ?>
-																</select>
-
-															</div>
-														</div>
-														
-													</div>
-													
-												</div>
-												
-											</div>
-										</form>
-									</div>
-									<div class="modal-footer">
-										<center>
-								
-											<button type="submit" class="btn-large btn-success"><i class="menu-icon icon-ok-circle"></i> Aproved</button>
-										</center>
-									</div>
-									</form>
-								</div>
-															
-                      	 <!--Edit modal end-->
-
-						<?php  $i++; endforeach; ?>
+						<?php  endforeach; ?>
 								</tbody>
 								<tfoot>
 								</tfoot>
