@@ -201,7 +201,7 @@ class Course extends CI_Controller {
        
         $this->db->where('pay_id',$data['pay_id'] );
         $this->db->update('tbl_payment');
-        $data = $this->session->set_flashdata('success', ' Students Data Approved Sucessfully ');
+        $this->session->set_flashdata('success', ' Students Data Approved Sucessfully ');
         redirect('dashboard');
 
 	}
@@ -213,9 +213,9 @@ class Course extends CI_Controller {
 	*/
 	public function current_course()
 	{
-		$this->db->select('tbl_student.stu_id,tbl_student.stu_sex,tbl_student.stu_mobile,tbl_student.stu_name,tbl_courseapply.capply_id,tbl_course.course_id,tbl_course.course_title,tbl_course.course_duration,tbl_payment.pay_id,tbl_payment.pay_date,tbl_payment.pay_tra_id,tbl_payment.pay_method,tbl_batch.batch_title,tbl_batch.batch_id');
+		$this->db->select('tbl_courseapply.capply_id,tbl_course.course_id,tbl_course.course_title,tbl_course.course_duration,tbl_payment.pay_id,tbl_payment.pay_date,tbl_payment.pay_tra_id,tbl_payment.pay_method,tbl_batch.batch_title,tbl_batch.batch_id');
 
-		$this->db->join("tbl_student","tbl_student.stu_id =  tbl_courseapply.stu_id");
+		//$this->db->join("tbl_student","tbl_student.stu_id =  tbl_courseapply.stu_id");
 		$this->db->join("tbl_course","tbl_course.course_id =  tbl_courseapply.course_id");
 		$this->db->join("tbl_payment","tbl_payment.pay_id =  tbl_courseapply.pay_id");
 		$this->db->join("tbl_batch","tbl_batch.batch_id =  tbl_courseapply.batch_id");
@@ -251,10 +251,116 @@ class Course extends CI_Controller {
 		));
 	
 		$data['applications'] = $this->db->get('tbl_courseapply')->result_object();
+		$data['course_title'] = $this->db->where(array('tbl_course.course_id'=>$course_id))->get('tbl_course')->result_object();
+		$data['batch_title'] = $this->db->where(array('tbl_batch.batch_id'=>$batch_id))->get('tbl_batch')->result_object();
+
+
+		
 
 	   $this->load->view('back/lib/header');
        $this->load->view('back/student_info',$data);
        $this->load->view('back/lib/footer');
+	}
+
+
+	/*
+	!----------------------------------------
+	! Update Student Apply Status and Result
+	!----------------------------------------
+	*/
+	public function updateResultStatus($capply_id)
+	{
+		$data['capply_result']		 = $this->input->post('capply_result');
+		$data['capply_ending_date']  = $this->input->post('capply_ending_date');
+		$data['capply_status'] 		 = $this->input->post('capply_status');
+
+		$this->db->set($data);
+		$this->db->where('capply_id',$capply_id);
+		$this->db->update('tbl_courseapply');
+		$this->session->set_flashdata('success', ' Students Data updated Sucessfully ');
+        redirect('dashboard');
+	}
+
+    /*
+	!----------------------------------------
+	!  Complited  Student course   View
+	!----------------------------------------
+	*/
+	public function complited_course()
+	{
+
+		$this->db->select('tbl_student.stu_id,tbl_student.stu_sex,tbl_student.stu_mobile,tbl_student.stu_name,tbl_courseapply.capply_id,tbl_courseapply.capply_result,tbl_courseapply.capply_status,tbl_courseapply.capply_ending_date,tbl_course.course_id,tbl_course.course_title,tbl_course.course_duration,tbl_payment.pay_id,tbl_payment.pay_date,tbl_payment.pay_tra_id,tbl_payment.pay_method,tbl_batch.batch_title,tbl_batch.batch_id');
+
+		$this->db->join("tbl_student","tbl_student.stu_id =  tbl_courseapply.stu_id");
+		$this->db->join("tbl_course","tbl_course.course_id =  tbl_courseapply.course_id");
+		$this->db->join("tbl_payment","tbl_payment.pay_id =  tbl_courseapply.pay_id");
+		$this->db->join("tbl_batch","tbl_batch.batch_id =  tbl_courseapply.batch_id");
+		$this->db->where(array(
+			'tbl_payment.pay_status'=>'approved',
+			'tbl_courseapply.capply_status'=>'Complete'
+			
+		));
+	
+		$data['applications'] = $this->db->get('tbl_courseapply')->result_object();
+		
+          // echo "<pre>";
+          // print_r($data['applications'] );die;
+		
+
+	   $this->load->view('back/lib/header');
+       $this->load->view('back/complited_course',$data);
+       $this->load->view('back/lib/footer');
+	}
+
+	/*
+	!----------------------------------------
+	! Update Student Apply Status and Result
+	!----------------------------------------
+	*/
+	public function complete_check($capply_id)
+	{
+		$data['capply_result']		 = $this->input->post('capply_result');
+		$data['capply_ending_date']  = $this->input->post('capply_ending_date');
+		$data['capply_status'] 		 = $this->input->post('capply_status');
+
+		$this->db->set($data);
+		$this->db->where('capply_id',$capply_id);
+		$this->db->update('tbl_courseapply');
+		$this->session->set_flashdata('success', ' Students Data updated Sucessfully ');
+        redirect('dashboard');
+	}
+
+	/*
+	!----------------------------------------
+	! Certificates archive view
+	!----------------------------------------
+	*/
+	public function certificates_archive()
+	{
+
+		$this->db->select('tbl_student.stu_id,tbl_student.stu_sex,tbl_student.stu_mobile,tbl_student.stu_name,tbl_courseapply.capply_id,tbl_courseapply.capply_result,tbl_courseapply.capply_status,tbl_courseapply.capply_ending_date,tbl_course.course_id,tbl_course.course_title,tbl_course.course_duration,tbl_payment.pay_id,tbl_payment.pay_date,tbl_payment.pay_tra_id,tbl_payment.pay_method,tbl_batch.batch_title,tbl_batch.batch_id');
+
+		$this->db->join("tbl_student","tbl_student.stu_id =  tbl_courseapply.stu_id");
+		$this->db->join("tbl_course","tbl_course.course_id =  tbl_courseapply.course_id");
+		$this->db->join("tbl_payment","tbl_payment.pay_id =  tbl_courseapply.pay_id");
+		$this->db->join("tbl_batch","tbl_batch.batch_id =  tbl_courseapply.batch_id");
+		$this->db->where(array(
+			'tbl_payment.pay_status'=>'approved',
+			'tbl_courseapply.capply_status'=>'Complete',
+			'tbl_courseapply.capply_result !='=>'F',
+			
+		));
+	
+		$data['applications'] = $this->db->get('tbl_courseapply')->result_object();
+		
+        //echo "<pre>";
+        //print_r($data['applications'] );die;
+
+         
+	   $this->load->view('back/lib/header');
+       $this->load->view('back/certificates_archive',$data);
+       $this->load->view('back/lib/footer');
+
 	}
 
 

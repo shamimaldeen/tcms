@@ -87,7 +87,7 @@ class Publiccontroller extends CI_Controller {
       	$message = "Dear ".$data['stu_name'].", Your application has successfully recieved. Your username is ".$data['stu_email']." and password is ".$string_pass;
       	$this->messagemodel->sendMessage($data['stu_name'],$data['stu_mobile'],$message);
 	 // echo $string_pass;
-		//redirect('confirmation/'.$stu_id);
+		redirect('confirmation/'.$stu_id);
 	}
 
 

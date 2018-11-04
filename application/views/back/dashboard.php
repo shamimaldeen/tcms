@@ -24,9 +24,9 @@
 															</a>
 															</a><a href="<?php echo base_url(); ?>current_course" class="btn-box medium span2"><i class="icon-folder-open"></i><b>Active Course</b>
 														</a>
-														<a href="result_archive.php" class="btn-box medium span2"><i class="icon-list-alt"></i><b>Result</b>
+														<a href="<?php echo base_url(); ?>complited_course" class="btn-box medium span2"><i class="icon-list-alt"></i><b>Result</b>
 														</a>
-														<a href="certificates_archive.php" class="btn-box medium span2"><i class="icon-certificate"></i><b>Certificate</b>
+														<a href="<?php echo base_url(); ?>certificates_archive" class="btn-box medium span2"><i class="icon-certificate"></i><b>Certificate</b>
 														</a>
 													</div>
 												</div>

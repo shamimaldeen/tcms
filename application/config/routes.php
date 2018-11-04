@@ -144,3 +144,22 @@ $route['select_batch/(.+)/(.+)'] = 'course/select_batch/$1/$2';
 */
 $route['current_course'] = 'course/current_course';
 $route['student_info/(.+)/(.+)'] = 'course/student_info/$1/$2';
+/*
+!--------------------------------------------------------------------
+! 	Student complited  course   Routes
+!--------------------------------------------------------------------
+*/
+$route['complited_course'] = 'course/complited_course';
+/*
+!--------------------------------------------------------------------
+! 	Cetificate archive    Routes
+!--------------------------------------------------------------------
+*/
+$route['certificates_archive'] = 'course/certificates_archive';
+/*
+!--------------------------------------------------------------------
+!   Attendance     Routes
+!--------------------------------------------------------------------
+*/
+$route['attendance_search'] = 'attendance/attendance_search';
+$route['attendance_entry'] = 'attendance/attendance_entry';

@@ -7,12 +7,12 @@ class Studentcourse extends CI_Controller {
 	 {
 		parent::__construct();
 		if (!$this->session->has_userdata('student')) {
-            redirect('admin');
+            redirect('student');
         }
 	
 	}
 
-		/*
+	/*
 	!----------------------------------------
 	!	student apply Course list about
 	!----------------------------------------
@@ -20,7 +20,6 @@ class Studentcourse extends CI_Controller {
 	
 	public function applycourse_list()
 	{  
-       
       
       $data['courses']  = $this->db->get('tbl_course')->result_object();
       
@@ -95,9 +94,6 @@ class Studentcourse extends CI_Controller {
             'pay_id'=> $pay_id 
           
 		);
-
-		//echo "<pre>";
-		//print_r($allcourse_apply); die;
 		$this->db->insert('tbl_courseapply',$allcourse_apply);
 
 		$this->session->set_flashdata('success', ' Payment Data Added Successfully.');
@@ -110,9 +106,7 @@ class Studentcourse extends CI_Controller {
 	!	payment about
 	!----------------------------------------
 	*/
-
-
-	     public function payment()
+	public function payment()
 	{  
        
       
