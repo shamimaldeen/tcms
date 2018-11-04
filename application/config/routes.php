@@ -161,5 +161,13 @@ $route['certificates_archive'] = 'course/certificates_archive';
 !   Attendance     Routes
 !--------------------------------------------------------------------
 */
-$route['attendance_search'] = 'attendance/attendance_search';
-$route['attendance_entry'] = 'attendance/attendance_entry';
+$route['attendance_search']      = 'attendance/attendance_search';
+$route['attendance_entry/(.+)']  = 'attendance/attendance_entry/$1';
+$route['attendance_record']      = 'attendance/attendance_record';
+
+/*
+!--------------------------------------------------------------------
+!   SMS Alert
+!--------------------------------------------------------------------
+*/
+$route['sms_alert']      = 'batch/sms_alert';
