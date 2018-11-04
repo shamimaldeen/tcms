@@ -48,7 +48,7 @@ class Account extends CI_Controller {
       //print_r($data['categories']); die;
       
        $this->load->view('back/lib/header');
-   $this->load->view('back/account_list',$data);
+       $this->load->view('back/account_list',$data);
        $this->load->view('back/lib/footer');
    
 	}

@@ -3,7 +3,7 @@
 				<div class="row">
 					<div class="module module-login span4 offset4">
 						<!-- <form class="form-vertical"> -->
-<?php echo form_open('batch/send_sms_to_all_batch_students',array('class'=>'')) ?>
+           <?php echo form_open('batch/send_sms_to_all_batch_students',array('class'=>'')) ?>
 							<div class="module-head">
 								<h3>SMS Alart</h3>
 							</div>

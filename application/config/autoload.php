@@ -28,4 +28,5 @@ $autoload['model'] =
 		'studentcoursemodel',
 		'inquirymodel',
 		'attendancemodel',
+		'reportmodel',
 	);

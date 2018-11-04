@@ -171,3 +171,12 @@ $route['attendance_record']      = 'attendance/attendance_record';
 !--------------------------------------------------------------------
 */
 $route['sms_alert']      = 'batch/sms_alert';
+
+/*
+!--------------------------------------------------------------------
+!   Record route
+!--------------------------------------------------------------------
+*/
+$route['report']      = 'report/report';
+$route['student_list_batch']      = 'report/student_list_batch';
+$route['student_list_course']      = 'report/student_list_course';

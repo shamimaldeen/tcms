@@ -55,7 +55,7 @@
 										</a>
 										</a><a href="<?php echo base_url(); ?>sms_alert" class="btn-box medium span2"><i class="icon-envelope"></i><b>SMS Alert </b>
 									</a>
-									<a href="reports" class="btn-box medium span2"><i class="icon-print"></i><b>Print Report</b>
+									<a href="<?php echo base_url(); ?>report" class="btn-box medium span2"><i class="icon-print"></i><b>Print Report</b>
 									</a>
 									<a href="settings.php" class="btn-box medium span2"><i class="icon-cog"></i><b>Settings</b>
 									</a>
