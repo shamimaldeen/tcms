@@ -8,6 +8,13 @@
     ?>
 <div class="wrapper">
 <div class="container"> 
+<?php if($this->session->success): ?>
+<p class="alert alert-success" id="message"><?php echo $this->session->success; ?></p>
+<?php endif; ?>
+
+<?php if($this->session->error): ?>
+<p class="alert alert-error" id="message"><?php echo $this->session->error; ?></p>
+<?php endif; ?>
 <div class="row">
 <div class="span10">
 	<div class="content">
@@ -36,13 +43,13 @@
 					<tbody>
 
 						<?php foreach($attendances as $attendance) { ?>
-s
+
 						<tr class="odd gradeX">
 							<td nowrap><?php echo $attendance->stu_id; ?></td>
 							<td nowrap><?php echo $attendance->stu_name; ?></td>
 							<td nowrap><?php echo $attendance->att_date; ?></td>
 							<td nowrap><?php echo $attendance->att_status; ?></td>
-							<td nowrap> <a href="#.php" class="btn btn-danger"><i class="menu-icon icon-trash"></i> </a></td>
+							<td nowrap> <a href="<?php echo base_url();?>delete_attendance/<?php echo $attendance->att_id; ?>" class="btn btn-danger"><i class="menu-icon icon-trash" onclick="return confirm('are you sure to delete?')" ></i> </a></td>
 						</tr>
 
 						<?php } ?>

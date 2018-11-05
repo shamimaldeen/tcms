@@ -1,9 +1,17 @@
-<!DOCTYPE html>
+<?php
+   //date formattting
+     function format_date($data)
+     {
+       $date = DateTime::createFromFormat('Y-m-d H:i:s',$data);
+       return $formattedweddingdate = $date->format('d-m-Y');
+     }
+    ?>
+    <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
 		<title>::: STUDENTS LIST BY BATCH: :::</title>
-		<link rel="stylesheet " href="../css/print.css">
+		<link rel="stylesheet " href="<?php echo base_url(); ?>asset/back/css/print.css">
 	</head>
 <body>
 		<div class="bt-div">
@@ -14,11 +22,11 @@
 		<div class="wraper">
 			<table width="100%">
 				<tr>
-					<td width="87%"   align="left" valign="top"><a href="dashboard.php"><img src="../images/explore-it.png"  alt="" height="60" class="img_div"/></a>
+					<td width="87%"   align="left" valign="top"><a href="dashboard.php"><img src="<?php echo base_url(); ?>asset/back/images/explore-it.png"  alt="" height="60" class="img_div"/></a>
 					</td>
 					<td width="13%" align="right" valign="top" nowrap="nowrap"><h2>ACCOUNT REPORT </h2>
 						 
-						Date Between: 12-12-2018</strong> AND <strong>12-12-2019</strong> </td>
+						Date Between:<?php echo $starting_date ;?></strong> AND <strong><?php echo $ending_date ;?></strong> </td>
 			  </tr>
 </table>
 				<br>
@@ -36,14 +44,17 @@
 															</tr>
 														</thead>
 														<tbody>
+                                                       	<?php $i = 1; foreach($applications as $application) {?>
 															<tr class="odd gradeX">
-																<td nowrap>01</td>
-																<td nowrap>12-10-2018</td>
-																<td nowrap>Bank</td>
-																<td nowrap>Islami Bank Bangladesh </td>
-																<td align="right" nowrap>5000</td>
-																<td align="right" nowrap>0</td>
-																 
+																<td nowrap><?php echo $i ;?></td>
+																<td nowrap><?php echo format_date($application->account_date);?></td>
+																<td nowrap><?php echo $application->acc_cat_title ;?></td>
+																<td nowrap><?php echo $application->account_description ;?></td>
+																<td align="right" nowrap><?php echo $application->account_cash_in ;?></td>
+																<td align="right" nowrap><?php echo $application->account_cash_out ;?></td>
+															</tr>
+                                                             <?php $i++; } ?>
+
 														</tbody>
 														<tfoot>
 														</tfoot>

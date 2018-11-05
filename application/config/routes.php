@@ -164,6 +164,7 @@ $route['certificates_archive'] = 'course/certificates_archive';
 $route['attendance_search']      = 'attendance/attendance_search';
 $route['attendance_entry/(.+)']  = 'attendance/attendance_entry/$1';
 $route['attendance_record']      = 'attendance/attendance_record';
+$route['delete_attendance/(.+)'] = 'attendance/delete_attendance/$1';
 
 /*
 !--------------------------------------------------------------------
@@ -172,6 +173,22 @@ $route['attendance_record']      = 'attendance/attendance_record';
 */
 $route['sms_alert']      = 'batch/sms_alert';
 
+
+
+
+/*
+!--------------------------------------------------------------------
+!   payment route
+!--------------------------------------------------------------------
+*/
+$route['payment'] 				= 'payment/payment';
+$route['payment_pending'] 		= 'payment/payment_pending';
+$route['payment_approved/(.+)'] = 'payment/payment_approved/$1';
+/*
+!--------------------------------------------------------------------
+!   Admin inquiry route
+!--------------------------------------------------------------------
+*/
 /*
 !--------------------------------------------------------------------
 !   Record route
@@ -182,19 +199,9 @@ $route['student_list_batch/(.+)/(.+)/(.+)'] = 'report/student_list_batch/$1/$2/$
 $route['student_list_course/(.+)/(.+)/(.+)'] = 'report/student_list_course/$1/$2/$3';
 $route['course_list/(.+)'] = 'report/course_list/$1';
 $route['new_application_list'] = 'report/new_application_list';
-
-
-
-
-
-
-
-
-
-/*
-!--------------------------------------------------------------------
-!   payment route
-!--------------------------------------------------------------------
-*/
-$route['payment'] = 'payment/payment';
-$route['payment_pending'] = 'payment/payment_pending';
+$route['result/(.+)'] = 'report/result/$1';
+$route['attendance_indv/(.+)/(.+)/(.+)'] = 'report/attendance_indv/$1/$2/$3';
+$route['collection_report/(.+)/(.+)'] = 'report/collection_report/$1/$2';
+$route['report_stuff_list'] = 'report/report_stuff_list';
+$route['account_report_by_date/(.+)/(.+)'] = 'report/account_report_by_date/$1/$2';
+$route['account_report_by_date_category/(.+)/(.+)/(.+)'] = 'report/account_report_by_date_category/$1/$2/$3';

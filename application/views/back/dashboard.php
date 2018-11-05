@@ -51,7 +51,7 @@
 										</a>
 										<a href="<?php echo base_url(); ?>add_notice" class="btn-box medium span2"><i class="icon-bullhorn"></i><b>Notice Board</b>
 										</a>
-										<a href="inquiry.php" class="btn-box medium span2"><i class="icon-question-sign"></i><b>Inquiry </b>
+										<a href="<?php echo base_url(); ?>inquiry" class="btn-box medium span2"><i class="icon-question-sign"></i><b>Inquiry </b>
 										</a>
 										</a><a href="<?php echo base_url(); ?>sms_alert" class="btn-box medium span2"><i class="icon-envelope"></i><b>SMS Alert </b>
 									</a>

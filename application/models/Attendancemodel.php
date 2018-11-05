@@ -22,6 +22,21 @@
          
         }
 
+          /*
+        !----------------------------------------------------
+        !       Delete attendance Model Data Existance Check
+        !----------------------------------------------------
+        */
+
+        public function delete_attendance($att_id)
+        {
+
+          $this->db->where('att_id',$att_id);
+          $this->db->delete('tbl_attendance');
+             
+        }
+       
+
 
        
         

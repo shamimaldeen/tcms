@@ -25,7 +25,7 @@
 												<option value="Attendance (Indv)" > Attendance (Indv) </option>
 												<option value="Payment Collection Report" > Payment Collection Report </option>
 												<option value="Staffs List" > Staffs List </option>
-												<option value="Account Report" > Account Report (Date Wise) </option>
+												<option value="Account Report (Date Wise)" > Account Report (Date Wise) </option>
 												<option value="Account Report (Category Wise)" > Account Report (Category Wise) </option>
 												<option value="Balance Sheet" > Balance Sheet</option>
 											</select>
