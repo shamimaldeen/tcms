@@ -10,12 +10,12 @@
 							<h3> Reports </h3>
 						</div>
 						<div class="module-body">
-							<?php  echo form_open('report/save_report',array('id'=>'')) ?>
+							<?php  echo form_open('report/handler',array('id'=>'')) ?>
 								<div class="row-fluid">
 									<div class="span9">
 										<div class="form-group">
 											<label>Reports Name</label>
-											<select  name="" class="span12">
+											<select  name="report_name" class="span12">
 												<option value="">----</option>
 												<option value="Students List (Batch)" > Students List (Batch) </option>
 												<option value="Students List (Course)" > Students List (Course) </option>
@@ -78,13 +78,13 @@
 									<div class="span3">
 										<div class="form-group">
 											<label >Date to </label>
-											<input type="date" placeholder="" class="span12">
+											<input type="date" name="starting_date" placeholder="" class="span12">
 										</div>
 									</div>
 									<div class="span3">
 										<div class="form-group">
 											<label >Date</label>
-											<input type="date" placeholder="" class="span12">
+											<input type="date" name="ending_date" placeholder="" class="span12">
 										</div>
 									</div>
 								</div>

@@ -36,7 +36,7 @@
 											</a>
 											<a href="<?php echo base_url(); ?>routine_list" class="btn-box medium span2"><i class="icon-calendar"></i><b>Routine</b>
 											</a>
-											</a><a href="payment_records.php" class="btn-box medium span2"><i class="icon-ok-circle"></i><b>Payment</b>
+											</a><a href="<?php echo base_url(); ?>payment" class="btn-box medium span2"><i class="icon-ok-circle"></i><b>Payment</b>
 										</a>
 										</a><a href="dues.php" class="btn-box medium span2"><i class="icon-list"></i><b>Dues</b>
 									</a>

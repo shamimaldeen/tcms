@@ -29,4 +29,5 @@ $autoload['model'] =
 		'inquirymodel',
 		'attendancemodel',
 		'reportmodel',
+		'paymentmodel',
 	);

@@ -1,3 +1,12 @@
+<?php
+   //date formattting
+     function format_date($data)
+     {
+       $date = DateTime::createFromFormat('Y-m-d H:i:s',$data);
+       return $formattedweddingdate = $date->format('d-m-Y');
+     }
+    ?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -17,8 +26,8 @@
 					<td width="87%"   align="left" valign="top"><a href="dashboard.php"><img src="../images/explore-it.png"  alt="" height="60" class="img_div"/></a>
 					</td>
 					<td width="13%" align="right" valign="top" nowrap="nowrap"><h2>STUDENTS LIST BY COURSE  </h2>
-						<strong>COURSE: OFFICE 218/Batch will here <strong><BR>
-						Date Between: 12-12-2018</strong> AND <strong>12-12-2019</strong> </td>
+						<strong>COURSE: <?php echo $courses[0]->course_title; ?>/<?php echo $batch[0]->batch_title; ?> <strong><BR>
+						Date Between: <?php echo $starting_date; ?></strong> AND <strong><?php echo $ending_date; ?></strong> </td>
 			  </tr>
 </table>
 				<br>
@@ -39,18 +48,20 @@
 						</tr>
 					</thead>
 					<tbody>
+						<?php $i = 1; foreach($applications as $application) {?>
 						<tr class="odd gradeX">
-							<td nowrap>&nbsp;</td>
-						<td nowrap>&nbsp;</td>
-						<td nowrap>&nbsp;</td>
-						<td nowrap>&nbsp;</td>
+						<td nowrap style="text-align: center;"><?php echo $i ;?></td>
+						<td nowrap style="text-align: center;"><?php echo $application->stu_id ;?></td>
+						<td nowrap><?php echo $application->stu_name ;?></td>
+						<td nowrap style="text-align: center;"><?php echo $application->stu_sex ;?></td>
 						
 						
-						<td nowrap>&nbsp;</td>
-						<td nowrap>&nbsp;</td>
-						<td nowrap>&nbsp;</td>
+						<td nowrap style="text-align: center;"><?php echo $application->stu_dob ;?></td>
+						<td nowrap style="text-align: center;"><?php echo $application->stu_mobile ;?></td>
+						<td nowrap style="text-align: center;"><?php echo format_date($application->stu_date);?></td>
 						 
 					</tr>
+					 <?php $i++; } ?>
 					
 				</tbody>
 				<tfoot>
