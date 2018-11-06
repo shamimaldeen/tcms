@@ -178,17 +178,10 @@ $route['sms_alert']      = 'batch/sms_alert';
 !--------------------------------------------------------------------
 */
 $route['report']      = 'report/report';
-$route['student_list_batch/(.+)/(.+)/(.+)'] = 'report/student_list_batch/$1/$2/$3';
+$route['student_list_batch/(.+)/(.+)/(.+)']  = 'report/student_list_batch/$1/$2/$3';
 $route['student_list_course/(.+)/(.+)/(.+)'] = 'report/student_list_course/$1/$2/$3';
 $route['course_list/(.+)'] = 'report/course_list/$1';
 $route['new_application_list'] = 'report/new_application_list';
-
-
-
-
-
-
-
 
 
 /*
