@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2018 at 09:03 PM
+-- Generation Time: Nov 06, 2018 at 08:09 PM
 -- Server version: 10.1.25-MariaDB
 -- PHP Version: 7.1.7
 
@@ -45,7 +45,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `admin_name`, `admin_address`, `admin_email`, `admin_username`, `admin_password`, `admin_contact`, `admin_role`, `admin_status`) VALUES
-(1, 'admin', 'dhaka', 'admin@gmail.com', 'admin', '21232f297a57a5a743894a0e4a801fc3', '01738298666', 'admin', 'active');
+(1, 'Administrator', 'Savar, Dhaka', 'admin@gmail.com', 'admin', '21232f297a57a5a743894a0e4a801fc3', '4567890-', 'admin', 'activve');
 
 -- --------------------------------------------------------
 
@@ -68,8 +68,7 @@ CREATE TABLE `tbl_account` (
 --
 
 INSERT INTO `tbl_account` (`account_id`, `account_description`, `acc_cat_id`, `account_date`, `account_cash_in`, `account_cash_out`, `account_status`) VALUES
-(47, 'Rent Fee', 1, '2018-10-28 20:34:23', 1500.00, 1250.00, 'active'),
-(53, 'YTYTYT', 3, '2018-10-28 20:58:16', 111.00, 222.00, 'active');
+(1, 'Marking Cost Analysis', 5, '2018-11-06 13:21:03', 500.00, 5000.00, 'active');
 
 -- --------------------------------------------------------
 
@@ -88,9 +87,34 @@ CREATE TABLE `tbl_account_category` (
 --
 
 INSERT INTO `tbl_account_category` (`acc_cat_id`, `acc_cat_title`, `acc_cat_status`) VALUES
-(1, 'Rent Fee', 'active'),
-(2, 'Other Cost', 'active'),
-(3, 'Electric Fee', 'active');
+(5, 'Marketings', 'active'),
+(6, 'Cost', 'active'),
+(7, 'Management', 'active'),
+(8, 'Advertisements', 'active');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_admin_payment`
+--
+
+CREATE TABLE `tbl_admin_payment` (
+  `apay_id` int(11) NOT NULL,
+  `apay_fee` varchar(100) DEFAULT NULL,
+  `stu_id` int(100) DEFAULT NULL,
+  `apay_method` varchar(20) NOT NULL,
+  `apay_tra_id` varchar(20) DEFAULT NULL,
+  `apay_status` varchar(20) DEFAULT 'pending',
+  `apay_date` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_admin_payment`
+--
+
+INSERT INTO `tbl_admin_payment` (`apay_id`, `apay_fee`, `stu_id`, `apay_method`, `apay_tra_id`, `apay_status`, `apay_date`) VALUES
+(14, '250', 26, 'SureCash', '3456789RTYUI', 'approved', '2018-11-06'),
+(16, '250', 26, 'SureCash', '3456789RTYUI', 'pending', '2018-11-06');
 
 -- --------------------------------------------------------
 
@@ -111,11 +135,11 @@ CREATE TABLE `tbl_attendance` (
 --
 
 INSERT INTO `tbl_attendance` (`att_id`, `stu_id`, `batch_id`, `att_date`, `att_status`) VALUES
-(71, 19, 3, '2018-11-04', 'present'),
-(72, 21, 3, '2018-11-04', 'absent'),
-(73, 19, 6, '2018-11-04', 'present'),
-(74, 21, 6, '2018-11-04', 'present'),
-(75, 22, 6, '2018-11-04', 'absent');
+(5, 25, 10, '2018-11-06', 'present'),
+(6, 26, 10, '2018-11-06', 'present'),
+(7, 26, 8, '2018-11-06', 'absent'),
+(8, 26, 10, '2018-11-05', 'present'),
+(9, 26, 10, '2018-11-06', 'present');
 
 -- --------------------------------------------------------
 
@@ -134,10 +158,9 @@ CREATE TABLE `tbl_batch` (
 --
 
 INSERT INTO `tbl_batch` (`batch_id`, `batch_title`, `batch_status`) VALUES
-(3, 'Summer 2018', 'active'),
-(4, 'Fall 2018', 'active'),
-(5, 'Summer 2017', 'active'),
-(6, 'Spring 2018', 'active');
+(8, 'Spring 2018', 'active'),
+(9, 'Summer 2018', 'active'),
+(10, 'Fall 2018', 'active');
 
 -- --------------------------------------------------------
 
@@ -159,10 +182,9 @@ CREATE TABLE `tbl_course` (
 --
 
 INSERT INTO `tbl_course` (`course_id`, `course_title`, `course_details`, `course_duration`, `course_fee`, `course_status`) VALUES
-(1, 'abc', ' asdfghjklqwertyuiopzxcvbnm,asdfghjkwertyuiasdfghjkxcvbnm', '5 month', 5000.00, 'active'),
-(2, 'Algorithm', '     wertyuiosdfghjcvbnm, mbn   ', ' 3 months', 60000.00, 'active'),
-(3, 'framework', ' about  laravel framework', '10 month', 10000.00, 'active'),
-(4, 'database', ' about database', '5 month', 500.00, 'active');
+(7, 'Microsoft Office', ' Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum numquam laudantium iusto beatae perspiciatis. Animi similique delectus, ipsum veniam aliquam!', '6', 4500.00, 'active'),
+(8, 'Database Managements', 'LLLLorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum numquam laudantium iusto beatae perspiciatis. Animi similique delectus, ipsum veniam aliquam! ', '4', 48000.00, 'unavailable'),
+(10, 'C Programming', ' course_statuscourse_status', '2', 5000.00, 'unavailable');
 
 -- --------------------------------------------------------
 
@@ -178,6 +200,7 @@ CREATE TABLE `tbl_courseapply` (
   `pay_id` int(50) DEFAULT NULL,
   `capply_result` varchar(10) DEFAULT NULL,
   `capply_status` varchar(20) NOT NULL DEFAULT 'incomplete',
+  `capply_result_publish` date DEFAULT NULL,
   `capply_ending_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -185,16 +208,10 @@ CREATE TABLE `tbl_courseapply` (
 -- Dumping data for table `tbl_courseapply`
 --
 
-INSERT INTO `tbl_courseapply` (`capply_id`, `stu_id`, `course_id`, `batch_id`, `pay_id`, `capply_result`, `capply_status`, `capply_ending_date`) VALUES
-(1, 16, 2, 5, 13, 'A+', 'Complete', '2018-11-13'),
-(2, 19, 2, 3, 14, NULL, 'incomplete', '0000-00-00'),
-(3, 19, 2, 6, 15, NULL, 'incomplete', '0000-00-00'),
-(4, 19, 2, 3, 16, 'F', 'Complete', '2018-11-06'),
-(5, 21, 2, 3, 17, NULL, 'incomplete', '0000-00-00'),
-(6, 21, 2, 3, 18, 'A+', 'Complete', '2018-11-06'),
-(7, 21, 3, 6, 19, 'F', 'Incomplete', '2018-11-20'),
-(8, 22, 3, 6, 20, 'F', 'Complete', '2018-11-14'),
-(9, 22, 3, 6, 21, 'A+', 'Complete', '2018-11-14');
+INSERT INTO `tbl_courseapply` (`capply_id`, `stu_id`, `course_id`, `batch_id`, `pay_id`, `capply_result`, `capply_status`, `capply_result_publish`, `capply_ending_date`) VALUES
+(1, 25, 10, 10, 22, 'A-', 'Complete', '2018-11-06', '2018-11-30'),
+(2, 26, 10, 10, 24, 'A', 'Incomplete', '2018-11-06', '2018-11-07'),
+(3, 26, 8, 8, 25, 'B', 'Complete', '2018-11-06', '2018-11-14');
 
 -- --------------------------------------------------------
 
@@ -206,6 +223,7 @@ CREATE TABLE `tbl_inquiry` (
   `inquiry_id` int(11) NOT NULL,
   `stu_id` int(50) DEFAULT NULL,
   `inquiry_details` varchar(300) DEFAULT NULL,
+  `inquiry_status` varchar(100) NOT NULL DEFAULT 'unread',
   `inquiry_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -213,9 +231,8 @@ CREATE TABLE `tbl_inquiry` (
 -- Dumping data for table `tbl_inquiry`
 --
 
-INSERT INTO `tbl_inquiry` (`inquiry_id`, `stu_id`, `inquiry_details`, `inquiry_date`) VALUES
-(1, 16, ' something', '2018-10-30 17:45:57'),
-(2, 16, ' abc', '2018-10-30 17:47:49');
+INSERT INTO `tbl_inquiry` (`inquiry_id`, `stu_id`, `inquiry_details`, `inquiry_status`, `inquiry_date`) VALUES
+(2, 26, ' es', 'answered', '2018-11-06 19:01:20');
 
 -- --------------------------------------------------------
 
@@ -234,7 +251,7 @@ CREATE TABLE `tbl_notice` (
 --
 
 INSERT INTO `tbl_notice` (`notice_id`, `notice_description`, `notice_status`) VALUES
-(3, '\r\n         \r\n         \r\n         \r\n         \r\n         This  to inform you all that our all class will be postponed due to strikes        \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         \r\n         ', 'active');
+(1, '\r\n         abc\r\n         \r\n         ', 'active');
 
 -- --------------------------------------------------------
 
@@ -249,23 +266,19 @@ CREATE TABLE `tbl_payment` (
   `pay_method` varchar(20) NOT NULL,
   `pay_tra_id` varchar(20) DEFAULT NULL,
   `pay_status` varchar(20) DEFAULT 'pending',
-  `pay_date` date DEFAULT NULL
+  `pay_date` date DEFAULT NULL,
+  `pay_approved_date` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tbl_payment`
 --
 
-INSERT INTO `tbl_payment` (`pay_id`, `pay_paidamount`, `stu_id`, `pay_method`, `pay_tra_id`, `pay_status`, `pay_date`) VALUES
-(13, '36', 16, 'Rocket', '453fdgdf', 'approved', '2018-10-30'),
-(14, '500', 19, 'Bkash', '456634', 'approved', '2018-11-03'),
-(15, '500', 19, 'Bkash', '456634', 'approved', '2018-11-03'),
-(16, '1000', 19, 'Rocket', '456634', 'approved', '2018-11-03'),
-(17, '5000', 21, 'Bkash', '456634', 'approved', '2018-11-03'),
-(18, '26554', 21, 'Rocket', 'sdfsd', 'approved', '2018-11-03'),
-(19, '2353425', 21, 'Rocket', 'fgdg', 'approved', '2018-11-03'),
-(20, '5000', 22, 'Bkash', '25622222222', 'approved', '2018-11-03'),
-(21, '2000', 22, 'SureCash', '360076345780p34', 'approved', '2018-11-03');
+INSERT INTO `tbl_payment` (`pay_id`, `pay_paidamount`, `stu_id`, `pay_method`, `pay_tra_id`, `pay_status`, `pay_date`, `pay_approved_date`) VALUES
+(22, '5000', 25, 'Rocket', '3652222222544rtdx', 'approved', '2018-11-06', '2018-11-06'),
+(23, '5000', 25, 'Rocket', '3652222222544rtdx', 'pending', '2018-11-06', NULL),
+(24, '1400', 25, 'Bkash', '3655844564', 'approved', '2018-11-06', '2018-11-06'),
+(25, '1200', 26, 'Bkash', '111111111111111ERTD', 'approved', '2018-11-06', '2018-11-06');
 
 -- --------------------------------------------------------
 
@@ -285,10 +298,7 @@ CREATE TABLE `tbl_routine` (
 --
 
 INSERT INTO `tbl_routine` (`routine_id`, `batch_id`, `routine_details`, `routine_date`) VALUES
-(3, 3, '  dsafasdfdsafsdafsdfsgvds', '2018-10-28 18:08:21'),
-(5, 4, '  cvxbcvxbcxvbcxvbxcvb', '2018-10-29 00:18:22'),
-(6, NULL, ' ', '2018-10-31 10:36:35'),
-(7, 6, 'about database', '2018-11-03 00:55:58');
+(1, 8, 'PPPPorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam, repudiandae perspiciatis, voluptatem expedita sapiente fugit odio quisquam. Velit non beatae magni aliquid inventore id sapiente saepe consequuntur hic rem, error accusantium labore veniam obcaecati odio dolor omnis maxime voluptate expedita nisi eius quibusdam accusamus rerum? Sed culpa repellendus, excepturi dignissimos? Repellendus blanditiis beatae quasi voluptates, nostrum! Rem, incidunt, nostrum. Tempora deleniti alias ipsam minima veniam dolorum recusandae quos eveniet commodi eos ducimus animi maiores nihil dolorem sint expedita nisi aliquid nobis, laudantium aperiam illum nesciunt iste magni. Vel inventore praesentium cum aliquid debitis ullam recusandae, eaque voluptatibus velit sunt saepe.', '2018-11-06 18:11:39');
 
 -- --------------------------------------------------------
 
@@ -311,8 +321,8 @@ CREATE TABLE `tbl_staff` (
 --
 
 INSERT INTO `tbl_staff` (`staff_id`, `staff_fullname`, `staff_designation`, `staff_image`, `staff_cnumber`, `staff_joining_date`, `staff_status`) VALUES
-(2, 'Albert Haughs', 'Project Manager', 'images_(5).jpg', 'Albert s', '2018-10-08 18:00:00', 'active'),
-(6, 'hgfdgh', 'gfh', 'images1.jpg', 'dfhhh', '2018-10-29 00:24:10', 'active');
+(1, 'Mofidul Islam', 'Office Attendant', 'back-to-top2.jpg', 'Porag', '2018-11-06 18:17:05', 'active'),
+(2, 'Azizul Islam', 'Clerk', 'phone_icon.png', 'Aziz', '2018-11-06 18:17:40', 'active');
 
 -- --------------------------------------------------------
 
@@ -359,11 +369,8 @@ CREATE TABLE `tbl_student` (
 --
 
 INSERT INTO `tbl_student` (`stu_id`, `stu_name`, `stu_dob`, `stu_sex`, `stu_religion`, `stu_marital`, `stu_nid`, `stu_occupation`, `stu_image`, `stu_father`, `stu_mother`, `stu_guardian`, `stu_relation`, `stu_guardian_mobile`, `stu_mobile`, `stu_email`, `stu_password`, `stu_present_address`, `stu_permanent_address`, `stu_have_experience`, `stu_institute`, `stu_session`, `stu_trade`, `stu_roll`, `stu_examination`, `stu_board`, `stu_group`, `stu_pass_year`, `stu_result`, `stu_date`, `stu_status`) VALUES
-(16, 'ppp', '2018-10-25', 'Female', 'Christian', 'Married', '11111111111111', 'Students', 'images_(2).jpg', 'qqqqqqqqqqqqq', 'wwwwwwww', 'pickpic', 'pickpic', '22222', '3333', 'ppp@gmail.com', '05352c70dc56db7737bf32387ff8446c', '', '', 'Yes', 'Dhaka', '2017-18', 'dgf', 'dsfds', 'SSC', 'Dhaka', 'Commerce', '2018', '5', '2018-10-30 08:44:27', 'pending'),
-(17, 'Ariful Islam', '2018-11-08', 'Male', 'Islam', 'Married', '34567887', '623', 'download_(4).jpg', 'sdfsdf', 'sdfsd', 'fsd', 'fsdfs', '0', '01750840217', 'sdfsd@ergfsd.sdfsd', '4b64d8fe612a4b863c40efc368629098', 'dsfsd', 's', 'Yes', 'sd', '3546', 'ds', 'dsfsd', 'sdfsd', 'sdfsd', 'Science', 'dsfsd', 'fsdf', '2018-11-01 10:03:16', 'pending'),
-(19, 'John', '2018-11-12', 'Male', 'Christian', 'Unmarried', '222222222', 'Student', 'images_(5)2.jpg', 'john senior', 'dsfgfdg', 'fdsgdsfg', 'sdgffdgbdg', '16654', '01738298666', 'john@gmail.com', '8704103c7553203049eb445c7b184b90', 'fdsfgdsg', 'sdfgsdf', 'Yes', 'dfsgdfg', '2017-18', 'LKJD', 'dhdfhgh', 'hsc', 'gfdsg', 'Commerce', '2018', '5', '2018-11-03 00:46:50', 'pending'),
-(21, 'abcdef', '2018-11-07', 'Female', 'Christian', 'Unmarried', '11111111111111', 'Student', 'download_(1)1.jpg', 'dsfsdf', 'hgfdgdfg', 'gfhh', 'fdghdfh', 'dfgfh', '01750840217', 'abcdef@gmail.com', '9290682f681ea0a77b056a904970d3e0', 'fsdfsdg', 'fdsgsdf', 'Yes', 'fdsgdfg', 'dfgd', 'dffg', 'dsfgdsg', 'dsfgdsfg', 'fdgdfsg', 'Technical', 'dfsgdsg', '5', '2018-11-03 00:51:34', 'pending'),
-(22, 'Ali Hossen', '2018-11-21', 'Male', 'Islam', 'Married', '2563366', 'Employee', 'images_(4)1.jpg', 'ACD', 'VF', 'DDFD', 'Brother', '0175888888', '', 'shamim@gmail.com', 'eab821650a5747894b774a55c3b1b520', 'Savar', 'Ghatail', 'Yes', 'Dhaka', '2017-18', 'LKJD', 'dsfds', 'dsfgdsfg', 'Dhaka', 'Science', '2012', '4.75', '2018-11-03 10:12:08', 'pending');
+(25, 'Khayrul Islam', '2018-11-21', 'Male', 'Islam', 'Unmarried', '45678908765434', 'Students', '45278500_551614365309382_407282424305680384_n.jpg', 'Ibraim Khan', 'Kharun Nesa', 'ABCs', 'ABCs', '345678945678900000', '01738298666', 'khayrul1776@gmail.com', 'f333ac7be13a4b3873996ecc965914e6', 'Dhalapara, Ghatail, Tangaillll', 'Dhalapara, Ghatail, Tangail', 'Yes', 'Dhaka Politecnic Institute', '2017-19', 'Microsoft Office', '45645678', 'SSC', 'Dhaka', 'Science', '2012', '4.55', '2018-11-06 16:44:14', 'pending'),
+(26, 'Hasan Khan', '2018-11-07', 'Male', 'Islam', 'Unmarried', '', '', NULL, 'Ibraim Khan', 'Somla Begum', 'SHarif', 'SHarif', '0155555555', '01750840217', 'arifsofg@gmail.com', 'b3bd32ef0fac2199db2efb95681a0bb9', 'Dhaka', 'Dhaka', 'Yes', 'Dhaka College', '2014-15', 'Excel ', '2365', 'HSC', 'Dhaka', 'Arts', '2012', '3.75', '2018-11-06 17:44:20', 'pending');
 
 --
 -- Indexes for dumped tables
@@ -387,6 +394,13 @@ ALTER TABLE `tbl_account`
 --
 ALTER TABLE `tbl_account_category`
   ADD PRIMARY KEY (`acc_cat_id`);
+
+--
+-- Indexes for table `tbl_admin_payment`
+--
+ALTER TABLE `tbl_admin_payment`
+  ADD PRIMARY KEY (`apay_id`),
+  ADD KEY `stu_id` (`stu_id`);
 
 --
 -- Indexes for table `tbl_attendance`
@@ -470,32 +484,37 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `tbl_account`
 --
 ALTER TABLE `tbl_account`
-  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `tbl_account_category`
 --
 ALTER TABLE `tbl_account_category`
-  MODIFY `acc_cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `acc_cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `tbl_admin_payment`
+--
+ALTER TABLE `tbl_admin_payment`
+  MODIFY `apay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `tbl_attendance`
 --
 ALTER TABLE `tbl_attendance`
-  MODIFY `att_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `att_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tbl_batch`
 --
 ALTER TABLE `tbl_batch`
-  MODIFY `batch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `batch_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `tbl_course`
 --
 ALTER TABLE `tbl_course`
-  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `course_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tbl_courseapply`
 --
 ALTER TABLE `tbl_courseapply`
-  MODIFY `capply_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `capply_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `tbl_inquiry`
 --
@@ -505,27 +524,27 @@ ALTER TABLE `tbl_inquiry`
 -- AUTO_INCREMENT for table `tbl_notice`
 --
 ALTER TABLE `tbl_notice`
-  MODIFY `notice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `notice_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tbl_payment`
 --
 ALTER TABLE `tbl_payment`
-  MODIFY `pay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `pay_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `tbl_routine`
 --
 ALTER TABLE `tbl_routine`
-  MODIFY `routine_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `routine_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tbl_staff`
 --
 ALTER TABLE `tbl_staff`
-  MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `staff_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tbl_student`
 --
 ALTER TABLE `tbl_student`
-  MODIFY `stu_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `stu_id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 --
 -- Constraints for dumped tables
 --
@@ -535,6 +554,12 @@ ALTER TABLE `tbl_student`
 --
 ALTER TABLE `tbl_account`
   ADD CONSTRAINT `tbl_account_ibfk_1` FOREIGN KEY (`acc_cat_id`) REFERENCES `tbl_account_category` (`acc_cat_id`);
+
+--
+-- Constraints for table `tbl_admin_payment`
+--
+ALTER TABLE `tbl_admin_payment`
+  ADD CONSTRAINT `tbl_admin_payment_ibfk_1` FOREIGN KEY (`stu_id`) REFERENCES `tbl_student` (`stu_id`);
 
 --
 -- Constraints for table `tbl_attendance`
