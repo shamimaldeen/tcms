@@ -123,14 +123,22 @@ class Attendance extends CI_Controller {
        $this->load->view('back/lib/footer');
     }
 
+          /*
+	!--------------------------------------------
+	! 		delete attendance 
+	!--------------------------------------------
+	*/ 
 
+	 public function delete_attendance($att_id)
+    {          
+           
 
-   
-
-
-
-
-
+          $this->attendancemodel->delete_attendance($att_id);
+    	  $data =array();
+    	  $data = $this->session->set_flashdata('success', 'Deleted Sucessfully ');
+          redirect('attendance_record');
+		
+    }
 }
 
 ?>

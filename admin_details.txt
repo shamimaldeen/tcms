@@ -1,0 +1,11 @@
+//cpanel details
+tc.eservicebd.com/cpanel
+username: tceservicebd
+password: es “tc.es
+
+
+//server details
+host	 : localhost
+database : tceservi_tcms
+username : tceservi_tcms
+password : tcmstraining342@#

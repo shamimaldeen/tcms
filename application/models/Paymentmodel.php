@@ -8,20 +8,19 @@
             $this->db = $this->load->database("default",TRUE);
             
         }
-             /*
+            /*
         !----------------------------------------------------
-        !       Account List
+        !      Pending 
         !----------------------------------------------------
         */
 
-        public function account_list()
+        public function payment_pending()
         {
 
-          $status = $this->db->get('tbl_account');
+          $status = $this->db->get('tbl_admin_payment');
           return $status->result_object();
          
         }
-
 
         /*
         !----------------------------------------------------

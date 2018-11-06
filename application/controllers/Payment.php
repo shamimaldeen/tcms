@@ -37,15 +37,61 @@ class Payment extends CI_Controller {
 	!----------------------------------------
 	*/
       
-		public function payment_pending()
+	public function payment_pending()
 	{  
        
-    
+      $this->db->select('tbl_student.stu_id,tbl_student.stu_sex,tbl_student.stu_mobile,tbl_student.stu_name,tbl_admin_payment.apay_id,tbl_admin_payment.apay_date,tbl_admin_payment.apay_tra_id,tbl_admin_payment.apay_fee,tbl_admin_payment.apay_method');
+
+		$this->db->join("tbl_student","tbl_student.stu_id =  tbl_admin_payment.stu_id");
+		
+		$this->db->where(array(
+			'tbl_admin_payment.apay_status'=>'pending'
+			
+		));
+	
+		$data['apayments'] = $this->db->get('tbl_admin_payment')->result_object();
+		//echo "<pre>";
+		//print_r($data['apayments']);die;
       
        $this->load->view('back/lib/header');
-       $this->load->view('back/payment_pending');
+       $this->load->view('back/payment_pending',$data);
        $this->load->view('back/lib/footer');
    
+	}
+	/*
+	!----------------------------------------
+	! payment approved 
+	!----------------------------------------
+	*/
+      
+	public function payment_approved($apay_id)
+	{  
+		$this->db->set('apay_status','approved');
+		$this->db->where(array(
+			'tbl_admin_payment.apay_id'=> $apay_id
+		));
+		$this->db->update('tbl_admin_payment');
+		$this->session->set_flashdata('success', 'Payment Apporved Successfully');
+		redirect('payment_pending');
+
+	}
+
+	/*
+	!----------------------------------------
+	! payment approved 
+	!----------------------------------------
+	*/
+      
+	public function payment_delete($apay_id)
+	{  
+		
+		$this->db->where(array(
+			'tbl_admin_payment.apay_id'=> $apay_id
+		));
+		$this->db->delete('tbl_admin_payment');
+		$this->session->set_flashdata('success', 'Payment Deleted Successfully');
+		redirect('payment');
+
 	}
 
 	/*
@@ -56,19 +102,47 @@ class Payment extends CI_Controller {
 	
 	public function payment()
 	{  
-       
-     // $data['categories'] = $this->db->get('tbl_account_category')->result_object();
-     // $this->db->join('tbl_account_category','tbl_account_category.acc_cat_id = tbl_account.acc_cat_id');
-      //$data['accounts']  = $this->db->get('tbl_account')->result_object();
+		$this->db->select('tbl_student.stu_id,tbl_student.stu_sex,tbl_student.stu_mobile,tbl_student.stu_name,tbl_admin_payment.apay_id,tbl_admin_payment.apay_date,tbl_admin_payment.apay_tra_id,tbl_admin_payment.apay_fee,tbl_admin_payment.apay_method');
 
-      //echo "<pre>";
-      //print_r($data['categories']); die;
-      
-       $this->load->view('back/lib/header');
+		$this->db->join("tbl_student","tbl_student.stu_id =  tbl_admin_payment.stu_id");
+		
+		$this->db->where(array(
+			'tbl_admin_payment.apay_status'=>'approved'
+			
+		));
+	
+		$data['apayments'] = $this->db->get('tbl_admin_payment')->result_object();
+		//echo "<pre>";
+		//print_r($data['apayments']);die;
+       $this->load->view('back/lib/header',$data);
        $this->load->view('back/payment');
        $this->load->view('back/lib/footer');
    
 	}
+
+	/*
+	!----------------------------------------
+	!	payment_ receive  Llist
+	!----------------------------------------
+	*/
+	
+	public function save_receive()
+	{  
+        $data['stu_id']      = $this->input->post('stu_id');
+		$data['apay_fee']    = $this->input->post('apay_fee');
+		$data['apay_tra_id'] = $this->input->post('apay_tra_id');
+		$data['apay_method'] = $this->input->post('apay_method');
+		$data['apay_date']   = date('Y-m-d H:i:s');
+		//echo "<pre>";
+		//print_r($_POST);die;
+		
+		$this->db->insert('tbl_admin_payment',$data);
+		$this->session->set_flashdata('success', 'Payment  Data Added Successfully.');
+		redirect('payment_pending');
+     
+      
+	}
+	
 
     /*
 	!--------------------------------------------
@@ -86,10 +160,10 @@ class Payment extends CI_Controller {
     	$account_cash_in     = $this->input->post('account_cash_in'); 
     	$account_cash_out    = $this->input->post('account_cash_out'); 
 		$this->db->set(array(
-				'account_description'=>$account_description,
-				'acc_cat_id'=>$acc_cat_id,
-				'account_cash_in'=>$account_cash_in,
-				'account_cash_out'=>$account_cash_out
+				'account_description' =>$account_description,
+				'acc_cat_id'		  =>$acc_cat_id,
+				'account_cash_in'	  =>$account_cash_in,
+				'account_cash_out'	  =>$account_cash_out
 			));
 		
 		$this->db->where(array('account_id'=>$account_id));
@@ -99,7 +173,7 @@ class Payment extends CI_Controller {
 		
     }
 
-      /*
+     /*
 	!--------------------------------------------
 	! 		delete Account 
 	!--------------------------------------------
@@ -107,7 +181,6 @@ class Payment extends CI_Controller {
 
 	 public function delete_account($account_id)
     {          
-           
 
           $this->accountmodel->delete_account($account_id);
     	  $data =array();
@@ -115,11 +188,6 @@ class Payment extends CI_Controller {
           redirect('account_list');
 		
     }
-
-
-
-
-
 
 }
 

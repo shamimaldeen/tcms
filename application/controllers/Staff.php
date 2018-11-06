@@ -43,11 +43,11 @@ class Staff extends CI_Controller {
 	!	Staff Llist
 	!----------------------------------------
 	*/
-	
 	public function staff_list()
 	{  
       
       //$this->db->order_by('staff_fullname','asc');
+
       $data['staffs']  = $this->db->get('tbl_staff')->result_object();
         //echo "<pre>";
 		//print_r( $data['staffs']);

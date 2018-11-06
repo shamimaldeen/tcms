@@ -118,9 +118,6 @@ class Studentcourse extends CI_Controller {
    
 	}
 
-
-
-
 }
 
 ?>

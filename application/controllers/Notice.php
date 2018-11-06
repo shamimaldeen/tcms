@@ -19,7 +19,7 @@ class Notice extends CI_Controller {
 
 	public function add_notice()
 	{
-		$this->db->where('notice_id','3');
+		$this->db->limit('1');
 		$data['notice'] =  $this->db->get('tbl_notice')->result_object();
         
 		$this->load->view('back/lib/header',$data);

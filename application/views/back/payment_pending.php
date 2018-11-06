@@ -1,6 +1,13 @@
 
 <div class="wrapper">
 	<div class="container"> 
+		 <?php if($this->session->success): ?>
+		        <p class="alert alert-success" id="message"><?php echo $this->session->success; ?></p>
+		     <?php endif; ?>
+
+		     <?php if($this->session->error): ?>
+		        <p class="alert alert-error" id="message"><?php echo $this->session->error; ?></p>
+		     <?php endif; ?>
 		<div class="row">
 			<div class="span12">
 				<div class="content">
@@ -11,7 +18,7 @@
 									<h3>Pending Payments Records</h3>
 								</div>
 								<div class="pull-right">
-									<a href="payment_records.php" class="btn btn-primary"><i class="menu-icon icon-list"></i>  Payment Records</a>
+									<a href="<?php echo base_url(); ?>payment" class="btn btn-primary"><i class="menu-icon icon-list"></i>  Payment Records</a>
 								</div>
 							</div></div>
 							<div class="module-body table">
@@ -28,15 +35,20 @@
 										</tr>
 									</thead>
 									<tbody>
+										<?php  foreach($apayments as $apayment) {?>
 										<tr class="odd gradeX">
-											<td nowrap>01</td>
-											<td nowrap>546645</td>
-											<td nowrap>Md. Abdullah AL Mamun</td>
-											<td nowrap>1500</td>
-											<td nowrap>Bkash</td>
-											<td nowrap>12-12-2018</td>
-											<td nowrap> <a href="payment_records.php" class="btn btn-success"><i class="menu-icon icon-ok-circle"></i> </a> <a href="#.php" class="btn btn-danger"><i class="menu-icon icon-trash"></i> </a></td>
+											<td nowrap><?php echo $apayment->apay_tra_id;?></td>
+											<td nowrap><?php echo $apayment->stu_id;?></td>
+											<td nowrap><?php echo $apayment->stu_name;?></td>
+											<td nowrap><?php echo $apayment->apay_fee;?></td>
+											<td nowrap><?php echo $apayment->apay_method;?></td>
+											<td nowrap><?php echo $apayment->apay_date;?></td>
+											<td nowrap>
+											 	<a href="<?php echo base_url(); ?>payment_approved/<?php echo $apayment->apay_id; ?>" class="btn btn-success"><i class="menu-icon icon-ok-circle">pending</i> </a> 
+											 	<a href="<?php echo base_url(); ?>payment/payment_delete/<?php echo $apayment->apay_id; ?>" class="btn btn-danger" onclick="return(confirm('Are you sure to delete?'))"><i class="menu-icon icon-trash"></i> </a>
+											</td>
 										</tr>
+											<?php  } ?>	
 									</tbody>
 									<tfoot>
 									</tfoot>

@@ -46,7 +46,7 @@
 
 								 	?></td>
 								<td nowrap><?php echo $application->pay_date;?></td>
-								<td nowrap><?php echo $application->pay_tra_id;?>/-</td>
+								<td nowrap><?php echo $application->pay_tra_id;?></td>
 								<td nowrap><?php echo $application->pay_method;?></td>
 								
 								<td nowrap>

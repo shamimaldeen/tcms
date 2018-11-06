@@ -38,7 +38,7 @@
 											</a>
 											</a><a href="<?php echo base_url(); ?>payment" class="btn-box medium span2"><i class="icon-ok-circle"></i><b>Payment</b>
 										</a>
-										</a><a href="dues.php" class="btn-box medium span2"><i class="icon-list"></i><b>Dues</b>
+										</a><a href="#" class="btn-box medium span2"><i class="icon-list"></i><b>Dues</b>
 									</a>
 									<a href="<?php echo base_url(); ?>staff_list" class="btn-box medium span2"><i class="icon-user"></i><b>Staffs</b>
 										<a href="<?php echo base_url(); ?>account_list" class="btn-box medium span2"><i class="icon-book"></i><b>Account</b>
@@ -51,13 +51,13 @@
 										</a>
 										<a href="<?php echo base_url(); ?>add_notice" class="btn-box medium span2"><i class="icon-bullhorn"></i><b>Notice Board</b>
 										</a>
-										<a href="inquiry.php" class="btn-box medium span2"><i class="icon-question-sign"></i><b>Inquiry </b>
+										<a href="<?php echo base_url(); ?>inquiry" class="btn-box medium span2"><i class="icon-question-sign"></i><b>Inquiry </b>
 										</a>
 										</a><a href="<?php echo base_url(); ?>sms_alert" class="btn-box medium span2"><i class="icon-envelope"></i><b>SMS Alert </b>
 									</a>
 									<a href="<?php echo base_url(); ?>report" class="btn-box medium span2"><i class="icon-print"></i><b>Print Report</b>
 									</a>
-									<a href="settings.php" class="btn-box medium span2"><i class="icon-cog"></i><b>Settings</b>
+									<a href="#" class="btn-box medium span2"><i class="icon-cog"></i><b>Settings</b>
 									</a>
 								</a> 
 							</div>

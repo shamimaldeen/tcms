@@ -1,9 +1,11 @@
+
+
 <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
 		<title>:::RESULT: :::</title>
-		<link rel="stylesheet " href="../css/print.css">
+		<link rel="stylesheet " href="<?php echo base_url(); ?>asset/back/css/print.css">
 	</head>
 	<body>
 		<div class="bt-div">
@@ -14,11 +16,11 @@
 		<div class="wraper">
 			<table width="100%">
 				<tr>
-					<td width="87%"   align="left" valign="top"><a href="dashboard.php"><img src="../images/explore-it.png"  alt="" height="60" class="img_div"/></a>
+					<td width="87%"   align="left" valign="top"><a href="dashboard.php"><img src="<?php echo base_url(); ?>asset/back/images/explore-it.png"  alt="" height="60" class="img_div"/></a>
 					</td>
 					<td width="13%" align="right" valign="top" nowrap="nowrap"><h2>RESULT </h2>
-						Batch: <strong>OFFICE 218 <strong><BR>
-						Course: </strong> Microsoft Office</strong> </td>
+						Batch: <strong><?php echo $batch[0]->batch_title; ?> <strong><BR>
+						Course: </strong><?php echo $courses[0]->course_title; ?></strong> </td>
 						
 				</tr>
 			</table>
@@ -38,15 +40,17 @@
 					</tr>
 				</thead>
 				<tbody>
+						<?php $i = 1; foreach($applications as $application) {?>
 					<tr class="odd gradeX">
-						<td nowrap> </td>
-						<td nowrap> </td>
-						<td nowrap> </td>
-						<td nowrap> </td>
-						<td nowrap></td>
+						<td nowrap><?php echo $i ;?> </td>
+						<td nowrap> <?php echo $application->stu_id ;?> </td>
+						<td nowrap><?php echo ucwords($application->stu_name) ;?> </td>
+						<td nowrap><?php echo ucwords($application->stu_father) ;?> </td>
+						<td nowrap><?php echo $application->stu_result ;?> </td>
 						
 						
 					</tr>
+					   <?php $i++; } ?>
 				</tbody>
 				<tfoot>
 				</tfoot>
