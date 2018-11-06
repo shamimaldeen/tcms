@@ -246,7 +246,7 @@
 						<div class="sidebar">
 							<ul class="widget widget-menu unstyled">
 								<li> <a href="<?php echo base_url(); ?>student/applycourse_list"> <i class="menu-icon icon-dashboard"></i> Apply New Course </a> </li>
-								<li> <a href="#"> <i class="menu-icon icon-dashboard"></i> Payment </a> </li>
+								<li> <a href="<?php echo base_url(); ?>student/payment"> <i class="menu-icon icon-dashboard"></i> Payment </a> </li>
 								<li> <a href="<?php echo base_url(); ?>student/inquiry"> <i class="menu-icon icon-dashboard"></i> Inquiry </a> </li>
 								<li> <a href="<?php echo base_url(); ?>student/edit_student"> <i class="menu-icon icon-list"></i> Update Information </a> </li>
 							</ul>

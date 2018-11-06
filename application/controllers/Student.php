@@ -312,5 +312,47 @@ class Student extends CI_Controller {
 	}
 
 
+ 		/*
+	!----------------------------------------
+	!	payment
+	!----------------------------------------
+	*/
+	public function payment()
+	{  
+       $this->load->view('student/lib/header');
+		$this->load->view('student/payment');
+		$this->load->view('student/lib/footer');
+     
+	}
+
+
+		/*
+	!----------------------------------------
+	!	payment_ receive  Llist
+	!----------------------------------------
+	*/
+	
+	public function save_payment()
+	{  
+		$data['stu_id'] = $this->session->stu_id;
+        $data['apay_fee'] = $this->input->post('pay_paidamount');
+		$data['apay_method']    = $this->input->post('pay_method');
+		$data['apay_tra_id'] = $this->input->post('pay_tra_id');
+		
+		$data['apay_date']   = date('Y-m-d H:i:s');
+		//echo "<pre>";
+		//print_r($_POST);die;
+		
+		$this->db->insert('tbl_admin_payment',$data);
+		$this->session->set_flashdata('success', 'Payment  Data Added Successfully.');
+		redirect('student/dashboard');
+     
+      
+	}
+	
+
+
+
+
 }
 ?>

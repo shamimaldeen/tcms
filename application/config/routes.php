@@ -112,6 +112,16 @@ $route['edit_student']     = 'student/edit_student';
 $route['student/applycourse_list']     = 'studentcourse/applycourse_list';
 $route['student/applycourse_details/(.+)'] = 'studentcourse/applycourse_details/$1';
 $route['student/applycourse/(.+)']     = 'studentcourse/applycourse/$1';
+
+/*
+!--------------------------------------------------------------------
+! 		 student payment  Routes
+!--------------------------------------------------------------------
+*/
+$route['student/payment']     = 'student/payment';
+
+
+
 /*
 !--------------------------------------------------------------------
 ! 		Student Inquiry   Routes
