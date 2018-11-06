@@ -74,30 +74,8 @@
 								</div>
 								
 							</div>
-							<div class="row-fluid">
-								<div class="span4">
-									<label>E-Mail: <strong><?php echo $view_students_archive[0]->stu_email ;?></strong></label><hr style="margin:0">
-								</div>
-								<div class="span4">
-									<label>Web Address: <strong>www.exploreit.com.bd </strong></label><hr style="margin:0">
-								</div>
-								<div class="span4">
-									<label>Ref: <strong>Mr. Kamal Uddin</strong></label><hr style="margin:0">
-								</div>
-								
-							</div>
-							<div class="row-fluid">
-								<div class="span4">
-									<label>E-Mail: <strong> <?php echo $view_students_archive[0]->stu_email ;?> </strong></label><hr style="margin:0">
-								</div>
-								<div class="span4">
-									<label>Web Address: <strong>www.exploreit.com.bd </strong></label><hr style="margin:0">
-								</div>
-								<div class="span4">
-									<label>Ref: <strong>Mr. Kamal Uddin</strong></label>	<hr style="margin:0">
-								</div>
-								
-							</div>
+							
+						
 							<div class="row-fluid">
 								<div class="span4">
 									<label>E-Mail: <strong> <?php echo $view_students_archive[0]->stu_email ;?></strong></label><hr style="margin:0">
@@ -136,17 +114,22 @@
 									</tr>
 								</thead>
 								<tbody>
+                             <?php $i = 1; foreach($running_courses as $running_course) {?>
+
 									<tr class="odd gradeX">
-										<td nowrap>031</td>
-										<td nowrap>Office jun 18</td>
-										<td nowrap>Microsoft office</td>
-										<td nowrap>6 month</td>
+										<td nowrap><?php echo $i ;?></td>
+										<td nowrap><?php echo $running_course->batch_title ;?></td>
+										<td nowrap><?php echo $running_course->course_title ;?></td>
+										<td nowrap><?php echo $running_course->course_duration ;?></td>
 										
-										<td nowrap>12-12-2018/-</td>
-										<td nowrap>12-12-2018</td>
-										<td nowrap>5000</td>
+										<td nowrap><?php echo $running_course->pay_date;?></td>
+										<td nowrap><?php echo $running_course->capply_ending_date ;?></td>
+										<td nowrap><?php echo $running_course->pay_paidamount ;?></td>
 										
 									</tr>
+
+                          <?php $i++; } ?>
+
 								</tbody>
 								<tfoot>
 								</tfoot>
@@ -155,6 +138,7 @@
 						<div role="tabpanel" class="tab-pane" id="profile">
 							<table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped   display" width="100%">
 								<thead>
+									
 									<tr>
 										<th nowrap  >COURSE NO.</th>
 										<th  nowrap> BATCH</th>
@@ -169,17 +153,24 @@
 									</tr>
 								</thead>
 								<tbody>
+
+									 <?php $i = 1; foreach($completed_courses as $completed_course) {?>
+
 									<tr class="odd gradeX">
-										<td nowrap>031</td>
-										<td nowrap>Office jun 18</td>
-										<td nowrap>Microsoft office</td>
-										<td nowrap>6 month</td>
+										<td nowrap><?php echo $i ;?></td>
+										<td nowrap><?php echo $completed_course->batch_title ;?></td>
+										<td nowrap><?php echo $completed_course->course_title ;?></td>
+										<td nowrap><?php echo $completed_course->course_duration ;?></td>
 										
-										<td nowrap>12-12-2018/-</td>
-										<td nowrap>12-12-2018</td>
-										<td nowrap>5000</td>
+										<td nowrap><?php echo $completed_course->pay_date;?></td>
+										<td nowrap><?php echo $completed_course->capply_ending_date ;?></td>
+										<td nowrap><?php echo $completed_course->pay_paidamount ;?></td>
 										
 									</tr>
+
+                          <?php $i++; } ?>
+
+
 								</tbody>
 								<tfoot>
 								</tfoot>
@@ -201,17 +192,21 @@
 									</tr>
 								</thead>
 								<tbody>
+									 <?php $i = 1; foreach($fees_records as $fees_record) {?>
 									<tr class="odd gradeX">
-										<td nowrap>01</td>
-										<td nowrap>12-12-2018</td>
-										<td nowrap>10001</td>
-										<td nowrap>Abdullah Al Mamun</td>
-										<td nowrap>4000/-</td>
-										<td nowrap>CASH</td>
-										<td nowrap>12-12-2018</td>
+										<td nowrap><?php echo $i ;?></td>
+										<td nowrap><?php echo $fees_record->pay_date ;?></td>
+										<td nowrap><?php echo $fees_record->stu_id ;?></td>
+										<td nowrap><?php echo $fees_record->stu_name ;?></td>
+										<td nowrap><?php echo $fees_record->pay_paidamount ;?></td>
+										<td nowrap><?php echo $fees_record->pay_method ;?></td>
+										<td nowrap><?php echo $fees_record->pay_approved_date ;?></td>
 										
 										
 									</tr>
+
+									 <?php $i++; } ?>
+
 								</tbody>
 								<tfoot>
 								</tfoot>
@@ -229,7 +224,7 @@
 					</div>
 					<div class="sidebar">
 						<ul class="widget widget-menu unstyled">
-							<li> <a href="dashboard.php"> <i class="menu-icon icon-dashboard"></i> Dashbaord </a> </li>
+							<li> <a href="<?php echo base_url(); ?>admin/dashboard"> <i class="menu-icon icon-dashboard"></i> Dashbaord </a> </li>
 							<li> <a href="<?php echo base_url(); ?>edit_students_archive/<?php  echo $view_students_archive[0]->stu_id ;?>"> <i class="menu-icon icon-list"></i> Update Information </a> </li>
 							
 						</ul>

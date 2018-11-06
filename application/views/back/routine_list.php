@@ -64,52 +64,55 @@
 							<div style="" class="span2">
 							<div class="sidebar">
 							
-							<ul class="widget widget-menu unstyled">
-								
-								<li>
-									<a href="dashboard.php">
-										<i class="menu-icon icon-dashboard"></i>
-										Dashbaord
-									</a>
-								</li>
-								
-								<li>
-									<a href="students_archive.php">
-										<i class="menu-icon icon-user"></i>
-										Student List
-									</a>
-								</li>
-								<li>
-									<a href="courses_current.php">
-										<i class="menu-icon icon-folder-open"></i>
-										Active Course
-									</a>
-								</li>
-								<li>
-									<a href="result_archive.php">
-										<i class="menu-icon icon-list-alt"></i>
-										Result
-									</a>
-								</li>
-								<li>
-									<a href="attendance_record.php">
-										<i class="menu-icon icon-ok"></i>
-										Attendance
-									</a>
-								</li>
-								<li>
-									<a href="staff_list.php">
-										<i class="menu-icon icon-user"></i>
-										Staffs
-									</a>
-								</li>
-								<li>
-									<a href="reports.php">
-										<i class="menu-icon icon-print"></i>
-										Report
-									</a>
-								</li>
-							</ul><!--/.widget-nav-->
+							
+					<ul class="widget widget-menu unstyled">
+						
+						<li>
+							<a href="<?php echo base_url(); ?>dashboard">
+								<i class="menu-icon icon-dashboard"></i>
+								Dashbaord
+							</a>
+						</li>
+						
+						<li>
+							<a href="<?php echo base_url(); ?>students_archive">
+								<i class="menu-icon icon-user"></i>
+								Student List
+							</a>
+						</li>
+						<li>
+							<a href="<?php echo base_url(); ?>current_course">
+								<i class="menu-icon icon-folder-open"></i>
+								Active Course
+							</a>
+						</li>
+						<li>
+							<a href="<?php echo base_url(); ?>complited_course">
+								<i class="menu-icon icon-list-alt"></i>
+								Result
+							</a>
+						</li>
+						<li>
+							<a href="<?php echo base_url(); ?>attendance_record">
+								<i class="menu-icon icon-ok"></i>
+								Attendance
+							</a>
+						</li>
+						<li>
+							<a href="<?php echo base_url(); ?>staff_list">
+								<i class="menu-icon icon-user"></i>
+								Staffs
+							</a>
+						</li>
+						<li>
+							<a href="<?php echo base_url(); ?>report">
+								<i class="menu-icon icon-print"></i>
+								Report
+							</a>
+						</li>
+					</ul><!--/.widget-nav-->
+
+
 
 
 							</div><!--/.sidebar-->

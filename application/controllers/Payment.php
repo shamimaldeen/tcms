@@ -90,7 +90,7 @@ class Payment extends CI_Controller {
 		));
 		$this->db->delete('tbl_admin_payment');
 		$this->session->set_flashdata('success', 'Payment Deleted Successfully');
-		redirect('payment_pending');
+		redirect('payment');
 
 	}
 

@@ -155,7 +155,8 @@ $route['complited_course'] = 'course/complited_course';
 ! 	Cetificate archive    Routes
 !--------------------------------------------------------------------
 */
-$route['certificates_archive'] = 'course/certificates_archive';
+$route['certificates_archive'] = 'certificate/certificates_archive';
+$route['certificates_view/(.+)/(.+)/(.+)']    = 'certificate/certificates_view/$1/$2/$3';
 /*
 !--------------------------------------------------------------------
 !   Attendance     Routes

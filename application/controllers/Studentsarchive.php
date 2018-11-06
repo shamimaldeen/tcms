@@ -41,9 +41,62 @@ class Studentsarchive extends CI_Controller {
 	
 	public function view_students_archive($stu_id)
 	{  
+       // start running course
+
+        $this->db->join("tbl_student","tbl_student.stu_id =  tbl_courseapply.stu_id");
+		$this->db->join("tbl_course","tbl_course.course_id =  tbl_courseapply.course_id");
+		$this->db->join("tbl_payment","tbl_payment.pay_id =  tbl_courseapply.pay_id");
+		$this->db->join("tbl_batch","tbl_batch.batch_id =  tbl_courseapply.batch_id");
+		$this->db->where(array(
+			'tbl_payment.pay_status'=>'approved',
+			'tbl_courseapply.capply_status'=>'Incomplete',
+			'tbl_courseapply.stu_id'=> $stu_id
+		));
+	
+		$data['running_courses'] = $this->db->get('tbl_courseapply')->result_object();
+
+      //end running course
+
        
-     $this->db->where('stu_id',$stu_id);
-     $data['view_students_archive']  = $this->db->get('tbl_student')->result_object();
+
+
+       // start  course cpmpleted
+	    $this->db->join("tbl_student","tbl_student.stu_id =  tbl_courseapply.stu_id");
+		$this->db->join("tbl_course","tbl_course.course_id =  tbl_courseapply.course_id");
+		$this->db->join("tbl_payment","tbl_payment.pay_id =  tbl_courseapply.pay_id");
+		$this->db->join("tbl_batch","tbl_batch.batch_id =  tbl_courseapply.batch_id");
+		$this->db->where(array(
+			'tbl_payment.pay_status'=>'approved',
+			'tbl_courseapply.capply_status'=>'Complete',
+			'tbl_courseapply.stu_id'=> $stu_id
+		));
+	
+		$data['completed_courses'] = $this->db->get('tbl_courseapply')->result_object();
+		// end  course cpmpleted
+      
+
+
+
+       // start  fees record
+	    
+		$this->db->join("tbl_student","tbl_payment.stu_id =  tbl_student.stu_id");
+		$this->db->where(array(
+			'tbl_payment.pay_status'=>'approved',
+			'tbl_student.stu_id'=> $stu_id
+		));
+		$data['fees_records'] = $this->db->get('tbl_payment')->result_object();
+		// end  fees record
+
+      
+      //echo "<pre>";
+     // print_r($data['fess_records']); die;
+      
+
+
+
+        // view profile
+        $this->db->where('stu_id',$stu_id);
+        $data['view_students_archive']  = $this->db->get('tbl_student')->result_object();
 
       //echo "<pre>";
       // print_r($data['view_students_archive']); die;

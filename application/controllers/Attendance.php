@@ -139,16 +139,6 @@ class Attendance extends CI_Controller {
           redirect('attendance_record');
 		
     }
-
-
-
-
-   
-
-
-
-
-
 }
 
 ?>

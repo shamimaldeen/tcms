@@ -45,6 +45,7 @@ class Inquiry extends CI_Controller {
 		print_r($_POST);
 
 		$data['inquiry_details'] = $this->input->post('inquiry_details');
+		$data['inquiry_status']  = 'answered';
 		$this->db->set($data);
 		$this->db->where('inquiry_id',$inquiry_id);
 		$this->db->update('tbl_inquiry');

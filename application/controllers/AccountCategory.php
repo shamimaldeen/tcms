@@ -100,9 +100,8 @@ class AccountCategory extends CI_Controller {
 			$this->db->update('tbl_account_category');
 			$this->session->set_flashdata('success', 'Updated Sucessfully');
 			redirect('account_category_list');
-		
+	
     }
-
 
 }
 

@@ -33,6 +33,7 @@ class Course extends CI_Controller {
 	
 	public function save_course()
 	{ 
+        $data['course_status'] = $this->input->post('course_status');
         $data['course_title'] = $this->input->post('course_title');
 		$data['course_duration'] = $this->input->post('course_duration');
 		$data['course_fee'] = $this->input->post('course_fee');
@@ -196,7 +197,8 @@ class Course extends CI_Controller {
 
 
         $this->db->set(array(
-			'pay_status'=>'approved'
+			'pay_status'=>'approved',
+			'pay_approved_date'=> date('Y-m-d')
 			));
        
         $this->db->where('pay_id',$data['pay_id'] );
@@ -270,9 +272,10 @@ class Course extends CI_Controller {
 	*/
 	public function updateResultStatus($capply_id)
 	{
-		$data['capply_result']		 = $this->input->post('capply_result');
-		$data['capply_ending_date']  = $this->input->post('capply_ending_date');
-		$data['capply_status'] 		 = $this->input->post('capply_status');
+		$data['capply_result']		 	= $this->input->post('capply_result');
+		$data['capply_ending_date']  	= $this->input->post('capply_ending_date');
+		$data['capply_status'] 		 	= $this->input->post('capply_status');
+		$data['capply_result_publish'] 	= date('Y-m-d');
 
 		$this->db->set($data);
 		$this->db->where('capply_id',$capply_id);
@@ -322,6 +325,7 @@ class Course extends CI_Controller {
 		$data['capply_result']		 = $this->input->post('capply_result');
 		$data['capply_ending_date']  = $this->input->post('capply_ending_date');
 		$data['capply_status'] 		 = $this->input->post('capply_status');
+		$data['capply_result_publish'] 	= date('Y-m-d');
 
 		$this->db->set($data);
 		$this->db->where('capply_id',$capply_id);
@@ -330,43 +334,8 @@ class Course extends CI_Controller {
         redirect('dashboard');
 	}
 
-	/*
-	!----------------------------------------
-	! Certificates archive view
-	!----------------------------------------
-	*/
-	public function certificates_archive()
-	{
-
-		$this->db->select('tbl_student.stu_id,tbl_student.stu_sex,tbl_student.stu_mobile,tbl_student.stu_name,tbl_courseapply.capply_id,tbl_courseapply.capply_result,tbl_courseapply.capply_status,tbl_courseapply.capply_ending_date,tbl_course.course_id,tbl_course.course_title,tbl_course.course_duration,tbl_payment.pay_id,tbl_payment.pay_date,tbl_payment.pay_tra_id,tbl_payment.pay_method,tbl_batch.batch_title,tbl_batch.batch_id');
-
-		$this->db->join("tbl_student","tbl_student.stu_id =  tbl_courseapply.stu_id");
-		$this->db->join("tbl_course","tbl_course.course_id =  tbl_courseapply.course_id");
-		$this->db->join("tbl_payment","tbl_payment.pay_id =  tbl_courseapply.pay_id");
-		$this->db->join("tbl_batch","tbl_batch.batch_id =  tbl_courseapply.batch_id");
-		$this->db->where(array(
-			'tbl_payment.pay_status'=>'approved',
-			'tbl_courseapply.capply_status'=>'Complete',
-			'tbl_courseapply.capply_result !='=>'F',
-			
-		));
-	
-		$data['applications'] = $this->db->get('tbl_courseapply')->result_object();
-		
-        //echo "<pre>";
-        //print_r($data['applications'] );die;
-
-         
-	   $this->load->view('back/lib/header');
-       $this->load->view('back/certificates_archive',$data);
-       $this->load->view('back/lib/footer');
-
-	}
-
 
 
 
 }
-
 ?>
-

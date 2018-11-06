@@ -32,6 +32,9 @@ class Student extends CI_Controller {
 	*/ 
 	public function dashboard()
 	{
+         
+
+
 		if ($this->session->has_userdata('admin')) {
             redirect('student/logout');
         }
@@ -39,8 +42,63 @@ class Student extends CI_Controller {
 		if (!$this->session->has_userdata('student')) {
             redirect('student');
         }
-     	$this->db->where('stu_id',$this->session->stu_id);
+     	
+
+         // start running course
+        $this->db->join("tbl_student","tbl_student.stu_id =  tbl_courseapply.stu_id");
+		$this->db->join("tbl_course","tbl_course.course_id =  tbl_courseapply.course_id");
+		$this->db->join("tbl_payment","tbl_payment.pay_id =  tbl_courseapply.pay_id");
+		$this->db->join("tbl_batch","tbl_batch.batch_id =  tbl_courseapply.batch_id");
+		$this->db->where(array(
+			'tbl_payment.pay_status'=>'approved',
+			'tbl_courseapply.capply_status'=>'Incomplete',
+			'tbl_courseapply.stu_id'=> $this->session->stu_id
+		));
+	
+		$data['running_courses'] = $this->db->get('tbl_courseapply')->result_object();
+		//echo "<pre>";
+		//print_r($data['running_courses']); die
+
+   		// start previous course
+        $this->db->join("tbl_student","tbl_student.stu_id =  tbl_courseapply.stu_id");
+		$this->db->join("tbl_course","tbl_course.course_id =  tbl_courseapply.course_id");
+		$this->db->join("tbl_payment","tbl_payment.pay_id =  tbl_courseapply.pay_id");
+		$this->db->join("tbl_batch","tbl_batch.batch_id =  tbl_courseapply.batch_id");
+		$this->db->where(array(
+			'tbl_payment.pay_status'=>'approved',
+			'tbl_courseapply.capply_status'=>'Complete',
+			'tbl_courseapply.stu_id'=> $this->session->stu_id
+		));
+	
+		$data['previous_courses'] = $this->db->get('tbl_courseapply')->result_object();
+		//echo "<pre>";
+		//print_r($data['running_courses']); die;
+
+		 // start  fees record
+		$this->db->join("tbl_student","tbl_payment.stu_id =  tbl_student.stu_id");
+		$this->db->where(array(
+			'tbl_payment.pay_status'	=>'approved',
+			'tbl_student.stu_id'		=> $this->session->stu_id
+		));
+		$data['fees_records'] = $this->db->get('tbl_payment')->result_object();
+		// end  fees record
+
+		/*inquery*/
+
+	
+		$this->db->join("tbl_student","tbl_student.stu_id = tbl_inquiry.stu_id");
+		$this->db->where(array(
+			'tbl_inquiry.stu_id'		=> $this->session->stu_id
+		));
+		
+		$data['inquirys'] = $this->db->get('tbl_inquiry')->result_object();
+		//echo "<pre>";
+		//print_r($data['inquirys']);
+
+
+		$this->db->where('stu_id',$this->session->stu_id);
         $data['student']  = $this->db->get('tbl_student')->result_object();
+
 
 		$this->load->view('student/lib/header',$data);
 		$this->load->view('student/dashboard');
@@ -116,7 +174,6 @@ class Student extends CI_Controller {
 		$this->load->view('student/edit_student',$data);
 		$this->load->view('student/lib/footer');
     	
-	
     }
 
 
@@ -226,12 +283,34 @@ class Student extends CI_Controller {
         
 		$data['inquiry_details'] = $this->input->post('inquiry_details');
 		$data['stu_id'] = $this->session->stu_id;
-	     $this->db->insert('tbl_inquiry',$data);
+	    $this->db->insert('tbl_inquiry',$data);
 		$this->session->set_flashdata('success', ' Inquiry Data Added Successfully.');
 		redirect('student/dashboard');
 	}
 
 
-	
+		/*
+	!----------------------------------------
+	! Update Admin Apply
+	!----------------------------------------
+	*/
+	public function inquery_reply($inquiry_id)
+	{
+
+		
+		$data['inquiry_details'] = $this->input->post('inquiry_details');
+		$data['inquiry_status']  = 'sent';
+		$this->db->set($data);
+		$this->db->where(array(
+			'tbl_inquiry.inquiry_id'=> $inquiry_id,
+			'tbl_inquiry.stu_id'	=> $this->session->stu_id
+		));
+		$this->db->update('tbl_inquiry');
+		$this->session->set_flashdata('success', 'Inquiry Replied Successfully');
+  		redirect('student/dashboard');
+		
+	}
+
 
 }
+?>

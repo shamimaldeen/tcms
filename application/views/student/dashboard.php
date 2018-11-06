@@ -1,4 +1,11 @@
-
+<?php
+   //date formattting
+     function format_date($data)
+     {
+       $date = DateTime::createFromFormat('Y-m-d H:i:s',$data);
+       return $formattedweddingdate = $date->format('d-m-Y');
+     }
+    ?>
 	<div class="wrapper">
 		<div class="container">
 			<?php if($this->session->success): ?>
@@ -62,22 +69,25 @@
 											<th nowrap  >COURSE NO.</th>
 											<th  nowrap> BATCH</th>
 											<th nowrap  >COURSE TITLE</th>
-											<th nowrap  >DURETION</th>
+											<th nowrap  >DURATION</th>
 											<th nowrap  >FROM DATE </th>
-											<th nowrap  >TO DATE DATE </th>
+											<th nowrap  >TO DATE </th>
 											<th nowrap  >FEE</th>
 										</tr>
 									</thead>
 									<tbody>
+							<?php $i = 1; foreach($running_courses as $running_course) {?>
 										<tr class="odd gradeX">
-											<td nowrap>031</td>
-											<td nowrap>Office jun 18</td>
-											<td nowrap>Microsoft office</td>
-											<td nowrap>6 month</td>
-											<td nowrap>12-12-2018/-</td>
-											<td nowrap>12-12-2018</td>
-											<td nowrap>5000</td>
+											<td nowrap><?php echo $i ;?></td>
+											<td nowrap><?php echo $running_course->batch_title ;?></td>
+											<td nowrap><?php echo $running_course->course_title ;?></td>
+											<td nowrap><?php echo $running_course->course_duration ;?></td>
+											<td nowrap><?php echo $running_course->pay_date;?></td>
+											<td nowrap><?php echo $running_course->capply_ending_date ;?></td>
+											<td nowrap><?php echo $running_course->pay_paidamount ;?></td>
 										</tr>
+
+										   <?php $i++; } ?>
 									</tbody>
 									<tfoot>
 									</tfoot>
@@ -90,24 +100,31 @@
 											<th nowrap  >COURSE NO.</th>
 											<th  nowrap> BATCH</th>
 											<th nowrap  >COURSE TITLE</th>
-											<th nowrap  >DURETION</th>
+											<th nowrap  >DURATION</th>
 											<th nowrap  >FROM DATE </th>
-											<th nowrap  >TO DATE DATE </th>
+											<th nowrap  >TO DATE </th>
 											<th nowrap  >RESULT</th>
 											<th nowrap  >STATUS</th>
 										</tr>
 									</thead>
 									<tbody>
+                        
+
+										<?php $i = 1; foreach($previous_courses as $previous_course) {?>
 										<tr class="odd gradeX">
-											<td nowrap>031</td>
-											<td nowrap>Office jun 18</td>
-											<td nowrap>Microsoft office</td>
-											<td nowrap>6 month</td>
-											<td nowrap>12-12-2018/-</td>
-											<td nowrap>12-12-2018</td>
-											<td nowrap>A+</td>
-											<td nowrap>COMPLETED</td>
+											<td nowrap><?php echo $i ;?></td>
+											<td nowrap><?php echo $previous_course->batch_title ;?></td>
+											<td nowrap><?php echo $previous_course->course_title ;?></td>
+											<td nowrap><?php echo $previous_course->course_duration ;?></td>
+											<td nowrap><?php echo $previous_course->pay_date;?></td>
+											<td nowrap><?php echo $previous_course->capply_ending_date ;?></td>
+											<td nowrap><?php echo $previous_course->pay_paidamount ;?></td>
+											<td nowrap><?php echo $previous_course->capply_status ;?></td>
 										</tr>
+
+										   <?php $i++; } ?>
+
+
 									</tbody>
 									<tfoot>
 									</tfoot>
@@ -127,15 +144,20 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr class="odd gradeX">
-											<td nowrap>01</td>
-											<td nowrap>12-12-2018</td>
-											<td nowrap>4000/-</td>
-											<td nowrap>CASH</td>
-											<td nowrap>AFSAD45SDAF</td>
-											<td nowrap>12-12-2018</td>
-											<td nowrap>UNPAID</td>
-										</tr>
+										 <?php $i = 1; foreach($fees_records as $fees_record) {?>
+									<tr class="odd gradeX">
+										<td nowrap><?php echo $i ;?></td>
+										<td nowrap><?php echo $fees_record->pay_date ;?></td>
+										<td nowrap><?php echo $fees_record->pay_paidamount ;?></td>
+										<td nowrap><?php echo $fees_record->pay_method ;?></td>
+										<td nowrap><?php echo $fees_record->pay_tra_id ;?></td>
+										<td nowrap><?php echo $fees_record->pay_date ;?></td>
+										<td nowrap><?php echo $fees_record->pay_status;?></td>
+										
+										
+									</tr>
+
+									 <?php $i++; } ?>
 									</tbody>
 									<tfoot>
 									</tfoot>
@@ -153,13 +175,60 @@
 										</tr>
 									</thead>
 									<tbody>
+										
+
+										<?php $i = 1; foreach($inquirys as $inquiry): ?>
 										<tr class="odd gradeX">
-											<td nowrap>031</td>
-											<td nowrap>12-12-2018</td>
-											<td nowrap>Microsoft office</td>
-											<td nowrap>Answerd</td>
-											<td nowrap><button type="button" class="btn btn-warning" data-toggle="modal" data-target="#answerd"> View </button></td>
+											<td nowrap><?php echo $inquiry->inquiry_id;?></td>
+											<td nowrap><?php echo format_date($inquiry->inquiry_date);?></td>
+											
+											<td nowrap><?php echo $inquiry->inquiry_details;?></td>
+											<td nowrap><?php echo $inquiry->inquiry_status;?></td>
+											<td nowrap> 
+												<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModal<?php echo $i; ?>"> <i class="menu-icon icon-share-alt"></i> Replay </button>
+											</td>
 										</tr>
+
+										<div id="myModal<?php echo $i; ?>" class="modal fade" role="dialog">
+														<div class="modal-dialog">
+															<!-- Modal content-->
+															<div class="modal-content">
+																<div class="modal-header">
+																	<button type="button" class="close" data-dismiss="modal">&times;</button>
+																	<h4 class="modal-title">Replay </h4>
+																</div>
+																<div class="modal-body">
+						<?php echo form_open('student/inquery_reply/'.$inquiry->inquiry_id,array()) ?>
+																		<div class="row-fluid">
+																			<div class="span12">
+																				<div class="form-group">
+																					<p>
+																						<?php echo $inquiry->inquiry_details;?>
+																					</p></div>
+																			</div>
+																		</div>
+																		<div class="row-fluid">
+																			<div class="span12">
+																				<div class="form-group">
+																					<label>Replay</label>
+																					<textarea name="inquiry_details" class="span12"  id="editor" rows="4"> </textarea>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															
+														</div>
+														<div class="modal-footer">
+															<center>
+																<button type="submit" class="btn-large btn-success"><i class="menu-icon icon-Save"></i> Done</button>
+															</center>
+														</div>
+													</div>
+
+
+
+										<?php $i++; endforeach; ?>
 									</tbody>
 									<tfoot>
 									</tfoot>
@@ -177,7 +246,7 @@
 						<div class="sidebar">
 							<ul class="widget widget-menu unstyled">
 								<li> <a href="<?php echo base_url(); ?>student/applycourse_list"> <i class="menu-icon icon-dashboard"></i> Apply New Course </a> </li>
-								<li> <a href="payment.php"> <i class="menu-icon icon-dashboard"></i> Payment </a> </li>
+								<li> <a href="#"> <i class="menu-icon icon-dashboard"></i> Payment </a> </li>
 								<li> <a href="<?php echo base_url(); ?>student/inquiry"> <i class="menu-icon icon-dashboard"></i> Inquiry </a> </li>
 								<li> <a href="<?php echo base_url(); ?>student/edit_student"> <i class="menu-icon icon-list"></i> Update Information </a> </li>
 							</ul>

@@ -33,6 +33,10 @@
 								</thead>
 								<tbody>
 									<?php $i=1; foreach($applications as $application) {?>
+
+										<?php 
+										
+										?>
 									<tr class="odd gradeX">
 										<td nowrap><?php echo $i ; ?></td>
 										<td ><?php echo $application->course_title; ?></td>
@@ -45,7 +49,7 @@
 
 										<td nowrap ><?php echo $application->capply_status; ?></td>
 										<td nowrap ><?php echo $application->capply_ending_date; ?></td>
-										<td nowrap><a href="#certificate_priview.php" class="btn btn-success"><i class="menu-icon icon-certificate"></i>  </a>
+										<td nowrap><a href="<?php echo base_url(); ?>certificates_view/<?php echo $application->batch_id; ?>/<?php echo $application->course_id; ?>/<?php echo $application->stu_id; ?>" class="btn btn-success"><i class="menu-icon icon-certificate"></i>  </a>
 											 </td>
 										
 									</tr>
