@@ -24,7 +24,7 @@
 					<div class="nav-collapse collapse navbar-inverse-collapse">
 						<ul class="nav pull-right">
 							<li >
-								<a href="../student" >   Login</a>
+								<a href="<?php echo base_url(); ?>student" >   Login</a>
 							</li>
 						</ul>
 					</div><!-- /.nav-collapse -->
