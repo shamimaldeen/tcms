@@ -98,6 +98,9 @@ $route['edit_students_archive/(.+)']  = 'studentsarchive/edit_students_archive/$
 */
 $route['student']           = 'student/index';
 $route['student/dashboard'] = 'student/dashboard';
+$route['student/view_routine_details/(.+)'] = 'student/view_routine_details/$1';
+
+
 /*
 !--------------------------------------------------------------------
 ! 		Update student  Routes
@@ -112,6 +115,16 @@ $route['edit_student']     = 'student/edit_student';
 $route['student/applycourse_list']     = 'studentcourse/applycourse_list';
 $route['student/applycourse_details/(.+)'] = 'studentcourse/applycourse_details/$1';
 $route['student/applycourse/(.+)']     = 'studentcourse/applycourse/$1';
+
+/*
+!--------------------------------------------------------------------
+! 		 student payment  Routes
+!--------------------------------------------------------------------
+*/
+$route['student/payment']     = 'student/payment';
+
+
+
 /*
 !--------------------------------------------------------------------
 ! 		Student Inquiry   Routes
@@ -156,7 +169,7 @@ $route['complited_course'] = 'course/complited_course';
 !--------------------------------------------------------------------
 */
 $route['certificates_archive'] = 'certificate/certificates_archive';
-$route['certificates_view/(.+)/(.+)/(.+)']    = 'certificate/certificates_view/$1/$2/$3';
+$route['certificates_view/(.+)/(.+)/(.+)/(.+)']    = 'certificate/certificates_view/$1/$2/$3/$4';
 /*
 !--------------------------------------------------------------------
 !   Attendance     Routes
@@ -206,3 +219,10 @@ $route['collection_report/(.+)/(.+)'] = 'report/collection_report/$1/$2';
 $route['report_stuff_list'] = 'report/report_stuff_list';
 $route['account_report_by_date/(.+)/(.+)'] = 'report/account_report_by_date/$1/$2';
 $route['account_report_by_date_category/(.+)/(.+)/(.+)'] = 'report/account_report_by_date_category/$1/$2/$3';
+
+/*
+!--------------------------------------------------------------------
+!   Setting route
+!--------------------------------------------------------------------
+*/
+$route['settings'] = 'admin/settings';

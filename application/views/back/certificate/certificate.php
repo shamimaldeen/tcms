@@ -78,7 +78,7 @@ h4 {
 <CENTER>
   <table width="100%">
     <tr>
-      <td width="20%">No.: <strong>0120218001</strong></td>
+      <td width="20%">No.: <strong><?php echo $certificate[0]->capply_certificate_id; ?></strong></td>
       <td align="center">AFFILIATED BY: <BR>
 Bangladesh Technical Education Board, Dhaka, Bangladesh. </td>
       <td width="20%">&nbsp;</td>

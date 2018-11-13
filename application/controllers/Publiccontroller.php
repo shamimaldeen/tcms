@@ -52,7 +52,8 @@ class Publiccontroller extends CI_Controller {
 		$data['stu_guardian_mobile']   = $this->input->post('stu_guardian_mobile');
 		$data['stu_mobile']            = $this->input->post('stu_mobile');
 		$data['stu_email']             = $this->input->post('stu_email');
-		$data['stu_password']          = rand(100000,999999);
+		$data['stu_username']          = $this->input->post('stu_username');
+		$data['stu_password']          =$this->input->post('stu_password');
 		$data['stu_present_address']   = $this->input->post('stu_present_address');
 		$data['stu_permanent_address'] = $this->input->post('stu_permanent_address');
 		$data['stu_have_experience']   = $this->input->post('stu_have_experience');
@@ -66,7 +67,9 @@ class Publiccontroller extends CI_Controller {
 		$data['stu_pass_year']         = $this->input->post('stu_pass_year');
 		$data['stu_result']            = $this->input->post('stu_result');
 		
-		
+		$this->session->set_userdata(array(
+			'stu_password'=> $this->input->post('stu_password')
+		));
 
 		
 		//echo "<pre>";
@@ -129,6 +132,12 @@ class Publiccontroller extends CI_Controller {
 	
 	public function confirmation($stu_id)
 	{  
+
+	 $this->db->where('admin_id',1);
+
+      	$data['admininfo']= $this->db->get('admin')->result_object();
+      	//echo "<pre>";
+      	//print_r($data['admininfo']);die;
       
       $this->db->where('stu_id',$stu_id);
       $status  = $this->db->get('tbl_student');

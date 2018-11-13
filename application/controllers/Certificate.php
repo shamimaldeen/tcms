@@ -47,7 +47,7 @@ class Certificate extends CI_Controller {
 	! Certificate View
 	!-------------------------------------------
 	*/
-	public function certificates_view($batch_id,$course_id, $stu_id)
+	public function certificates_view($batch_id,$course_id, $stu_id,$capply_id)
 	{
 		$this->db->join("tbl_student","tbl_student.stu_id =  tbl_courseapply.stu_id");
 		$this->db->join("tbl_course","tbl_course.course_id =  tbl_courseapply.course_id");
@@ -59,12 +59,15 @@ class Certificate extends CI_Controller {
 			'tbl_courseapply.batch_id'			=> $batch_id,
 			'tbl_courseapply.course_id'			=> $course_id,
 			'tbl_courseapply.capply_result !='	=>'F',
+			'tbl_courseapply.capply_id'			=> $capply_id,
 			'tbl_courseapply.stu_id '			=> $stu_id
 			
 		));
 		$status = $this->db->get('tbl_courseapply');
 		if($status->result_id->num_rows > 0){
 			$data['certificate'] = $status->result_object();
+			//echo "<pre>";
+			//print_r($data['certificate']); die;
 			$this->load->view('back/certificate/certificate',$data);
 		}else{
 			$this->session->set_flashdata('error', 'No certificate found');

@@ -57,7 +57,7 @@
 									</a>
 									<a href="<?php echo base_url(); ?>report" class="btn-box medium span2"><i class="icon-print"></i><b>Print Report</b>
 									</a>
-									<a href="#" class="btn-box medium span2"><i class="icon-cog"></i><b>Settings</b>
+									<a href="<?php echo base_url(); ?>settings" class="btn-box medium span2"><i class="icon-cog"></i><b>Settings</b>
 									</a>
 								</a> 
 							</div>
@@ -68,16 +68,16 @@
 							<p><strong><i class="icon-random"></i>  Statistic</strong> </p>
 						</li>
 						<li>
-							Current Students: <strong>(120)</strong>
+							Current Students: <strong>(<?php echo $totall_current_student[0]->totall_current_student;?>)</strong>
 						</li>
 						<li>
-							Pending Course Application: <strong>(07)</strong>
+							Pending Course Application: <strong>(<?php echo $pending_course_application[0]->pending_course_application;?>)</strong>
 						</li>
 						<li>
-							Pending Payment Request: <strong style="color:red;">(3)</strong>
+							Pending Payment Request: <strong style="color:red;">(<?php echo $pending_payment_request[0]->pending_payment_request;?>)</strong>
 						</li>
 						<li>
-							Total Course Completed: <strong>(850)</strong>
+							Total Course Completed: <strong>(<?php echo $complited_course[0]->complited_course;?>)</strong>
 						</li>
 					</ul>
 					<ul class="widget widget-usage unstyled span3">

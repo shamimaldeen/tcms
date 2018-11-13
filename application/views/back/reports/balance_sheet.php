@@ -14,7 +14,7 @@
 		<div class="wraper">
 			<table width="100%">
 				<tr>
-					<td width="87%"   align="left" valign="top"><a href="dashboard.php"><img src="../images/explore-it.png"  alt="" height="60" class="img_div"/></a>
+					<td width="87%"   align="left" valign="top"><a href="dashboard.php"><img src="<?php echo base_url();?>uploads/admin/<?php echo $admininfo[0]->admin_image;?>"  alt="" height="60" class="img_div"/></a>
 					</td>
 					<td width="13%" align="right" valign="top" nowrap="nowrap"><h2>BALANCE SHEET </h2>
 					Date Between: 12-12-2018</strong> AND <strong>12-12-2019</strong> </td>

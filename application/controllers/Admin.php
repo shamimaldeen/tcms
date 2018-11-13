@@ -38,8 +38,42 @@ class Admin extends CI_Controller {
 		if (!$this->session->has_userdata('admin')) {
             redirect('admin');
         }
+           //totall pending course application
+           $data['totall_current_student']  =  $this->db->select('count(tbl_student.stu_id) as totall_current_student')->get('tbl_student')->result_object();
+
+
+        //totall pending course application
+
+        $this->db->join("tbl_student","tbl_student.stu_id =  tbl_courseapply.stu_id");
+		$this->db->join("tbl_course","tbl_course.course_id =  tbl_courseapply.course_id");
+		$this->db->join("tbl_payment","tbl_payment.pay_id =  tbl_courseapply.pay_id");
+		$this->db->where('tbl_payment.pay_status','pending');
+		
+        $data['pending_course_application']  =  $this->db->select('count(tbl_courseapply.capply_id) as pending_course_application')->get('tbl_courseapply')->result_object();
+
+
+
+         //totall pending payment request
+
+           $data['pending_payment_request']  =  $this->db->select('count(tbl_admin_payment.apay_id) as pending_payment_request')->get('tbl_admin_payment')->result_object();
+
+
+
+        //totall course complited
+        $this->db->join("tbl_student","tbl_student.stu_id =  tbl_courseapply.stu_id");
+		$this->db->join("tbl_course","tbl_course.course_id =  tbl_courseapply.course_id");
+		$this->db->join("tbl_payment","tbl_payment.pay_id =  tbl_courseapply.pay_id");
+		$this->db->where('tbl_courseapply.capply_status','Complete');
+		
+        $data['complited_course']  =  $this->db->select('count(tbl_courseapply.capply_id) as complited_course')->get('tbl_courseapply')->result_object();
+
+         
+         //echo "<pre>";
+       // print_r( $data['complited_course'] );die;
+
+
 		$this->load->view('back/lib/header');
-		$this->load->view('back/dashboard');
+		$this->load->view('back/dashboard',$data);
 		$this->load->view('back/lib/footer');
 		
 	}
@@ -95,5 +129,23 @@ class Admin extends CI_Controller {
 		$this->session->set_flashdata('success', 'Logged out Successfully');
 		redirect('admin');
 	}
+
+
+		/*
+	!--------------------------------------------
+	! 	Settings
+	!--------------------------------------------
+	*/ 
+	public function settings()
+	{
+		
+
+
+        $this->load->view('back/lib/header');
+		$this->load->view('back/settings');
+		$this->load->view('back/lib/footer');
+		
+	}
+
 
 }

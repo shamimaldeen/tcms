@@ -24,7 +24,7 @@
 					<div class="nav-collapse collapse navbar-inverse-collapse">
 						<ul class="nav pull-right">
 							<li >
-								<a href="../student" >   Login</a>
+								<a href="<?php echo base_url(); ?>student" >   Login</a>
 							</li>
 						</ul>
 					</div><!-- /.nav-collapse -->
@@ -321,6 +321,35 @@
 			</div>
 		</div> 
 	</div> 
+	
+	
+	<div class="module">
+					<div class="module-head">
+						<h3>Applicant's Login Information</h3>
+					</div>
+					<div class="module-body">
+						<div class="row-fluid">
+							<div class="span4">
+								<div class="form-group">
+									<label>Username
+									</label>
+									<input type="text" name="stu_username" id="ccorpname" class="span12" />
+								</div>
+							</div>
+							<div class="span3">
+								<div class="form-group">
+									<label> Password
+									</label>
+									<input type="Password" name="stu_password" id="dno" class="span12" />
+								</div>
+							</div>
+					     <div class="span1">
+					
+				</div> 
+			</div>
+		</div> 
+	</div> 
+	
 	<center>
 		<div class="form-group">
 			<input type="submit" name="savepreapply" class="btn-large btn-success" value="Submit Your Application"/>

@@ -49,7 +49,7 @@
 
 										<td nowrap ><?php echo $application->capply_status; ?></td>
 										<td nowrap ><?php echo $application->capply_ending_date; ?></td>
-										<td nowrap><a href="<?php echo base_url(); ?>certificates_view/<?php echo $application->batch_id; ?>/<?php echo $application->course_id; ?>/<?php echo $application->stu_id; ?>" class="btn btn-success"><i class="menu-icon icon-certificate"></i>  </a>
+										<td nowrap><a href="<?php echo base_url(); ?>certificates_view/<?php echo $application->batch_id; ?>/<?php echo $application->course_id; ?>/<?php echo $application->stu_id; ?>/<?php echo $application->capply_id; ?>" class="btn btn-success"><i class="menu-icon icon-certificate"></i>  </a>
 											 </td>
 										
 									</tr>

@@ -24,6 +24,7 @@
 							<th nowrap  >Duration</th>
 							<th nowrap  >Date</th>
 							<th nowrap  >Transaction ID</th>
+							<th nowrap  >Amount</th>
 							<th nowrap  >Methood</th>
 							
 							
@@ -47,6 +48,7 @@
 								 	?></td>
 								<td nowrap><?php echo $application->pay_date;?></td>
 								<td nowrap><?php echo $application->pay_tra_id;?></td>
+								<td nowrap><?php echo $application->pay_paidamount;?></td>
 								<td nowrap><?php echo $application->pay_method;?></td>
 								
 								<td nowrap>

@@ -95,6 +95,13 @@ class Report extends CI_Controller {
    public function student_list_batch($batch_id,$starting_date,$ending_date)
 	{
 
+		$this->db->where('admin_id',1);
+
+      	$data['admininfo']= $this->db->get('admin')->result_object();
+
+      	//echo "<pre>";
+      	//print_r($data['admininfo']);die;
+
 		$this->db->select('tbl_student.*');
 
 		$this->db->join("tbl_student","tbl_student.stu_id =  tbl_courseapply.stu_id");
@@ -127,14 +134,17 @@ class Report extends CI_Controller {
 	*/
   	public function student_list_course($course_id,$starting_date,$ending_date)
 	{
+        
+		$this->db->where('admin_id',1);
 
+      	$data['admininfo']= $this->db->get('admin')->result_object();
 	  
       $this->db->select('tbl_student.*');
 
 		$this->db->join("tbl_student","tbl_student.stu_id =  tbl_courseapply.stu_id");
 		$this->db->join("tbl_course","tbl_course.course_id =  tbl_courseapply.course_id");
 		$this->db->join("tbl_payment","tbl_payment.pay_id =  tbl_courseapply.pay_id");
-		$this->db->join("tbl_batch","tbl_batch.batch_id =  tbl_courseapply.batch_id");
+		//$this->db->join("tbl_batch","tbl_batch.batch_id =  tbl_courseapply.batch_id");
 		$this->db->where(array(
 			'tbl_courseapply.course_id' => $course_id,
 			//'tbl_courseapply.batch_id' => $batch_id,
@@ -145,6 +155,11 @@ class Report extends CI_Controller {
 		//$this->db->where('order_date <=', $second_date);
 	
 		$data['applications'] = $this->db->get('tbl_courseapply')->result_object();
+		$data['starting_date'] = $starting_date;
+		$data['ending_date']   = $ending_date;
+
+		$data['courses']  = $this->db->get('tbl_course')->result_object();
+	    $data['batch']  = $this->db->get('tbl_batch')->result_object();
 		
 		$this->load->view('back/reports/students_list_course',$data);
       
@@ -157,6 +172,10 @@ class Report extends CI_Controller {
 	*/
   	public function course_list($course_id)
 	{
+     
+		$this->db->where('admin_id',1);
+
+      	$data['admininfo']= $this->db->get('admin')->result_object();
 
 	  
      $this->db->select('tbl_course.*');
@@ -172,7 +191,10 @@ class Report extends CI_Controller {
 	*/
   	public function new_application_list()
 	{
+      
+		$this->db->where('admin_id',1);
 
+      	$data['admininfo']= $this->db->get('admin')->result_object();
 	  
        // $this->db->select('tbl_student.*');
 
@@ -201,6 +223,11 @@ class Report extends CI_Controller {
 	*/
    public function result($batch_id)
 	{
+          
+		$this->db->where('admin_id',1);
+
+      	$data['admininfo']= $this->db->get('admin')->result_object();
+
 
 		$this->db->select('tbl_student.*');
 
@@ -232,6 +259,12 @@ class Report extends CI_Controller {
 	*/
    public function attendance_indv($stu_id,$starting_date,$ending_date)
 	{
+         
+		$this->db->where('admin_id',1);
+
+      	$data['admininfo']= $this->db->get('admin')->result_object();
+
+
 
 		$this->db->select('tbl_student.*,tbl_attendance.att_status');
 		$this->db->join('tbl_attendance',' tbl_attendance.stu_id = tbl_student.stu_id');
@@ -261,6 +294,9 @@ class Report extends CI_Controller {
 	{
 
 	  
+		$this->db->where('admin_id',1);
+
+      	$data['admininfo']= $this->db->get('admin')->result_object();
         //$this->db->select('tbl_student.*');
 
 		$this->db->join("tbl_student","tbl_admin_payment.stu_id =  tbl_student.stu_id");
@@ -289,7 +325,15 @@ class Report extends CI_Controller {
 	!----------------------------------------
 	*/
   	public function report_stuff_list()
+
+
 	{
+
+		$this->db->where('admin_id',1);
+
+      	$data['admininfo']= $this->db->get('admin')->result_object();
+
+
 		$data['applications'] = $this->db->get('tbl_staff')->result_object();
 	
 		//echo "<pre>";
@@ -305,7 +349,10 @@ class Report extends CI_Controller {
 	*/
   	public function account_report_by_date($starting_date,$ending_date)
 	{
+         
+		$this->db->where('admin_id',1);
 
+      	$data['admininfo']= $this->db->get('admin')->result_object();
 	  
         //$this->db->select('tbl_student.*');
 
@@ -333,7 +380,12 @@ class Report extends CI_Controller {
 	!----------------------------------------
 	*/
   	public function account_report_by_date_category($acc_cat_id,$starting_date,$ending_date)
-	{
+	{    
+
+
+		$this->db->where('admin_id',1);
+
+      	$data['admininfo']= $this->db->get('admin')->result_object();
 
 		$this->db->join(" tbl_account_category"," tbl_account_category.acc_cat_id =  tbl_account.acc_cat_id");
 		
@@ -347,8 +399,8 @@ class Report extends CI_Controller {
 
 		$data['applications'] = $this->db->get('tbl_account')->result_object();
 		
-		echo "<pre>";
-	 	print_r($data['applications']); die;
+		//echo "<pre>";
+	 	//print_r($data['applications']); die;
 		$this->load->view('back/reports/account_report_by_date_category',$data);
       
 	}

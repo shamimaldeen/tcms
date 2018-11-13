@@ -31,6 +31,7 @@
 										<th nowrap >Reg Date</th>
 										<th width="1%" nowrap >   </th>
 									</tr>
+
 								</thead>
 								<tbody>
 									<?php foreach($students_archives as $students_archive){?>
@@ -48,6 +49,9 @@
 											<a href="<?php echo base_url();?>delete_students_archive/<?php echo $students_archive->stu_id; ?>" class="btn btn-danger"><i class="menu-icon icon-trash" onclick="return confirm('are you sure to delete?')" ></i>  </a>
 										</td>
 									</tr>
+
+								 
+
 								<?php } ?>
 								</tbody>
 								<tfoot>

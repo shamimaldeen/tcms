@@ -84,6 +84,14 @@ class Studentcourse extends CI_Controller {
 		
 		
 		$this->db->insert('tbl_payment',$data);
+
+		$adata['apay_fee'] = $this->input->post('pay_paidamount');
+		$adata['apay_method'] = $this->input->post('pay_method');
+		$adata['apay_tra_id'] = $this->input->post('pay_tra_id');
+		$adata['stu_id'] = $this->session->stu_id;
+		$adata['apay_date'] = date("Y-m-d");
+
+		$this->db->insert('tbl_admin_payment',$adata);
 		$paystatus =$this->db->order_by('pay_id','desc')->limit(1)->get("tbl_payment")->result_object();
 		$pay_id = $paystatus[0]->pay_id;
 

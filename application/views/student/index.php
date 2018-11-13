@@ -26,8 +26,11 @@
 					<div class="nav-collapse collapse navbar-inverse-collapse">
 						
 						<ul class="nav pull-right">
+			
 							
-							 
+							<li><a href="<?php echo base_url(); ?>public">
+								Create New Account
+							</a></li>
 							
 							
 							<li><a href="#">
