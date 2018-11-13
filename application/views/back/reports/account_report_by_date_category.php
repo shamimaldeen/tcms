@@ -22,7 +22,7 @@
 		<div class="wraper">
 			<table width="100%">
 				<tr>
-					<td width="87%"   align="left" valign="top"><a href="dashboard.php"><img src="<?php echo base_url(); ?>asset/back/images/explore-it.png"  alt="" height="60" class="img_div"/></a>
+					<td width="87%"   align="left" valign="top"><a href="dashboard.php"><img src="<?php echo base_url();?>uploads/admin/<?php echo $admininfo[0]->admin_image;?>"  alt="" height="60" class="img_div"/></a>
 					</td>
 					<td width="13%" align="right" valign="top" nowrap="nowrap"><h2>ACCOUNT REPORT BY CATEGORY </h2>
 						<strong>Category: <?php echo $applications[0]->acc_cat_title ;?> <strong><BR>
