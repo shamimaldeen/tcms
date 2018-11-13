@@ -23,6 +23,8 @@
 							<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><i class="icon-folder-close"></i> PREVIOUS COURSE  </a></li>
 							<li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><i class="icon-ok-circle"></i> FEES RECORD</a></li>
 							<li role="presentation"><a href="#inqiury" aria-controls="inqiury" role="tab" data-toggle="tab"><i class="icon-ok-circle"></i> INQUIRY HISTORY</a></li>
+
+							<li role="presentation"><a href="#routine" aria-controls="routine" role="tab" data-toggle="tab"><i class="icon-ok-circle"></i> Routine</a></li>
 						</ul>
 						<!-- Tab panes -->
 						<div class="tab-content">
@@ -228,6 +230,36 @@
 
 
 
+										<?php $i++; endforeach; ?>
+									</tbody>
+									<tfoot>
+									</tfoot>
+								</table>
+							</div>
+
+							<div role="tabpane1" class="tab-pane" id="routine">
+								<table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped  display" width="100%">
+									<thead>
+										<tr>
+											<th nowrap   width="10%">Sl</th>
+											<th nowrap width="60%"> Batch Title</th>
+											<th nowrap width="20%">---</th>
+											
+										</tr>
+									</thead>
+									<tbody>
+										
+
+										<?php $i = 1; foreach($routines as $routine): ?>
+										<tr class="odd gradeX">
+											<td nowrap><?php echo $i;;?></td>
+											<td nowrap><?php echo $routine->batch_title;?></td>
+											<td nowrap> 
+											  <a href="<?php echo base_url();?>student/view_routine_details/<?php echo $routine->routine_id; ?>"class="btn btn-success"><i class="menu-icon icon-search"></i>view </a>
+											</td>
+										</tr>
+
+										
 										<?php $i++; endforeach; ?>
 									</tbody>
 									<tfoot>

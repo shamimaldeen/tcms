@@ -98,6 +98,9 @@ $route['edit_students_archive/(.+)']  = 'studentsarchive/edit_students_archive/$
 */
 $route['student']           = 'student/index';
 $route['student/dashboard'] = 'student/dashboard';
+$route['student/view_routine_details/(.+)'] = 'student/view_routine_details/$1';
+
+
 /*
 !--------------------------------------------------------------------
 ! 		Update student  Routes

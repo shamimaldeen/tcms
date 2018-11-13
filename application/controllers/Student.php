@@ -71,8 +71,11 @@ class Student extends CI_Controller {
 		));
 	
 		$data['previous_courses'] = $this->db->get('tbl_courseapply')->result_object();
+		
 		//echo "<pre>";
 		//print_r($data['running_courses']); die;
+
+
 
 		 // start  fees record
 		$this->db->join("tbl_student","tbl_payment.stu_id =  tbl_student.stu_id");
@@ -94,6 +97,32 @@ class Student extends CI_Controller {
 		$data['inquirys'] = $this->db->get('tbl_inquiry')->result_object();
 		//echo "<pre>";
 		//print_r($data['inquirys']);
+
+
+
+
+        // start routine
+        $this->db->select('tbl_batch.batch_id,tbl_batch.batch_title,tbl_routine.routine_id,tbl_routine.routine_details');
+        $this->db->join("tbl_courseapply","tbl_courseapply.batch_id =  tbl_routine.batch_id");
+        $this->db->join("tbl_student","tbl_student.stu_id =  tbl_courseapply.stu_id");
+		$this->db->join("tbl_batch","tbl_batch.batch_id =  tbl_courseapply.batch_id");
+		$this->db->join('tbl_course','tbl_course.course_id = tbl_courseapply.course_id');
+        
+		$this->db->where(array(
+			
+			'tbl_courseapply.stu_id'=> $this->session->stu_id,
+
+		));
+		//$this->db->group_by('tbl_courseapply.course_id');
+	
+		//$data['previous_courses'] = $this->db->get('tbl_courseapply')->result_object();
+		$data['routines']  = $this->db->get('tbl_routine')->result_object();
+		
+		//echo "<pre>";
+		//print_r($data['routines']); die;
+	//print_r($data['routines']); die;
+      
+
 
 
 		$this->db->where('stu_id',$this->session->stu_id);
@@ -338,6 +367,7 @@ class Student extends CI_Controller {
         $data['apay_fee'] = $this->input->post('pay_paidamount');
 		$data['apay_method']    = $this->input->post('pay_method');
 		$data['apay_tra_id'] = $this->input->post('pay_tra_id');
+		$data['apay_status'] = 'pending';
 		
 		$data['apay_date']   = date('Y-m-d H:i:s');
 		//echo "<pre>";
@@ -348,6 +378,24 @@ class Student extends CI_Controller {
 		redirect('student/dashboard');
      
       
+	}
+
+	/*
+	!----------------------------------------
+	!view routine Details
+	!----------------------------------------
+	*/
+	public function view_routine_details($routine_id)
+	{  
+       $this->db->where(array(
+			'tbl_routine.routine_id'=> $routine_id,
+			
+		));
+		 $data['routines']  = $this->db->get('tbl_routine')->result_object();
+         $this->load->view('student/lib/header');
+		$this->load->view('student/view_routine_details',$data);
+		$this->load->view('student/lib/footer');
+     
 	}
 	
 

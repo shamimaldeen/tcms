@@ -131,7 +131,7 @@ class Course extends CI_Controller {
 	*/
 	public function courseapp()
 	{
-		$this->db->select('tbl_student.stu_id,tbl_courseapply.capply_id,tbl_student.stu_name,tbl_course.course_title,tbl_course.course_duration,tbl_payment.pay_id,tbl_payment.pay_date,tbl_payment.pay_tra_id,tbl_payment.pay_method');
+		$this->db->select('tbl_student.stu_id,tbl_courseapply.capply_id,tbl_student.stu_name,tbl_course.course_title,tbl_course.course_duration,tbl_payment.pay_id,tbl_payment.pay_date,tbl_payment.pay_tra_id,tbl_payment.pay_method,tbl_payment.pay_paidamount');
 		$this->db->join("tbl_student","tbl_student.stu_id =  tbl_courseapply.stu_id");
 		$this->db->join("tbl_course","tbl_course.course_id =  tbl_courseapply.course_id");
 		$this->db->join("tbl_payment","tbl_payment.pay_id =  tbl_courseapply.pay_id");
@@ -275,6 +275,10 @@ class Course extends CI_Controller {
 		$data['capply_result']		 	= $this->input->post('capply_result');
 		$data['capply_ending_date']  	= $this->input->post('capply_ending_date');
 		$data['capply_status'] 		 	= $this->input->post('capply_status');
+
+		
+
+
 		$data['capply_result_publish'] 	= date('Y-m-d');
 
 		$this->db->set($data);

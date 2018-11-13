@@ -133,6 +133,7 @@ class Payment extends CI_Controller {
 		$data['apay_tra_id'] = $this->input->post('apay_tra_id');
 		$data['apay_method'] = $this->input->post('apay_method');
 		$data['apay_date']   = date('Y-m-d H:i:s');
+		$data['apay_status'] = 'approved';
 		//echo "<pre>";
 		//print_r($_POST);die;
 		

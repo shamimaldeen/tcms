@@ -40,12 +40,12 @@
 		<div class="wraper">
 			<table width="100%">
 				<tr>
-					<td width="9%" height="102"><a href="dashboard.php"><img src="img/features-img/certificate-flat.png" class="img_div" width="100" height="100"  alt=""/></a></td>
+					<td width="9%" height="102"><a href="dashboard.php"><img src="<?php echo base_url();?>uploads/admin/<?php echo $admininfo[0]->admin_image;?>" class="img_div" width="100" height="100"  alt=""/></a></td>
 					<td width="82%" align="center">
 						<h1 style="margin:0"> Training Center Managment System</h1>
 						<h3>Students Registration Confirmation </h3>
 					<lable></lable></td>
-					<td width="9%" align="right"><img src="img/features-img/e.jpg"  width="100" alt=""></td>
+					<td width="9%" align="right"><img src="<?php echo base_url();?>uploads/student/image/<?php echo $confirmation[0]->stu_image;?>"  width="100" alt=""></td>
 				</tr>
 			</table>
 			<hr>
@@ -193,6 +193,30 @@
 		      </tbody>
 </table>
 			<br>
+
+
+     <h2>Applicant's Login Information<hr></h2>
+            
+            
+            <table width="100%" border="0" cellpadding="0" cellspacing="0" class="table"  >
+  <thead>
+  </thead>
+			  <tbody>
+			  	 <?php foreach($confirmation as $confirmations) {?>
+			    <tr>
+			      <td width="11%" align="left" nowrap="nowrap">Username</td>
+			      <td width="55%" height="21" align="left"><?php echo $confirmations->stu_username; ?></td>
+			      <td width="4%" align="left" nowrap="nowrap">Password</td>
+			      <td width="11%" align="left"><?php echo $this->session->stu_password; ?></td>
+			      
+		        </tr>
+		    <?php } ?>
+		      </tbody>
+</table>
+
+
+
+
 			<p>
     <center>
 					<br>
