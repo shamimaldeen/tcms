@@ -221,7 +221,10 @@ class Course extends CI_Controller {
 		$this->db->join("tbl_course","tbl_course.course_id =  tbl_courseapply.course_id");
 		$this->db->join("tbl_payment","tbl_payment.pay_id =  tbl_courseapply.pay_id");
 		$this->db->join("tbl_batch","tbl_batch.batch_id =  tbl_courseapply.batch_id");
-		$this->db->where('tbl_payment.pay_status','approved');
+		$this->db->where(array(
+			'tbl_payment.pay_status'		=>'approved',
+			'tbl_courseapply.capply_status' =>'Incomplete'
+		));
 		$this->db->group_by('tbl_courseapply.course_id,tbl_courseapply.batch_id');
 		$data['applications'] = $this->db->get('tbl_courseapply')->result_object();
 		//echo "<pre>";
@@ -247,17 +250,15 @@ class Course extends CI_Controller {
 		$this->db->join("tbl_payment","tbl_payment.pay_id =  tbl_courseapply.pay_id");
 		$this->db->join("tbl_batch","tbl_batch.batch_id =  tbl_courseapply.batch_id");
 		$this->db->where(array(
-			'tbl_payment.pay_status'=>'approved',
+			'tbl_payment.pay_status     '=>'approved',
 			'tbl_courseapply.course_id' => $course_id,
-			'tbl_courseapply.batch_id' => $batch_id
+			'tbl_courseapply.capply_status' =>'Incomplete',
+			'tbl_courseapply.batch_id'  => $batch_id
 		));
 	
 		$data['applications'] = $this->db->get('tbl_courseapply')->result_object();
 		$data['course_title'] = $this->db->where(array('tbl_course.course_id'=>$course_id))->get('tbl_course')->result_object();
 		$data['batch_title'] = $this->db->where(array('tbl_batch.batch_id'=>$batch_id))->get('tbl_batch')->result_object();
-
-
-		
 
 	   $this->load->view('back/lib/header');
        $this->load->view('back/student_info',$data);
@@ -275,12 +276,46 @@ class Course extends CI_Controller {
 		$data['capply_result']		 	= $this->input->post('capply_result');
 		$data['capply_ending_date']  	= $this->input->post('capply_ending_date');
 		$data['capply_status'] 		 	= $this->input->post('capply_status');
-
-		
-
-
 		$data['capply_result_publish'] 	= date('Y-m-d');
+		$data['capply_certificate_id'] 	= "";
 
+		if($data['capply_status'] == 'Complete')
+		{
+			//$this->db->join("tbl_student","tbl_student.stu_id =  tbl_courseapply.stu_id");
+			//$this->db->join("tbl_course","tbl_course.course_id =  tbl_courseapply.course_id");
+			$this->db->join("tbl_payment","tbl_payment.pay_id =  tbl_courseapply.pay_id");
+			//$this->db->join("tbl_batch","tbl_batch.batch_id =  tbl_courseapply.batch_id");
+
+			$this->db->where(array(
+				'tbl_payment.pay_status     		'=>'approved',
+				'tbl_courseapply.capply_status' 	=>'Complete',
+				'tbl_courseapply.capply_result !='  =>'F'
+			));
+			$this->db->order_by('tbl_courseapply.capply_id','desc');
+			$this->db->limit(1);
+			$status = $this->db->get('tbl_courseapply');
+
+
+			if($status->result_id->num_rows > 0)
+			{
+				//echo 'yes';
+				$certificate = $status->result_object();
+				$certificate_number = $certificate[0]->capply_certificate_id;
+				if($data['capply_result'] != 'F')
+				{
+					$data['capply_certificate_id'] = str_pad($certificate_number + 1, 8, 0, STR_PAD_LEFT); 
+				}
+				
+			}else{
+				if($data['capply_result'] != 'F')
+				{
+					$data['capply_certificate_id'] = str_pad(1, 8, 0, STR_PAD_LEFT); 
+				}
+				
+			}
+
+		}
+		
 		$this->db->set($data);
 		$this->db->where('capply_id',$capply_id);
 		$this->db->update('tbl_courseapply');

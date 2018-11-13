@@ -169,7 +169,7 @@ $route['complited_course'] = 'course/complited_course';
 !--------------------------------------------------------------------
 */
 $route['certificates_archive'] = 'certificate/certificates_archive';
-$route['certificates_view/(.+)/(.+)/(.+)']    = 'certificate/certificates_view/$1/$2/$3';
+$route['certificates_view/(.+)/(.+)/(.+)/(.+)']    = 'certificate/certificates_view/$1/$2/$3/$4';
 /*
 !--------------------------------------------------------------------
 !   Attendance     Routes
@@ -219,3 +219,10 @@ $route['collection_report/(.+)/(.+)'] = 'report/collection_report/$1/$2';
 $route['report_stuff_list'] = 'report/report_stuff_list';
 $route['account_report_by_date/(.+)/(.+)'] = 'report/account_report_by_date/$1/$2';
 $route['account_report_by_date_category/(.+)/(.+)/(.+)'] = 'report/account_report_by_date_category/$1/$2/$3';
+
+/*
+!--------------------------------------------------------------------
+!   Setting route
+!--------------------------------------------------------------------
+*/
+$route['settings'] = 'admin/settings';

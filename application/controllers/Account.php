@@ -63,17 +63,19 @@ class Account extends CI_Controller {
     public function update_account($account_id)
     {
 
-    	$account_description = $this->input->post('account_description'); 
-    	$acc_cat_id          = $this->input->post('acc_cat_id'); 
+    	$data['account_description'] = $this->input->post('account_description'); 
+    	$data['acc_cat_id']          = $this->input->post('acc_cat_id'); 
 
-    	$account_cash_in     = $this->input->post('account_cash_in'); 
-    	$account_cash_out    = $this->input->post('account_cash_out'); 
-		$this->db->set(array(
-				'account_description'=>$account_description,
-				'acc_cat_id'=>$acc_cat_id,
-				'account_cash_in'=>$account_cash_in,
-				'account_cash_out'=>$account_cash_out
-			));
+    	$data['account_cash_in']     = $this->input->post('account_cash_in'); 
+    	$data['account_cash_out']    = $this->input->post('account_cash_out'); 
+    	$this->db->set($data);
+
+		//$this->db->set(array(
+				//'account_description'=>$account_description,
+				//'acc_cat_id'=>$acc_cat_id,
+				//'account_cash_in'=>$account_cash_in,
+				//'account_cash_out'=>$account_cash_out
+			//));
 		
 		$this->db->where(array('account_id'=>$account_id));
 		$this->db->update('tbl_account');
