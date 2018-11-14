@@ -17,9 +17,9 @@
 																<div class="form-group">
 																	<label >Category </label>
 																	<select  name="acc_cat_id" class="span12">
-															<option value=""  disabled="" selected="" >Select Category </option>
+															<option value=""  disabled="" >Select Category </option>
 							                <?php  foreach($categories as $category): ?>
-									  <option value="<?php echo $category->acc_cat_id; ?>" <?php if($category->acc_cat_id == $accounts[0]->account_id): ?> <?php endif; ?>><?php echo $category->acc_cat_title; ?></option>
+									  <option value="<?php echo $category->acc_cat_id; ?>" <?php if($category->acc_cat_id == $accounts[0]->acc_cat_id): ?>  selected="" <?php endif; ?>><?php echo $category->acc_cat_title; ?></option>
 								              <?php endforeach; ?>
                        		            </select>
 										</div>
