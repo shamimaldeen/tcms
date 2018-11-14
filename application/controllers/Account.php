@@ -53,6 +53,29 @@ class Account extends CI_Controller {
    
 	}
 
+		/*
+	!----------------------------------------
+	!	 Edit Account Llist
+	!----------------------------------------
+	*/
+	
+	public function edit_account_list($account_id)
+	{  
+       
+      $data['categories'] = $this->db->get('tbl_account_category')->result_object();
+      $this->db->join('tbl_account_category','tbl_account_category.acc_cat_id = tbl_account.acc_cat_id');
+     
+       $data['accounts'] = $this->accountmodel->all_edit_account($account_id);
+
+     // echo "<pre>";
+     //print_r($data['categories']); die;
+      
+       $this->load->view('back/lib/header');
+       $this->load->view('back/edit_account_list',$data);
+       $this->load->view('back/lib/footer');
+   
+	}
+
     /*
 	!--------------------------------------------
 	! 		update Account 

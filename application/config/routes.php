@@ -31,6 +31,7 @@ $route['delete_account_caetgory/(.+)'] ='accountcategory/delete_account_caetgory
 !--------------------------------------------------------------------
 */
 $route['account_list']        ='account/account_list';
+$route['edit_account_list/(.+)']   ='account/edit_account_list/$1';
 $route['delete_account/(.+)'] ='account/delete_account/$1';
 
 /*
@@ -46,6 +47,7 @@ $route['add_notice']     = 'notice/add_notice';
 !--------------------------------------------------------------------
 */
 $route['staff_list']            = 'staff/staff_list';
+$route['edit_staff/(.+)']       = 'staff/edit_staff/$1';
 $route['delete_staff/(.+)']     = 'staff/delete_staff/$1';
 /*
 !--------------------------------------------------------------------

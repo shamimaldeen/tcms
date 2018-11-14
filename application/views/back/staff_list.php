@@ -52,66 +52,11 @@
                               <td nowrap><?php echo format_date($staff->staff_joining_date,'Y-m-d'); ?></td>
                               <td nowrap> <a href="<?php base_url ();?>uploads/staff/image/<?php echo $staff->staff_image; ?>" ><i class="menu-icon icon-link"></i>  Photo Link</a></td>
                               <td nowrap>
-                                 <a href="#.php" class="btn btn-success" data-toggle="modal" data-target="#myModal<?php echo $i;?>"><i class="menu-icon icon-edit"></i> </a> 
+                                 <a href="<?php echo base_url();?>edit_staff/<?php echo $staff->staff_id; ?>" class="btn btn-success"><i class="menu-icon icon-edit"></i> </a> 
                                  <a href="<?php echo base_url();?>delete_staff/<?php echo $staff->staff_id; ?>" class="btn btn-danger"><i class="menu-icon icon-trash" onclick="return (confirm('are you sure to delete?'))"></i> </a>
                               </td>
                            </tr>
-                           <!-- edit modal start-->
-                           <div id="myModal<?php echo $i;?>" class="modal fade" role="dialog">
-                              <div class="modal-dialog">
-                                 <!-- Modal content-->
-                                 <div class="modal-content">
-                                    <div class="modal-header">
-                                       <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                       <h4 class="modal-title">Update Staff </h4>
-                                    </div>
-                                    <div class="modal-body">
-                                       <?php  echo form_open_multipart('staff/update_staff/'.$staff->staff_id,array('id'=>'')) ?>
-                                       <div class="row-fluid">
-                                          <div class="span8">
-                                             <div class="form-group">
-                                                <label>Full Name</label>
-                                                <input type="text" value="<?php echo $staff->staff_fullname; ?>" name="staff_fullname" placeholder="" class="span12">
-                                             </div>
-                                          </div>
-                                          <div class="span4">
-                                             <div class="form-group">
-                                                <label>Designation</label>
-                                                <input type="text" value="<?php echo $staff->staff_designation; ?>" name="staff_designation" placeholder="" class="span12">
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="row-fluid">
-                                          <div class="span8">
-                                             <div class="form-group">
-                                                <label>Contact Name</label>
-                                                <input type="text" value="<?php echo $staff->staff_cnumber; ?>" name="staff_cnumber" placeholder="" class="span12">
-                                             </div>
-                                          </div>
-                                          <div class="span4">
-                                             <div class="form-group">
-                                                <label>Joning</label>
-                                                <input type="date" value="<?php echo format_date($staff->staff_joining_date,"Y-m-d"); ?>" name="staff_joining_date" placeholder="" class="span12">
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="row-fluid">
-                                          <label>Photo</label>
-                                          <input type="file" value="<?php echo $staff->staff_image; ?>" name="staff_image" placeholder="" class="span12">
-                                       </div>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="modal-footer">
-                                 <center>
-                                    <button type="submit" class="btn-large btn-success"><i class="menu-icon icon-save"></i> Update</button>
-                                 </center>
-                              </div>
-                              </form>
-                           </div>
-                  </div>
-               </div>
-                  <!-- edit modal end-->
+                    
                <?php $i++; } ?>
                </tbody>
                <tfoot>
