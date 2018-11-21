@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$route['default_controller'] = 'admin';
+$route['default_controller'] = 'front';
 
 
 /*
@@ -11,6 +11,43 @@ $route['default_controller'] = 'admin';
 */
 $route['admin']     = 'admin/index';
 $route['dashboard'] = 'admin/dashboard';
+
+/*
+!--------------------------------------------------------------------
+! 				Front Routes
+!--------------------------------------------------------------------
+*/
+$route['front'] = 'front/index';
+$route['front/contact'] = 'front/contact';
+$route['front/about'] = 'front/about';
+$route['front/news'] = 'front/news';
+$route['front/blog'] = 'front/blog';
+$route['front/blog_details'] = 'front/blog_details';
+$route['front/course'] = 'front/course';
+
+
+
+
+/*
+!--------------------------------------------------------------------
+! 				Admin_back  Routes
+!--------------------------------------------------------------------
+*/
+
+$route['front/admin_back/index']                 = 'adminback/index';
+$route['front/admin_back/page_create']           = 'adminback/page_create';
+$route['front/admin_back/edit_page_create/(.+)'] = 'adminback/edit_page_create/$1';
+$route['front/admin_back/update_page_create/(.+)'] = 'adminback/update_page_create/$1';
+$route['front/admin_back/delete_page_create/(.+)'] = 'adminback/delete_page_create/$1';
+
+
+
+
+
+
+
+
+
 
 
 
