@@ -55,6 +55,7 @@
 											<option value="Blog">Blog</option>
 											<option value="Photos">Photos</option>
 											<option value="About Us">About Us</option>
+											<option value="Our Teams">Our Teams</option>
 										</select>
 									</div>
 								</div>

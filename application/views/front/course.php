@@ -6,7 +6,7 @@
 	<div class="container">
 		<div class="sec-title text-center">
 			<h2>Our Services</h2>
-			<p>Sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat</p>
+			<p>Vision 2021 was the political manifesto of the Bangladesh Awami League party before winning the National Elections of 2008</p>
 			<span class="colorborder"></span>
 		</div>
 

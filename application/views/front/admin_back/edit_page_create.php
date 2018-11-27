@@ -57,6 +57,7 @@
 											<option value="News"<?php if($edit_page[0]->page_type =='News'):?> selected="" <?php endif; ?>>News</option>
 											<option value="Blog"<?php if($edit_page[0]->page_type =='Blog'):?> selected="" <?php endif; ?>>Blog</option>
 											<option value="Photos"<?php if($edit_page[0]->page_type =='Photos'):?> selected="" <?php endif; ?>">Photos</option>
+											<option value="Our Teams"<?php if($edit_page[0]->page_type =='Our Teams'):?> selected="" <?php endif; ?>">Our Teams</option>
 											
 										</select>
 									</div>

@@ -1,112 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<!--head start-->
-<head>
-    <!--meta tag start-->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="amplebiz">
-    <meta name="author" content="khanalprem">
-    <meta name="copyright" content="khanalprem">
-
-    <!--title-->
-    <title>AmpleBiz Responsive html5 template</title>
-    <!--title end-->
-
-    <!-- faveicon start   -->
-    <link rel="icon" href="<?php echo base_url();?>asset/front/images/favicon.png" type="image/x-icon">
-
-    <!-- stylesheet start -->
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>asset/front/css/style.css">
-
-</head>
-<!--head end-->
-
-<body>
-    <!--header start-->
-    <header class="main-header">
-        <!--Header Topbar-->
-        <div class="header-top-bar">
-            <div class="container">
-                <!--Top Left-->
-                <div class="top-left">
-                    <!--Social Links-->
-                    <ul class="social-links">
-                        <li><a href="#"><span class="fa fa-facebook"></span></a></li>
-                        <li><a href="#"><span class="fa fa-twitter"></span></a></li>
-                        <li><a href="#"><span class="fa fa-google-plus"></span></a></li>
-                        <li><a href="#"><span class="fa fa-linkedin"></span></a></li>
-                        <li><a href="#"><span class="fa fa-instagram"></span></a></li>
-                    </ul>
-                </div>
-                
-                <!--Top Right-->
-                <div class="top-right">
-                    <ul class="info-links clearfix">
-                        <li><a href="#"><span class="icon fa fa-map-marker"></span> Kathmandu, Nepal</a></li>
-                        <li><a href="#"><span class="icon fa fa-phone"></span> +977 - 9856055360</a></li>
-                        <li><a href="#"><span class="icon fa fa-envelope"></span> khnl.prem@gmail.com</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        
-        <!--top-header-->
-        <div class="top-header">
-            <div class="container">
-                <div class="logo-wrapper">
-                    <div class="logo"><a href="index.html"><img src="<?php echo base_url();?>asset/front/images/logo.png" alt="amplebiz" title="AmpleBiz"></a></div>
-                </div>
-                <!-- Main Menu -->
-                <nav class="main-menu">
-                    <div class="navbar-header">
-                        <!-- Toggle Button -->      
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        </button>
-                    </div>
-                    
-                    <div class="navbar-collapse collapse clearfix">
-                        <ul class="navigation clearfix">
-                            <li class="current"><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About Us</a></li>
-                            <li><a href="services.html">Services</a></li>
-                            <li class="dropdown"><a href="#">Blog</a>
-                                <ul>
-                                    <li><a href="blog-grid.html">Blog grid</a></li>
-                                    <li><a href="blog-left.html">Blog left</a></li>
-                                    <li><a href="blog-right.html">Blog right</a></li>
-                                    <li><a href="blog-detail.html">Blog signle</a></li>
-                                    <li class="dropdown"><a href="blog-detail.html">Blog signle</a>
-                                        <ul>
-                                            <li><a href="blog-grid.html">Blog grid</a></li>
-                                            <li><a href="blog-detail.html">Blog signle</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="dropdown"><a href="#">Pages</a>
-                                <ul>
-                                    <li><a href="about.html">about</a></li>
-                                    <li><a href="404.html">404</a></li>
-                                    <li><a href="services.html">services</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="projects.html">Projects</a></li>
-                            <li><a href="contact.html">Contact</a></li>
-                        </ul>
-                    </div>
-                </nav>
-                <!-- Main Menu End-->
-            </div>
-        </div>
-    
-    </header>
-    <!--header end-->
 
     <!-- breadcrumb start -->
     <section class="amplebiz-breadcrumb" style="background: url(<?php echo base_url();?>asset/front/images/background/breadcrumb.jpg) no-repeat center;">
@@ -126,7 +18,7 @@
                     <div class="col-sm-6 col-md-9 col-xs-12">
                         <div class="blog-details-content">
                             <div class="blog-img">
-                                <img src="<?php echo base_url();?>uploads/front/<?php echo $blogs[0]->page_image ;?>" class="img-responsive" alt="image">
+                                <img style="height: 400px;width: 900px" src="<?php echo base_url();?>uploads/front/<?php echo $blogs[0]->page_image ;?>" class="img-responsive" alt="image">
                                 <div class="blog-caption">
                                     <span><i class="fa fa-user" aria-hidden="true"></i>khanalprem</span>
                                     <ul>

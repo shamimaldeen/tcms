@@ -84,6 +84,7 @@
 <script src="<?php echo base_url();?>asset/front/js/magnific.popup.js"></script>
 <script src="<?php echo base_url();?>asset/front/js/wow.js"></script>
 <script src="<?php echo base_url();?>asset/front/js/script.js"></script>
+
 <!-- js library end -->
 </body>
 </html>

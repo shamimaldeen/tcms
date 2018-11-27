@@ -24,12 +24,30 @@ class Front extends CI_Controller {
 
 	   $this->db->where('page_type','About Us');
 	   $data['abouts']  = $this->db->get('tbl_page')->result_object();
-
+  
        $this->db->where('page_type','News');
+       $this->db->order_by('page_id','desc') ;
+       $this->db->limit(3);
 	   $data['News']  = $this->db->get('tbl_page')->result_object();
 
        $this->db->where('page_type','Blog');
+       $this->db->order_by('page_id','desc') ;
+       $this->db->limit(3);
 	   $data['blogs']  = $this->db->get('tbl_page')->result_object();
+
+
+
+	   $this->db->where('page_type','Testimonial');
+	   $data['testimonials'] = $this->db->get('tbl_page')->result_object();
+
+	   //echo "<pre>";
+	   //print_r($data['testimonials']); die;
+
+	   $this->db->where('page_type','Our Teams');
+	   $data['teams'] = $this->db->get('tbl_page')->result_object();
+
+	    $this->db->limit(3);
+		 $data['courses']  = $this->db->get('tbl_course')->result_object();
 
        $this->load->view('front/lib/header');
        $this->load->view('front/index',$data);
@@ -49,6 +67,9 @@ class Front extends CI_Controller {
        $this->db->where('page_type','About Us');
 	   $data['abouts']  = $this->db->get('tbl_page')->result_object();
 
+	   $this->db->where('page_type','Our Teams');
+	   $data['teams'] = $this->db->get('tbl_page')->result_object();
+
 
        $this->load->view('front/lib/header');
        $this->load->view('front/about',$data);
@@ -61,10 +82,28 @@ class Front extends CI_Controller {
 	!----------------------------------------
 	*/
 	
-	public function news()
+	public function news($pageid="")
 	{  
+       if($pageid == '' || $pageid == null)
+		{
+			$pageid = 1;
+		}
+
+		$perpage = 3;
+		 $this->db->where(array(
+        'page_type'=>'News'
+
+      ));
+
+		$row  = $this->db->get('tbl_page')->result_id->num_rows;
+		$data['totalpage'] = ceil($row/$perpage);
+
+		$offset = ($pageid - 1 ) * $perpage;
+		$this->db->where('page_type','News');
+		$this->db->limit($perpage, $offset);
 
        $this->db->where('page_type','News');
+       $this->db->order_by('page_id','desc') ;
 	   $data['News']  = $this->db->get('tbl_page')->result_object();
 
 
@@ -74,39 +113,89 @@ class Front extends CI_Controller {
    
 	}
 
+		/*
+	!----------------------------------------
+	      front news_details
+	!----------------------------------------
+	*/
+	
+	public function news_details($page_id)
+	{  
+       
+      $this->db->where(array(
+       'page_type'=>'News',
+      'page_id'  =>$page_id
+
+
+      ));
+	   $data['News']  = $this->db->get('tbl_page')->result_object();
+
+       //echo "<pre>";
+     // print_r($data['blogs']); die;
+
+       $this->load->view('front/lib/header');
+       $this->load->view('front/news_details',$data);
+       //$this->load->view('front/lib/footer');
+   
+	}
+
 	/*
 	!----------------------------------------
 	      front blog
 	!----------------------------------------
 	*/
 	
-	public function blog()
+	public function blog($pageid="")
 	{  
+		if($pageid == '' || $pageid == null)
+		{
+			$pageid = 1;
+		}
 
-      $this->db->where('page_type','Blog');
-	   $data['blogs']  = $this->db->get('tbl_page')->result_object();
+		$perpage = 3;
+		 $this->db->where(array(
+        'page_type'=>'Blog'
 
 
-       $this->load->view('front/lib/header');
-       $this->load->view('front/blog',$data);
-       $this->load->view('front/lib/footer');
+      ));
+
+		$row  = $this->db->get('tbl_page')->result_id->num_rows;
+		$data['totalpage'] = ceil($row/$perpage);
+
+		$offset = ($pageid - 1 ) * $perpage;
+		$this->db->where('page_type','Blog');
+		$this->db->order_by('page_id','desc') ;
+		$this->db->limit($perpage, $offset);
+
+	   	$data['blogs']  = $this->db->get('tbl_page')->result_object();
+       	$this->load->view('front/lib/header');
+       	$this->load->view('front/blog',$data);
+       	$this->load->view('front/lib/footer');
    
 	}
 
-		/*
+
+	/*
 	!----------------------------------------
 	      front blog_details
 	!----------------------------------------
 	*/
 	
-	public function blog_details()
+	public function blog_details($page_id)
 	{  
+       
+      $this->db->where(array(
+       'page_type'=>'Blog',
+      'page_id'  =>$page_id
 
-      $this->db->where('page_type','Blog');
+
+      ));
 	   $data['blogs']  = $this->db->get('tbl_page')->result_object();
 
+       //echo "<pre>";
+     // print_r($data['blogs']); die;
 
-      // $this->load->view('front/lib/header');
+       $this->load->view('front/lib/header');
        $this->load->view('front/blog_details',$data);
        //$this->load->view('front/lib/footer');
    
@@ -164,6 +253,8 @@ class Front extends CI_Controller {
        $this->load->view('front/lib/footer');
    
 	}
+
+	
 
 
 

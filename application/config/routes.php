@@ -17,13 +17,15 @@ $route['dashboard'] = 'admin/dashboard';
 ! 				Front Routes
 !--------------------------------------------------------------------
 */
-$route['front'] = 'front/index';
+$route['front'] 		= 'front/index';
 $route['front/contact'] = 'front/contact';
-$route['front/about'] = 'front/about';
-$route['front/news'] = 'front/news';
-$route['front/blog'] = 'front/blog';
-$route['front/blog_details'] = 'front/blog_details';
-$route['front/course'] = 'front/course';
+$route['front/about'] 	= 'front/about';
+$route['front/news/(:num)'] 	   = 'front/news/$1';
+$route['front/news_details/(.+)']  = 'front/news_details/$1';
+$route['front/blog/(:num)'] 	   = 'front/blog/$1';
+$route['front/blog_details/(.+)']  = 'front/blog_details/$1';
+$route['front/course'] 			   = 'front/course';
+//$route['front/testimonial'] = 'front/testimonial';
 
 
 

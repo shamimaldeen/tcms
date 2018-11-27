@@ -23,13 +23,13 @@
                                 <span class="colorborder"></span>
                             </div>
                           
-                            <p class="about-us-text"><?php echo$abouts[0]->page_description ;?></p>
+                            <p class="about-us-text"><?php echo $abouts[0]->page_description ;?></p>
                             <a class="btn btn-primary" href="#">read more</a>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 col-xs-12">
                         <div class="amplebiz-about-banner">
-                            <img src="images/about.png" alt="">
+                            <img src="<?php echo base_url();?>uploads/front/<?php echo $abouts[0]->page_image ;?>" alt="">
                         </div>
                     </div>
                     <div class="col-md-5 col-sm-6 col-xs-12">
@@ -85,10 +85,14 @@
                         <span class="colorborder"></span>
                     </div>
                     <div class="amplebiz-team-inner">
+
+              
                         <div class="amplebiz-team-carousel owl-carousel owl-theme">
+
+                             <?php $i = 1;  foreach($teams as $team) {?>
                             <div class="team-details">
                                 <div class="team-head">
-                                    <img src="images/team/1.jpg" alt="#">
+                                    <img src="<?php echo base_url();?>uploads/front/<?php echo $team->page_image ;?>" alt="#">
                                     <div class="team-hover">
                                         <ul class="team-social">
                                             <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
@@ -99,79 +103,14 @@
                                     </div>
                                 </div>
                                 <div class="team-bottom">
-                                    <h2 class="team-name">Deborah Hughes</h2>
-                                    <p class="team-what">Project Manger</p>
+                                    <h2 class="team-name"><?php echo $team->page_title ;?></h2>
+                                    <p class="team-what"><?php echo $team->page_description ;?></p>
                                 </div>
                             </div>
-                            <div class="team-details">
-                                <div class="team-head">
-                                    <img src="images/team/2.jpg" alt="#">
-                                    <div class="team-hover">
-                                        <ul class="team-social">
-                                            <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                                            <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="team-bottom">
-                                    <h2 class="team-name">croper Singh</h2>
-                                    <p class="team-what">Developer</p>
-                                </div>
-                            </div>
-                            <div class="team-details">
-                                <div class="team-head">
-                                    <img src="images/team/3.jpg" alt="#">
-                                    <div class="team-hover">
-                                        <ul class="team-social">
-                                            <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                                            <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="team-bottom">
-                                    <h2 class="team-name">redios Singh</h2>
-                                    <p class="team-what">Android developer</p>
-                                </div>
-                            </div>
-                            <div class="team-details">
-                                <div class="team-head">
-                                    <img src="images/team/4.jpg" alt="#">
-                                    <div class="team-hover">
-                                        <ul class="team-social">
-                                            <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                                            <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="team-bottom">
-                                    <h2 class="team-name">D.Jhon</h2>
-                                    <p class="team-what">SEO Manger</p>
-                                </div>
-                            </div>
-                            <div class="team-details">
-                                <div class="team-head">
-                                    <img src="images/team/3.jpg" alt="#">
-                                    <div class="team-hover">
-                                        <ul class="team-social">
-                                            <li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
-                                            <li><a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="team-bottom">
-                                    <h2 class="team-name">redios Singh</h2>
-                                    <p class="team-what">Android developer</p>
-                                </div>
-                            </div>
+                             <?php $i++;  } ?>
                         </div> 
+
+                       
                     </div>
                 </div>
             </div>
