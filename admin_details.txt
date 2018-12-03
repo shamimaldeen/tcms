@@ -9,3 +9,10 @@ host	 : localhost
 database : tceservi_tcms
 username : tceservi_tcms
 password : tcmstraining342@#
+
+
+// sohog computer
+host	 : localhost
+database : sohagcom_tcms
+username : sohagcom_sohagco
+password : sohag54321@#

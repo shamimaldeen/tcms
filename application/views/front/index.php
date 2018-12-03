@@ -44,7 +44,7 @@
 						<h2>About us</h2>
 						<span class="colorborder"></span>
 					</div>
-					<p class="about-us-text"><?php echo substr($abouts[0]->page_description, 0,50) ;?></p>
+					<p class="about-us-text"><?php echo substr($abouts[0]->page_description, 0,160) ;?></p>
 					
 					<a class="btn btn-primary" href="<?php echo base_url();?>front/about">read more</a>
 				</div>
@@ -63,7 +63,7 @@
 							</div>
 							<div class="amplebiz-about-content">
 								<h4><a href="#">Mission</a> </h4>
-								<p>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in.</p>
+								<p><?php echo $about_helpers[0]->page_description ;?></p>
 							</div>
 						</div>
 					</div>
@@ -73,8 +73,8 @@
 								<i class="fa fa-check"></i>
 							</div>
 							<div class="amplebiz-about-content">
-								<h4><a href="#">Vession</a></h4>
-								<p>Donec vitae sapien ut libero venenatis faucibu. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt</p>
+								<h4><a href="#">Vision</a></h4>
+								<p><?php echo $about_helpers[1]->page_description ;?></p>
 							</div>
 						</div>
 					</div>
@@ -85,7 +85,7 @@
 							</div>
 							<div class="amplebiz-about-content">
 								<h4><a href="#">Future Plan</a></h4>
-								<p>Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in.</p>
+								<p><?php echo $about_helpers[2]->page_description ;?></p>
 							</div>
 						</div>
 					</div>
@@ -206,15 +206,15 @@
 			
 			<div class="amplebiz-team-inner">
 				<div class="amplebiz-team-carousel owl-carousel owl-theme">
-					<?php $i = 1;  foreach($teams as $team) {?>
+					<?php $i = 1;  foreach($staffs as $staff) {?>
 					<div class="team-details">
 						<div class="team-head">
-							<img src="<?php echo base_url();?>uploads/front/<?php echo $team->page_image ;?>" alt="#">
+							<img src="<?php echo base_url();?>uploads/front/<?php echo $staff->staff_image ;?>" alt="#">
 							 
 						</div>
 						<div class="team-bottom">
-							<h2 class="team-name"><?php echo $team->page_title ;?></h2>
-							<p class="team-what"><?php echo $team->page_description ;?></p>
+							<h2 class="team-name"><?php echo $staff->staff_fullname ;?></h2>
+							<p class="team-what"><?php echo $staff->staff_designation ;?></p>
 						</div>
 					</div>
 

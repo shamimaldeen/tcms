@@ -38,8 +38,14 @@ class Admin extends CI_Controller {
 		if (!$this->session->has_userdata('admin')) {
             redirect('admin');
         }
+
+
+        // $data['site']  = $this->db->get('tbl_site')->result_object();
+       // echo "<pre>";
+        //print_r($data['sites']); die;
+
            //totall pending course application
-           $data['totall_current_student']  =  $this->db->select('count(tbl_student.stu_id) as totall_current_student')->get('tbl_student')->result_object();
+         $data['totall_current_student']  =  $this->db->select('count(tbl_student.stu_id) as totall_current_student')->get('tbl_student')->result_object();
 
 
         //totall pending course application
@@ -55,7 +61,7 @@ class Admin extends CI_Controller {
 
          //totall pending payment request
 
-           $data['pending_payment_request']  =  $this->db->select('count(tbl_admin_payment.apay_id) as pending_payment_request')->get('tbl_admin_payment')->result_object();
+         $data['pending_payment_request']  =  $this->db->select('count(tbl_admin_payment.apay_id) as pending_payment_request')->get('tbl_admin_payment')->result_object();
 
 
 
@@ -68,12 +74,12 @@ class Admin extends CI_Controller {
         $data['complited_course']  =  $this->db->select('count(tbl_courseapply.capply_id) as complited_course')->get('tbl_courseapply')->result_object();
 
          
-         //echo "<pre>";
+       //   echo "<pre>";
        // print_r( $data['complited_course'] );die;
 
 
-		$this->load->view('back/lib/header');
-		$this->load->view('back/dashboard',$data);
+		$this->load->view('back/lib/header',$data);
+		$this->load->view('back/dashboard');
 		$this->load->view('back/lib/footer');
 		
 	}
@@ -98,14 +104,18 @@ class Admin extends CI_Controller {
 		{
 			$data = $status->result_object();
 
+			$site_logo = $this->db->get('tbl_site')->result_object();
+
+			
 			$this->session->set_userdata(array(
 				'admin' 		 => true,
 				'id' 			 => $data[0]->admin_id,
 				'admin_username' => $data[0]->admin_username,
 				'admin_email'	 => $data[0]->admin_email,
-				'admin_role'     => $data[0]->admin_role
+				'admin_role'     => $data[0]->admin_role,
+				'site_logo' 	 => $site_logo[0]->site_logo
 			));
-		//echo "<pre>";
+			//echo "<pre>";
 			//print_r($this->session); die;
 			$this->session->set_flashdata('success', 'Successfully Logged in, Dashboard');
 			redirect('dashboard');
@@ -138,8 +148,6 @@ class Admin extends CI_Controller {
 	*/ 
 	public function settings()
 	{
-		
-
 
         $this->load->view('back/lib/header');
 		$this->load->view('back/settings');

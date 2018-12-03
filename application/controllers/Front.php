@@ -22,8 +22,21 @@ class Front extends CI_Controller {
        $this->db->where('page_type','Slider');
 	   $data['sliders']  = $this->db->get('tbl_page')->result_object();
 
-	   $this->db->where('page_type','About Us');
+	   $this->db->where(array(
+	   	'page_id'=> 42,
+	   	'page_type'=>'About Us'
+	   ));
 	   $data['abouts']  = $this->db->get('tbl_page')->result_object();
+
+
+	    $this->db->where(array(
+	   	'page_id !=' => 42,
+	   	'page_type'=>'About Us'
+	   ));
+	   $data['about_helpers']  = $this->db->get('tbl_page')->result_object();
+	   //echo "<pre>";
+	 // print_r($data['about_mission']); die;
+
   
        $this->db->where('page_type','News');
        $this->db->order_by('page_id','desc') ;
@@ -40,17 +53,26 @@ class Front extends CI_Controller {
 	   $this->db->where('page_type','Testimonial');
 	   $data['testimonials'] = $this->db->get('tbl_page')->result_object();
 
-	   //echo "<pre>";
-	   //print_r($data['testimonials']); die;
 
-	   $this->db->where('page_type','Our Teams');
-	   $data['teams'] = $this->db->get('tbl_page')->result_object();
+	   //$this->db->where('page_type','Our Teams');
+	   //$data['teams'] = $this->db->get('tbl_page')->result_object();
 
 	    $this->db->limit(3);
 		 $data['courses']  = $this->db->get('tbl_course')->result_object();
 
-       $this->load->view('front/lib/header');
-       $this->load->view('front/index',$data);
+
+	  $data['staffs']  = $this->db->get('tbl_staff')->result_object();
+	  //echo "<pre>";
+	  //print_r($data['staffs']); die;
+
+      // site view logo
+	  $data['sites']  = $this->db->get('tbl_site')->result_object();
+
+        //echo "<pre>";
+	    //print_r($data['sites']); die;
+          
+       $this->load->view('front/lib/header',$data);
+       $this->load->view('front/index');
        $this->load->view('front/lib/footer');
    
 	}
@@ -64,15 +86,27 @@ class Front extends CI_Controller {
 	public function about()
 	{  
 
-       $this->db->where('page_type','About Us');
+         $this->db->where(array(
+	   	'page_id' => 42,
+	   	'page_type'=>'About Us'
+	   ));
 	   $data['abouts']  = $this->db->get('tbl_page')->result_object();
 
-	   $this->db->where('page_type','Our Teams');
-	   $data['teams'] = $this->db->get('tbl_page')->result_object();
+	    $this->db->where(array(
+	   	'page_id !=' => 42,
+	   	'page_type'=>'About Us'
+	   ));
+	   $data['about_helpers']  = $this->db->get('tbl_page')->result_object();
+
+	   //$this->db->where('page_type','Our Teams');
+	   //$data['teams'] = $this->db->get('tbl_page')->result_object();
+
+      $data['sites']  = $this->db->get('tbl_site')->result_object();
+	  $data['staffs']  = $this->db->get('tbl_staff')->result_object();
 
 
-       $this->load->view('front/lib/header');
-       $this->load->view('front/about',$data);
+       $this->load->view('front/lib/header',$data);
+       $this->load->view('front/about');
        $this->load->view('front/lib/footer');
    
 	}
@@ -106,9 +140,16 @@ class Front extends CI_Controller {
        $this->db->order_by('page_id','desc') ;
 	   $data['News']  = $this->db->get('tbl_page')->result_object();
 
+	   $this->db->where('page_type','About Us');
+	   $data['abouts']  = $this->db->get('tbl_page')->result_object();
 
-       $this->load->view('front/lib/header');
-       $this->load->view('front/news',$data);
+	   $this->db->where('page_type','Our Teams');
+	   $data['teams'] = $this->db->get('tbl_page')->result_object();
+	    $data['sites']  = $this->db->get('tbl_site')->result_object();
+
+
+       $this->load->view('front/lib/header',$data);
+       $this->load->view('front/news');
        $this->load->view('front/lib/footer');
    
 	}
@@ -133,9 +174,16 @@ class Front extends CI_Controller {
        //echo "<pre>";
      // print_r($data['blogs']); die;
 
-       $this->load->view('front/lib/header');
-       $this->load->view('front/news_details',$data);
-       //$this->load->view('front/lib/footer');
+	   $this->db->where('page_type','About Us');
+	   $data['abouts']  = $this->db->get('tbl_page')->result_object();
+
+	   $this->db->where('page_type','Our Teams');
+	   $data['teams'] = $this->db->get('tbl_page')->result_object();
+	   $data['sites']  = $this->db->get('tbl_site')->result_object();
+
+       $this->load->view('front/lib/header',$data);
+       $this->load->view('front/news_details');
+       $this->load->view('front/lib/footer');
    
 	}
 
@@ -168,9 +216,13 @@ class Front extends CI_Controller {
 		$this->db->limit($perpage, $offset);
 
 	   	$data['blogs']  = $this->db->get('tbl_page')->result_object();
-       	$this->load->view('front/lib/header');
-       	$this->load->view('front/blog',$data);
-       	$this->load->view('front/lib/footer');
+	   	$data['sites']  = $this->db->get('tbl_site')->result_object();
+	     $this->db->where('page_type','About Us');
+	     $data['abouts']  = $this->db->get('tbl_page')->result_object();
+
+       	$this->load->view('front/lib/header',$data);
+       	$this->load->view('front/blog');
+        $this->load->view('front/lib/footer');
    
 	}
 
@@ -192,12 +244,14 @@ class Front extends CI_Controller {
       ));
 	   $data['blogs']  = $this->db->get('tbl_page')->result_object();
 
-       //echo "<pre>";
-     // print_r($data['blogs']); die;
+     	$data['sites']  = $this->db->get('tbl_site')->result_object();
 
-       $this->load->view('front/lib/header');
-       $this->load->view('front/blog_details',$data);
-       //$this->load->view('front/lib/footer');
+	   $this->db->where('page_type','About Us');
+	     $data['abouts']  = $this->db->get('tbl_page')->result_object();
+
+       $this->load->view('front/lib/header',$data);
+       $this->load->view('front/blog_details');
+       $this->load->view('front/lib/footer');
    
 	}
 
@@ -210,8 +264,13 @@ class Front extends CI_Controller {
 	
 	public function contact()
 	{  
-       
-       $this->load->view('front/lib/header');
+       	$data['sites']  = $this->db->get('tbl_site')->result_object();
+
+
+	     $this->db->where('page_type','About Us');
+	     $data['abouts']  = $this->db->get('tbl_page')->result_object();
+
+       $this->load->view('front/lib/header',$data);
        $this->load->view('front/contact');
        $this->load->view('front/lib/footer');
    
@@ -247,140 +306,16 @@ class Front extends CI_Controller {
 	{  
          $this->db->limit(3);
 		 $data['courses']  = $this->db->get('tbl_course')->result_object();
+		 $data['sites']  = $this->db->get('tbl_site')->result_object();
+
+		 $this->db->where('page_type','About Us');
+	     $data['abouts']  = $this->db->get('tbl_page')->result_object();
        
-       $this->load->view('front/lib/header');
-       $this->load->view('front/course',$data);
+       $this->load->view('front/lib/header',$data);
+       $this->load->view('front/course');
        $this->load->view('front/lib/footer');
    
 	}
-
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	/*
-	!----------------------------------------
-	!	Account Llist
-	!----------------------------------------
-	*/
-	
-	public function account_list()
-	{  
-       
-      $data['categories'] = $this->db->get('tbl_account_category')->result_object();
-      $this->db->join('tbl_account_category','tbl_account_category.acc_cat_id = tbl_account.acc_cat_id');
-      $data['accounts']  = $this->db->get('tbl_account')->result_object();
-
-      //echo "<pre>";
-      //print_r($data['categories']); die;
-      
-       $this->load->view('back/lib/header');
-       $this->load->view('back/account_list',$data);
-       $this->load->view('back/lib/footer');
-   
-	}
-
-		/*
-	!----------------------------------------
-	!	 Edit Account Llist
-	!----------------------------------------
-	*/
-	
-	public function edit_account_list($account_id)
-	{  
-       
-      $data['categories'] = $this->db->get('tbl_account_category')->result_object();
-      $this->db->join('tbl_account_category','tbl_account_category.acc_cat_id = tbl_account.acc_cat_id');
-     
-       $data['accounts'] = $this->accountmodel->all_edit_account($account_id);
-
-     // echo "<pre>";
-     //print_r($data['categories']); die;
-      
-       $this->load->view('back/lib/header');
-       $this->load->view('back/edit_account_list',$data);
-       $this->load->view('back/lib/footer');
-   
-	}
-
-    /*
-	!--------------------------------------------
-	! 		update Account 
-	!--------------------------------------------
-	*/ 
-
-
-    public function update_account($account_id)
-    {
-
-    	$data['account_description'] = $this->input->post('account_description'); 
-    	$data['acc_cat_id']          = $this->input->post('acc_cat_id'); 
-
-    	$data['account_cash_in']     = $this->input->post('account_cash_in'); 
-    	$data['account_cash_out']    = $this->input->post('account_cash_out'); 
-    	$this->db->set($data);
-
-		//$this->db->set(array(
-				//'account_description'=>$account_description,
-				//'acc_cat_id'=>$acc_cat_id,
-				//'account_cash_in'=>$account_cash_in,
-				//'account_cash_out'=>$account_cash_out
-			//));
-		
-		$this->db->where(array('account_id'=>$account_id));
-		$this->db->update('tbl_account');
-		$this->session->set_flashdata('success', 'Updated Sucessfully');
-		redirect('account_list');
-		
-    }
-
-      /*
-	!--------------------------------------------
-	! 		delete Account 
-	!--------------------------------------------
-	*/ 
-
-	 public function delete_account($account_id)
-    {          
-           
-
-          $this->accountmodel->delete_account($account_id);
-    	  $data =array();
-    	  $data = $this->session->set_flashdata('success', 'Deleted Sucessfully ');
-          redirect('account_list');
-		
-    }
-
-
-
-
 
 
 }

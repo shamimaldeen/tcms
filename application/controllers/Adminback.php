@@ -20,11 +20,149 @@ class Adminback extends CI_Controller {
 	public function index()
 	{  
       $data['pages']  = $this->db->get('tbl_page')->result_object();
+      $data['sites']  = $this->db->get('tbl_site')->result_object();
 
-       $this->load->view('front/admin_back/lib/header');
-       $this->load->view('front/admin_back/index',$data);
+       $this->load->view('front/admin_back/lib/header',$data);
+       $this->load->view('front/admin_back/index');
        $this->load->view('front/admin_back/lib/footer');
 	}
+
+	/*
+	!----------------------------------------
+	!	admin back profile
+	!----------------------------------------
+	*/
+	
+	public function profile()
+	{  
+      //$data['pages']  = $this->db->get('tbl_page')->result_object();
+
+       $this->load->view('front/admin_back/lib/header');
+       $this->load->view('front/admin_back/profile');
+       $this->load->view('front/admin_back/lib/footer');
+	}
+
+	/*
+	!----------------------------------------
+	!	admin back profile
+	!----------------------------------------
+	*/
+	
+	public function site()
+	{  
+      $data['sites']  = $this->db->get('tbl_site')->result_object();
+
+     // echo "<pre>";
+	  //print_r( $data['sites']); die;
+
+       $this->load->view('front/admin_back/lib/header',$data);
+       $this->load->view('front/admin_back/site');
+       $this->load->view('front/admin_back/lib/footer');
+	}
+
+	/*
+	!----------------------------------------
+	! save site View
+	!----------------------------------------
+	*/
+	
+	public function update_site()
+	{ 
+
+		
+        //$data['site_id'] = $this->input->post('site_id');
+        $data['site_title'] = $this->input->post('site_title');
+        $data['site_address'] = $this->input->post('site_address');
+		$data['email'] = $this->input->post('email');
+		$data['mobile'] = $this->input->post('mobile');
+		$data['phone'] = $this->input->post('phone');
+		$data['web_address'] = $this->input->post('web_address');
+		$data['facebook'] = $this->input->post('facebook');
+		$data['twitter'] = $this->input->post('twitter');
+		$data['youtube'] = $this->input->post('youtube');
+		$data['added_date'] = date('Y-m-d');
+	
+	
+		$this->db->set($data);
+		$this->db->where(array('site_id'=> 9));
+		$this->db->update('tbl_site');
+
+		$this->session->set_flashdata('success', 'Updated Sucessfully');
+		redirect('webmaster');
+	}
+
+
+    /*
+	!----------------------------------------
+	!	update_site_map
+	!----------------------------------------
+	*/
+    public function update_site_map()
+    {
+
+   	// echo "<pre>";
+   	// print_r($_FILES); die;
+
+     $data['map_code']  = $this->input->post('map_code');
+     
+     $this->db->set($data);
+	 $this->db->where(array('site_id'=>9));
+	 $this->db->update('tbl_site');
+	 $this->update_logo(9);
+	 $this->session->set_flashdata('success', 'Updated Sucessfully');
+
+     redirect('webmaster');
+    }
+
+
+
+
+	/*
+	!----------------------------------------
+	!  	Update Image
+	!----------------------------------------
+	*/
+	public function update_logo($site_id)
+	{  
+
+		//echo $site_id; die;
+		// logo(image ) upload
+        if (!empty($_FILES['site_logo']['name'])) {
+        	$site = $this->db->where('site_id',$site_id )->get('tbl_site')->result_object();
+        	// echo $staff[0]->staff_image ; die;
+        	// //secho "<pre>";
+	        // //sprint_r($site); die;
+        	// echo $site[0]->site_logo; die;
+        
+            if (file_exists('uploads/front/site/'.$site[0]->site_logo)) {
+               unlink('uploads/front/site/'.$site[0]->site_logo);
+            }
+
+	            $config['upload_path']   = './uploads/front/site/';
+	            $config['allowed_types'] = 'gif|jpg|png';
+	            $config['max_size']      = 10000;
+	            $config['max_width']     = 10000;
+	            $config['max_height']    = 10000;
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('site_logo')) {
+                     $upload_data = array('upload_data' => $this->upload->data());
+
+                     $data['image'] = $upload_data['upload_data']['file_name'];
+
+                     $this->db->set('site_logo',$data['image']);
+                     $this->db->where('site_id',$site_id);
+                     $this->db->update('tbl_site');
+                    
+                } 
+        }
+		
+	}
+  
+
+
+
 
 
     /*
@@ -77,7 +215,7 @@ class Adminback extends CI_Controller {
 
 
 
-		/*
+	/*
 	!----------------------------------------
 	!  	Upload Image
 	!----------------------------------------

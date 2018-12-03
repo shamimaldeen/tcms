@@ -44,7 +44,15 @@
 												<td nowrap><?php echo $page->page_added_date; ?></td>
 												<td nowrap class="center">
 													<a href="<?php echo base_url();?>front/admin_back/edit_page_create/<?php echo $page->page_id; ?>" class="btn btn-success"><i class="menu-icon icon-edit"></i>  </a>
-													<a href="<?php echo base_url();?>front/admin_back/delete_page_create/<?php echo $page->page_id; ?>" class="btn btn-danger" onclick="return(confirm('Are you sure to delete?'))"><i class="menu-icon icon-trash"></i>  </a>
+
+                                         <?php if($page->page_id == 42 || $page->page_id == 58 ||$page->page_id == 59 || $page->page_id == 60 ){ ?>
+													
+                                           <?php }else{ ?>
+
+                                           	<a href="<?php echo base_url();?>front/admin_back/delete_page_create/<?php echo $page->page_id; ?>" class="btn btn-danger" onclick="return(confirm('Are you sure to delete?'))"><i class="menu-icon icon-trash"></i>  </a>
+
+                                           <?php }?>
+
 												</td>
 											</tr>
 

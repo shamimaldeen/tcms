@@ -1,4 +1,4 @@
-<!DOCTYPE php>
+<!DOCTYPE >
 <html lang="en">
 	
 	<!--head start-->
@@ -12,7 +12,7 @@
 		<meta name="copyright" content="khanalprem">
 		
 		<!--title-->
-		<title>Site Title</title>
+		<title><?php echo $sites[0]->site_title ; ?></title>
 		<!--title end-->
 		<script src="<?php echo base_url();?>asset/front/css/bootstrap.min.css"></script>
 		<!-- faveicon start   -->
@@ -37,9 +37,9 @@
 						<div class="top-left">
 							<!--Social Links-->
 							<ul class="social-links">
-								<li><a href="#"><span class="fa fa-facebook"></span></a></li>
-								<li><a href="#"><span class="fa fa-twitter"></span></a></li>
-								<li><a href="#"><span class="fa fa-youtube"></span></a></li>
+								<li><a href="https://<?php echo $sites[0]->facebook ; ?>"><span class="fa fa-facebook"></span></a></li>
+								<li><a href="https://<?php echo $sites[0]->twitter ; ?>"><span class="fa fa-twitter"></span></a></li>
+								<li><a href="https://<?php echo $sites[0]->youtube ; ?>"><span class="fa fa-youtube"></span></a></li>
 								
 							</ul>
 						</div>
@@ -47,8 +47,8 @@
 						<!--Top Right-->
 						<div class="top-right">
 							<ul class="info-links clearfix">
-								 <li><a href="#"><span class="icon fa fa-phone"></span> Mobile</a></li>
-								<li><a href="#"><span class="icon fa fa-envelope"></span> Email</a></li>
+								 <li><a href="#"><span class="icon fa fa-phone"></span><?php echo $sites[0]->mobile ; ?></a></li>
+								<li><a href="#"><span class="icon fa fa-envelope"></span><?php echo $sites[0]->email ; ?></a></li>
 								<li><a href="<?php echo base_url();?>student"><span class="icon fa fa-sign-in"></span> Student Portal</a></li>
 								 </ul>
 						</div>
@@ -60,7 +60,8 @@
 			<div class="top-header">
 				<div class="container">
 					<div class="logo-wrapper">
-						<div class="logo"><a href="<?php echo base_url();?>"><img src="<?php echo base_url();?>asset/front/images/logo.png" alt="amplebiz" title="AmpleBiz"></a></div>
+						<div class="logo"><a href="<?php echo base_url();?>">
+							<img src="<?php echo base_url();?>uploads/front/site/<?php echo $sites[0]->site_logo ; ?>" width="70px" height="70px" alt="amplebiz" title="AmpleBiz" ></a></div>
 					</div>
 					<!-- Main Menu -->
 					<nav class="main-menu">

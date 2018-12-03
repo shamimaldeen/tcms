@@ -37,18 +37,13 @@ $route['front/course'] 			   = 'front/course';
 */
 
 $route['front/admin_back/index']                 = 'adminback/index';
+$route['webmaster']                				 = 'adminback/index';
+$route['webmaster/profile']                		 = 'adminback/profile';
+$route['webmaster/site']                		 = 'adminback/site';
 $route['front/admin_back/page_create']           = 'adminback/page_create';
 $route['front/admin_back/edit_page_create/(.+)'] = 'adminback/edit_page_create/$1';
 $route['front/admin_back/update_page_create/(.+)'] = 'adminback/update_page_create/$1';
 $route['front/admin_back/delete_page_create/(.+)'] = 'adminback/delete_page_create/$1';
-
-
-
-
-
-
-
-
 
 
 

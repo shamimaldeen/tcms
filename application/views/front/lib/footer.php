@@ -7,7 +7,7 @@
 					<h2>About</h2>
 					<div class="widget-content">
 						<div class="text">
-							Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in.
+							<?php echo substr($abouts[0]->page_description, 0,170) ;?>
 						</div>
 					</div>
 				</div>
@@ -42,10 +42,10 @@
 					<h2>Contact</h2>
 					<div class="widget-content">
 						<div class="text"> 	<ul >
-							<li><a href="#"><span class="icon fa fa-phone"></span> Mobile</a></li>
-							<li><a href="#"><span class="icon fa fa-phone"></span> Phone</a></li>
-							<li><a href="#"><span class="icon fa fa-envelope"></span> Email</a></li>
-							<li><a href="#"><span class="icon fa fa-map"></span> Address</a></li>
+							<li><a href="#"><span class="icon fa fa-phone"></span> <?php echo $sites[0]->mobile ; ?></a></li>
+							<li><a href="#"><span class="icon fa fa-phone"></span><?php echo $sites[0]->phone ; ?></a></li>
+							<li><a href="#"><span class="icon fa fa-envelope"></span><?php echo $sites[0]->email ; ?></a></li>
+							<li><a href="#"><span class="icon fa fa-map"></span><?php echo $sites[0]->site_address ; ?></a></li>
 						</ul></div>
 					</div>
 				</div>
@@ -58,13 +58,13 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-6 col-md-6">
-				<div class="text text-left">Copyrights &copy; 2017 <a href="#">AmpleBiz</a>. All Rights Reserved</div>
+				<div class="text text-left">Copyrights &copy; 2017 <a href="<?php echo base_url();?>">Matrisaya</a>. All Rights Reserved</div>
 			</div>
 			<div class="col-sm-6 col-md-6">
 				<ul class="social-links text-right">
-					<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-					<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-					<li><a href="#"><i class="fa fa-youtube"></i></a></li>
+					<li><a href="https://<?php echo $sites[0]->facebook ; ?>"><i class="fa fa-facebook"></i></a></li>
+					<li><a href="https://<?php echo $sites[0]->twitter ; ?>"><i class="fa fa-twitter"></i></a></li>
+					<li><a href="https://<?php echo $sites[0]->youtube ; ?>"><i class="fa fa-youtube"></i></a></li>
 				</ul>
 			</div>
 		</div>

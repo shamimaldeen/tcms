@@ -27,9 +27,9 @@
                             <h4>Contact info</h4>
                         </div>
                         <div class="contact-info">
-                            <p><i class="fa fa-phone"></i>9856055360</p>
-                            <p><i class="fa fa-envelope"></i>khnl.prem@gmail.com</p>
-                            <p><i class="fa fa-map-marker"> </i>Kathmandu , Nepal</p>
+                            <p><i class="fa fa-phone"></i><?php echo $sites[0]->phone ; ?></p>
+                            <p><i class="fa fa-envelope"></i><?php echo $sites[0]->email ; ?></p>
+                            <p><i class="fa fa-map-marker"> </i><?php echo $sites[0]->site_address ; ?></p>
  
                         </div>
                     </div>
@@ -68,7 +68,7 @@
             </div>
         </div>
         <div class="contact-map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7063.70063639701!2d85.28798092330244!3d27.72190742850419!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1893566e1b19%3A0xd2babe6b7135d434!2sBanasthali%2C+Kathmandu+44600!5e0!3m2!1sen!2snp!4v1508933854516" width="100%" height="350" frameborder="0" style="border:2px solid #bcbcbc" allowfullscreen></iframe>
+           <?php echo htmlspecialchars_decode ($sites[0]->map_code) ; ?>
         </div>
     </div>
    
