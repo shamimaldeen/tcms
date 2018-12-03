@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class AccountCategory extends CI_Controller {
+class Accountcategory extends CI_Controller {
 
 	public function __construct()
 	 {

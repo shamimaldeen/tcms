@@ -57,6 +57,28 @@ class Staff extends CI_Controller {
        $this->load->view('back/lib/footer');
      
 	}
+
+
+
+	/*
+	!----------------------------------------
+	!	Staff Llist
+	!----------------------------------------
+	*/
+	public function edit_staff($staff_id)
+	{  
+      
+      
+     $data= array();
+     $data['staffs'] = $this->staffmodel->all_edit_staff($staff_id);
+       
+       $this->load->view('back/lib/header');
+       $this->load->view('back/edit_staff',$data);
+       $this->load->view('back/lib/footer');
+     
+	}
+
+
 	/*
 	!----------------------------------------
 	!  	Upload Image

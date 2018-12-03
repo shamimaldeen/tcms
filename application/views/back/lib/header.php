@@ -1,3 +1,7 @@
+<?php 
+	//echo "<pre>";
+	//print_r($complited_course); die;
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -29,13 +33,22 @@
 								<li><a href="<?php echo base_url();?>student" target="_blank"> <i class="menu-icon icon-user"></i>  Students Login</a></li>
 							</ul>
 						</li>
+						<li class="dropdown">
+							<a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="menu-icon icon-globe"></i> Web<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="<?php echo base_url();?>" target="_blank"> <i class="menu-icon icon-globe"></i>  Web View</a></li>
+								<li><a href="<?php echo base_url(); ?>webmaster" > <i class="menu-icon icon-globe"></i> Webmaster</a></li>
+								
+							</ul>
+						</li>
+						
 						<li class="nav-user dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<img src="<?php echo base_url(); ?>asset/back/images/user.png" class="nav-avatar" />
+								<img src="<?php echo base_url(); ?>uploads/front/site/<?php echo $this->session->site_logo;?>" class="nav-avatar" />
 								<b class="caret"></b>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="profile_update.php"> <i class="menu-icon icon-edit"></i>  Profile </a></li>
+							<li><a href="<?php echo base_url(); ?>webmaster/site"> <i class="menu-icon icon-edit"></i>  Profile </a></li>
 								<li class="divider"></li>
 								<li><a href="<?php echo base_url(); ?>admin/logout"><i class="menu-icon icon-signout"></i>   Logout </a></li>
 							</ul>
