@@ -64,7 +64,7 @@
 							<div class="module-body">
 								<div class="control-group">
 									<div class="controls row-fluid">
-										<input class="span12" type="text" name="email" id="inputEmail" placeholder="Username">
+										<input class="span12" type="text" name="username" id="inputUsername" placeholder="Username">
 									</div>
 								</div>
 								<div class="control-group">
