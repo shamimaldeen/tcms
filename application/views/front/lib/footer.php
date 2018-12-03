@@ -58,7 +58,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-6 col-md-6">
-				<div class="text text-left">Copyrights &copy; 2017 <a href="<?php echo base_url();?>">Matrisaya</a>. All Rights Reserved</div>
+				<div class="text text-left">Copyrights &copy; <?php echo date('Y') ;?> <a href="<?php echo base_url();?>">Matrisaya</a>. All Rights Reserved</div>
 			</div>
 			<div class="col-sm-6 col-md-6">
 				<ul class="social-links text-right">

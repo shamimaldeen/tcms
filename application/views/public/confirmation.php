@@ -40,7 +40,7 @@
 		<div class="wraper">
 			<table width="100%">
 				<tr>
-					<td width="9%" height="102"><a href="dashboard.php"><img src="<?php echo base_url();?>uploads/admin/<?php echo $admininfo[0]->admin_image;?>" class="img_div" width="100" height="100"  alt=""/></a></td>
+					<td width="9%" height="102"><a href="dashboard.php"><img src="<?php echo base_url();?>uploads/front/site/<?php echo $site[0]->site_logo; ?>" class="img_div" width="100" height="100"  alt=""/></a></td>
 					<td width="82%" align="center">
 						<h1 style="margin:0"> Training Center Managment System</h1>
 						<h3>Students Registration Confirmation </h3>

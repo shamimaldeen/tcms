@@ -143,6 +143,7 @@ class Publiccontroller extends CI_Controller {
       $status  = $this->db->get('tbl_student');
       if($status->result_id->num_rows)
       {
+      	$data['site']  = $this->db->get('tbl_site')->result_object();
       	$data['confirmation'] = $status->result_object();
       	
       	$this->load->view('public/confirmation',$data);

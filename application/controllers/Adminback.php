@@ -110,7 +110,6 @@ class Adminback extends CI_Controller {
 	 $this->db->update('tbl_site');
 	 $this->update_logo(9);
 	 $this->session->set_flashdata('success', 'Updated Sucessfully');
-
      redirect('webmaster');
     }
 
@@ -154,7 +153,10 @@ class Adminback extends CI_Controller {
                      $this->db->set('site_logo',$data['image']);
                      $this->db->where('site_id',$site_id);
                      $this->db->update('tbl_site');
-                    
+                     $this->session->set_userdata(array(
+                     	'site_logo' => $data['image']
+                     ));
+
                 } 
         }
 		
