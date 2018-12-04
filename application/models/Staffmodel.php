@@ -21,6 +21,23 @@
           return $status->result_object();
          
         }
+
+
+          /*
+        !----------------------------------------------------
+        !       Staff  Edit
+        !----------------------------------------------------
+        */
+        public function all_edit_staff($staff_id)
+        {
+           
+              $this->db->SELECT('*');
+              $this->db->FROM('tbl_staff');
+              $this->db->WHERE('staff_id',$staff_id);
+              $query_result=$this->db->get();
+              $result=$query_result->result();
+              return $result;
+        }
               /*
         !----------------------------------------------------
         !       Update Staff Data Existance Check

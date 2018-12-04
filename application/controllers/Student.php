@@ -143,9 +143,9 @@ class Student extends CI_Controller {
 	*/ 
 	public function login()
 	{
-		$email = $this->input->post('email');
+		$username = $this->input->post('username');
 		$password = $this->input->post('password');
-		$status  = $this->studentmodel->login($email, $password);
+		$status   = $this->studentmodel->login($username, $password);
 		
 
 		$row = $status->result_id->num_rows;

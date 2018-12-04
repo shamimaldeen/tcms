@@ -87,7 +87,7 @@ class Publiccontroller extends CI_Controller {
         $this->upload_image($stu_id);
 
         
-      	$message = "Dear ".$data['stu_name'].", Your application has successfully recieved. Your username is ".$data['stu_email']." and password is ".$string_pass;
+      	$message = "Dear ".$data['stu_name'].", Your application has successfully recieved. Your username is ".$data['stu_username']." and password is ".$string_pass;
       	$this->messagemodel->sendMessage($data['stu_name'],$data['stu_mobile'],$message);
 		redirect('confirmation/'.$stu_id);
 	}
@@ -143,6 +143,7 @@ class Publiccontroller extends CI_Controller {
       $status  = $this->db->get('tbl_student');
       if($status->result_id->num_rows)
       {
+      	$data['site']  = $this->db->get('tbl_site')->result_object();
       	$data['confirmation'] = $status->result_object();
       	
       	$this->load->view('public/confirmation',$data);

@@ -31,4 +31,5 @@ $autoload['model'] =
 		'reportmodel',
 		'paymentmodel',
 		'certificatemodel',
+		'adminbackmodel',
 	);

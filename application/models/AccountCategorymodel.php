@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed'); ?>
 <?php
-    class AccountCategorymodel extends  CI_Model{
+    class Accountcategorymodel extends  CI_Model{
 
         public function __construct()
         {

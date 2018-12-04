@@ -13,10 +13,10 @@
         !   Admin Login To Dashboard
         !---------------------------------------
         */ 
-        public function login($email="", $password="")
+        public function login($username="", $password="")
         {
             $this->db->where(array(
-              'stu_email'    => $email,
+              'stu_username' => $username,
               'stu_password' => md5($password)
            ));
             $result = $this->db->get('tbl_student');
@@ -27,11 +27,6 @@
                return false;
            }
         }
-
-
-
-
-
 
     }
 

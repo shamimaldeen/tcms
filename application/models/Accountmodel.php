@@ -23,6 +23,23 @@
         }
 
 
+           /*
+        !----------------------------------------------------
+        !    Edit Account 
+        !----------------------------------------------------
+        */
+        public function all_edit_account($account_id)
+        {
+           
+              $this->db->SELECT('*');
+              $this->db->FROM('tbl_account');
+              $this->db->WHERE('account_id',$account_id);
+              $query_result=$this->db->get();
+              $result=$query_result->result();
+              return $result;
+        }
+
+
         /*
         !----------------------------------------------------
         !       Delete account  Model Data Existance Check
