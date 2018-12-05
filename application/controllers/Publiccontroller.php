@@ -18,12 +18,9 @@ class Publiccontroller extends CI_Controller {
 	
 	public function index()
 	{ 
-      
-	
+     	//echo md5('student'); die;
+
 		$this->load->view('public/index');
-		
-  
-       
 	}
 		/*
 	!----------------------------------------
@@ -85,6 +82,8 @@ class Publiccontroller extends CI_Controller {
 
         $stu_id = $stu_data[0]->stu_id;
         $this->upload_image($stu_id);
+
+
 
         
       	$message = "Dear ".$data['stu_name'].", Your application has successfully recieved. Your username is ".$data['stu_username']." and password is ".$string_pass;
@@ -154,8 +153,6 @@ class Publiccontroller extends CI_Controller {
       }
 
  
-       
-  
 	}
 
 	

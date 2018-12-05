@@ -45,7 +45,7 @@ class Admin extends CI_Controller {
         //print_r($data['sites']); die;
 
            //totall pending course application
-         $data['totall_current_student']  =  $this->db->select('count(tbl_student.stu_id) as totall_current_student')->get('tbl_student')->result_object();
+        $data['totall_current_student']  =  $this->db->select('count(tbl_student.stu_id) as totall_current_student')->get('tbl_student')->result_object();
 
 
         //totall pending course application

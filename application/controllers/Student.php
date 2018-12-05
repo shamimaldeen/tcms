@@ -370,8 +370,11 @@ class Student extends CI_Controller {
 		$data['apay_status'] = 'pending';
 		
 		$data['apay_date']   = date('Y-m-d H:i:s');
-		//echo "<pre>";
-		//print_r($_POST);die;
+
+
+
+		echo "<pre>";
+		print_r($_POST);die;
 		
 		$this->db->insert('tbl_admin_payment',$data);
 		$this->session->set_flashdata('success', 'Payment  Data Added Successfully.');
@@ -391,16 +394,11 @@ class Student extends CI_Controller {
 			'tbl_routine.routine_id'=> $routine_id,
 			
 		));
-		 $data['routines']  = $this->db->get('tbl_routine')->result_object();
-         $this->load->view('student/lib/header');
+		$data['routines']  = $this->db->get('tbl_routine')->result_object();
+        $this->load->view('student/lib/header');
 		$this->load->view('student/view_routine_details',$data);
 		$this->load->view('student/lib/footer');
      
 	}
-	
-
-
-
-
 }
 ?>
