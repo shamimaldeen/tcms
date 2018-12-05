@@ -4,7 +4,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Training Center Management System</title>
+		<title>Student Application | <?php echo $site[0]->site_title;?></title>
 		<link type="text/css" href="<?php echo base_url(); ?>asset/public/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link type="text/css" href="<?php echo base_url(); ?>asset/public/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 		<link type="text/css" href="<?php echo base_url(); ?>asset/public/css/theme.css" rel="stylesheet">
@@ -18,8 +18,8 @@
 					<a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
 						<i class="icon-reorder shaded"></i>
 					</a>
-					<a class="brand"  > 
-						Training Center Management System
+					<a class="brand"  href="<?php echo base_url();?>"> 
+						<?php echo $site[0]->site_title;?>
 					</a>
 					<div class="nav-collapse collapse navbar-inverse-collapse">
 						<ul class="nav pull-right">
@@ -59,7 +59,7 @@
 												<div class="form-group">
 													<label> Students Name *
 													</label>
-													<input type="text" class="span12" name="stu_name" />
+													<input type="text" class="span12" name="stu_name" required="" />
 												</div>
 											</div>
 											
@@ -68,7 +68,7 @@
 												<div class="form-group">
 													<label> Date of birth *
 													</label>
-													<input type="date" class="span12" name="stu_dob" />
+													<input type="date" class="span12" name="stu_dob" required="" />
 												</div>
 											</div>
 											
@@ -76,7 +76,7 @@
 												<div class="form-group">
 													<label> Sex * 
 													</label>
-													<select name="stu_sex" tabindex="1" data-placeholder="Select here.." class="span12">
+													<select name="stu_sex" tabindex="1" data-placeholder="Select here.." class="span12" required="">
 														<option value="">....</option>
 														<option value="Male">Male</option>
 														<option value="Female">Female</option>
@@ -106,7 +106,7 @@
 															<label> Marital Status *
 																
 															</label>
-															<select name="stu_marital" tabindex="1" data-placeholder="Select here.." class="span12">
+															<select name="stu_marital" tabindex="1" data-placeholder="Select here.." class="span12" required="">
 															<option value="">....</option>
 															<option value="Married">Married</option>
 															<option value="Unmarried">Unmarried</option>
@@ -123,20 +123,20 @@
 													<div class="form-group">
 														<label> National ID/Birth Certificate No. *
 														</label>
-														<input type="text" class="span12" name="stu_nid" />
+														<input type="text" class="span12" name="stu_nid" required="" />
 													</div>
 												</div>
 												<div class="span2">
 													<div class="form-group">
 														<label> Occupation *</label>
 														
-														<input type="text" class="span12" name="stu_occupation" />
+														<input type="text" class="span12" name="stu_occupation" required="" />
 													</div>
 												</div>
 												<div class="span4">
 													<div class="form-group">
 														<label>Photograph</label>
-														<input type="file" class="span12" name="stu_image" />
+														<input type="file" class="span12" name="stu_image"  />
 													</div>
 												</div>
 											</div>
@@ -151,24 +151,24 @@
 												<div class="span3">
 													<label>Father's Name *
 													</label>
-													<input type="text" name="stu_father" id="chome" class="span12" />
+													<input type="text" name="stu_father" id="chome" class="span12" required />
 												</div>
 												<div class="span3">
 													<label>Mother's Name *
 													</label>
-													<input type="text" name="stu_mother" id="cps" class="span12" />
+													<input type="text" name="stu_mother" id="cps" class="span12" required/>
 												</div>
 												<div class="span3">
 													<label> Guardian 's Name *
 													</label>
-													<input type="text" name="stu_guardian" id="cvill" class="span12" />
+													<input type="text" name="stu_guardian" id="cvill" class="span12" required/>
 												</label>
 											</div>
 											<div class="span3">
 												<div class="form-group">
 													<label>Relation with *
 													</label>
-													<input type="text" name="stu_relation" id="cupo" class="span12" />
+													<input type="text" name="stu_relation" id="cupo" class="span12" required/>
 												</div>
 											</div>	
 										</div>	
@@ -178,7 +178,7 @@
 													<label>Guardian' Mobile No *
 														
 													</label>
-													<input type="text" name="stu_guardian_mobile" id="cupo" class="span12" />
+													<input type="number" name="stu_guardian_mobile" id="cupo" class="span12" required="" />
 												</div>
 											</div>
 											<div class="span3">
@@ -186,7 +186,7 @@
 													<label>Mobile No:
 														*
 													</label>
-													<input type="text" name="stu_mobile" id="cpost" class="span12" />
+													<input type="number" name="stu_mobile" id="cpost" class="span12" required="" />
 												</div>
 												
 											</div>
@@ -206,14 +206,14 @@
 												<div class="form-group">
 													<label>Present Address *
 													</label>
-													<input type="text" name="stu_present_address" class="span12" placeholder="" />
+													<input type="text" name="stu_present_address" class="span12" placeholder="" required="" />
 												</div>
 											</div>
 											<div class="span6">
 												<div class="form-group">
 													<label>Permanent Address *
 													</label>
-													<input type="text" name="stu_permanent_address" class="span12" />
+													<input type="text" name="stu_permanent_address" class="span12" required="" />
 												</div>
 											</div>
 										</div>
@@ -333,14 +333,14 @@
 								<div class="form-group">
 									<label>Username
 									</label>
-									<input type="text" name="stu_username" id="ccorpname" class="span12" />
+									<input type="text" name="stu_username" id="ccorpname" class="span12" required="" />
 								</div>
 							</div>
 							<div class="span3">
 								<div class="form-group">
 									<label> Password
 									</label>
-									<input type="Password" name="stu_password" id="dno" class="span12" />
+									<input type="Password" name="stu_password" id="dno" class="span12" required="" />
 								</div>
 							</div>
 					     <div class="span1">

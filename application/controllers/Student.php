@@ -372,15 +372,24 @@ class Student extends CI_Controller {
 		$data['apay_date']   = date('Y-m-d H:i:s');
 
 
+		//send message to student after payment
+		$this->db->where('stu_id',$this->session->stu_id);
+        $student  = $this->db->get('tbl_student')->result_object();
+        $stu_message = "Dear ".$student[0]->stu_name.", Your payment ".$data['apay_fee']."tk was succesfully received by ".$data['apay_method']." -MPA";
+        
+        $this->messagemodel->sendMessage($student[0]->stu_name,$student[0]->stu_mobile,$stu_message);
+        
+        //send message to admin after student payment
+        $this->db->where('site_id',9);
+        $site  			= $this->db->get('tbl_site')->result_object();
+        $admin_mobile 	= $site[0] ->mobile;
+		$site_message 	= "Dear, ".$student[0]->stu_name." has paid ".$data['apay_fee']."tk by ".$data['apay_method']." -MPA";
+        $this->messagemodel->sendMessage("",$admin_mobile,$site_message);
 
-		echo "<pre>";
-		print_r($_POST);die;
-		
 		$this->db->insert('tbl_admin_payment',$data);
 		$this->session->set_flashdata('success', 'Payment  Data Added Successfully.');
 		redirect('student/dashboard');
-     
-      
+    
 	}
 
 	/*

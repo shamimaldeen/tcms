@@ -10,7 +10,7 @@ class Publiccontroller extends CI_Controller {
 		
 	}
 
-			/*
+	/*
 	!----------------------------------------
 	! public form  View
 	!----------------------------------------
@@ -19,15 +19,16 @@ class Publiccontroller extends CI_Controller {
 	public function index()
 	{ 
      	//echo md5('student'); die;
-
-		$this->load->view('public/index');
+		$this->db->where('site_id',9);
+        $data['site']  			= $this->db->get('tbl_site')->result_object();
+		$this->load->view('public/index',$data);
 	}
-		/*
+
+	/*
 	!----------------------------------------
 	! save Staff View
 	!----------------------------------------
 	*/
-	
 	public function save_student()
 	{ 
 
@@ -68,10 +69,6 @@ class Publiccontroller extends CI_Controller {
 			'stu_password'=> $this->input->post('stu_password')
 		));
 
-		
-		//echo "<pre>";
-		// print_r($_POST); die;
-  
 
 		$string_pass = $data['stu_password'];
 		$data['stu_password'] = md5($data['stu_password']);
@@ -83,9 +80,6 @@ class Publiccontroller extends CI_Controller {
         $stu_id = $stu_data[0]->stu_id;
         $this->upload_image($stu_id);
 
-
-
-        
       	$message = "Dear ".$data['stu_name'].", Your application has successfully recieved. Your username is ".$data['stu_username']." and password is ".$string_pass;
       	$this->messagemodel->sendMessage($data['stu_name'],$data['stu_mobile'],$message);
 		redirect('confirmation/'.$stu_id);
@@ -123,6 +117,7 @@ class Publiccontroller extends CI_Controller {
         }
 		
 	}
+
 	/*
 	!----------------------------------------
 	!	confirmation list
@@ -155,7 +150,6 @@ class Publiccontroller extends CI_Controller {
  
 	}
 
-	
 
 }
 
