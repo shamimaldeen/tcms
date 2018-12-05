@@ -3,7 +3,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Training Center Management System</title>
+		<title><?php echo $site[0]->site_title;?></title>
 		<link type="text/css" href="<?php echo base_url(); ?>asset/student/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 		<link type="text/css" href="<?php echo base_url(); ?>asset/student/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 		<link type="text/css" href="<?php echo base_url(); ?>asset/student/css/theme.css" rel="stylesheet">
@@ -19,8 +19,8 @@
 						<i class="icon-reorder shaded"></i>
 					</a>
 					
-					<a class="brand" href="index.php">
-						Training Center Management System
+					<a class="brand" href="<?php echo base_url(); ?>">
+						<?php echo $site[0]->site_title;?>
 					</a>
 					
 					<div class="nav-collapse collapse navbar-inverse-collapse">

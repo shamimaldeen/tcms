@@ -20,7 +20,9 @@ class Student extends CI_Controller {
             redirect('student/dashboard'); //redirect to dashbaord
         }
 
-		$this->load->view('student/index');
+        $this->db->where('site_id',9);
+        $data['site']  			= $this->db->get('tbl_site')->result_object();
+		$this->load->view('student/index',$data);
 		$this->load->view('student/lib/footer');
 		
 	}
