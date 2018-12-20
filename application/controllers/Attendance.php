@@ -9,7 +9,6 @@ class Attendance extends CI_Controller {
 		if (!$this->session->has_userdata('admin')) {
             redirect('admin');
         }
-	
 	}
 
 	/*
@@ -17,7 +16,6 @@ class Attendance extends CI_Controller {
 	! save account View
 	!----------------------------------------
 	*/
-	
 	public function select_batch()
 	{ 
 		// echo "<pre>";
@@ -32,13 +30,10 @@ class Attendance extends CI_Controller {
 	!	Account Llist
 	!----------------------------------------
 	*/
-	
 	public function attendance_search()
 	{  
        
        $data['batchs']  = $this->db->get('tbl_batch')->result_object();
-
-      
        $this->load->view('back/lib/header');
        $this->load->view('back/attendance_search',$data);
        $this->load->view('back/lib/footer');
@@ -50,12 +45,10 @@ class Attendance extends CI_Controller {
 	!	attendance_entry Llist
 	!----------------------------------------
 	*/
-	
 	public function attendance_entry($batch_id)
 	{ 
 
 	    $this->db->select('tbl_student.*,tbl_batch.batch_title,tbl_batch.batch_id');
-
 		$this->db->join("tbl_student","tbl_student.stu_id =  tbl_courseapply.stu_id");
 		$this->db->join("tbl_batch","tbl_batch.batch_id =  tbl_courseapply.batch_id");
 		$this->db->where(array(
@@ -63,10 +56,7 @@ class Attendance extends CI_Controller {
 			'tbl_batch.batch_id'=> $batch_id 
 		));
 		$this->db->order_by('tbl_student.stu_id','asc');
-		$this->db->group_by('tbl_courseapply.stu_id');
-
-		//echo "<pre>";
-		//print_r($data['students'] );die; 
+		$this->db->group_by('tbl_courseapply.stu_id'); 
        
         $data['students'] = $this->db->get('tbl_courseapply')->result_object();
         $data['batch_id'] = $batch_id;
@@ -74,7 +64,6 @@ class Attendance extends CI_Controller {
        $this->load->view('back/lib/header');
        $this->load->view('back/attendance_entry',$data);
        $this->load->view('back/lib/footer');
-   
 	}
 
 	/*
@@ -100,6 +89,7 @@ class Attendance extends CI_Controller {
 		$this->session->set_flashdata('success', 'Attendance Added Succssfully');
  		redirect('attendance_record');
 	}
+
     /*
 	!-------------------------------------------------------------
 	! 			Attendance Record
@@ -115,28 +105,23 @@ class Attendance extends CI_Controller {
 		$this->db->order_by('tbl_student.stu_id','asc');
 		//$this->db->group_by('tbl_courseapply.stu_id');
 		$data['attendances'] = $this->db->get('tbl_attendance')->result_object();
-		//echo "<pre>";
-		//print_r($data['attendances'] );die; 
-
+		
        $this->load->view('back/lib/header',$data);
        $this->load->view('back/attendance_record');
        $this->load->view('back/lib/footer');
     }
 
-          /*
+    /*
 	!--------------------------------------------
 	! 		delete attendance 
 	!--------------------------------------------
 	*/ 
-
-	 public function delete_attendance($att_id)
-    {          
-           
-
-          $this->attendancemodel->delete_attendance($att_id);
-    	  $data =array();
-    	  $data = $this->session->set_flashdata('success', 'Deleted Sucessfully ');
-          redirect('attendance_record');
+	public function delete_attendance($att_id)
+    {    
+        $this->attendancemodel->delete_attendance($att_id);
+    	$data =array();
+    	$data = $this->session->set_flashdata('success', 'Deleted Sucessfully ');
+        redirect('attendance_record');
 		
     }
 }

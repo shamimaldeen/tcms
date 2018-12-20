@@ -21,8 +21,9 @@ class Studentcourse extends CI_Controller {
 	public function applycourse_list()
 	{  
       
-      $data['courses']  = $this->db->get('tbl_course')->result_object();
-      
+       $data['courses']  = $this->db->get('tbl_course')->result_object();
+    	
+
        $this->load->view('student/lib/header');
        $this->load->view('student/applycourse_list',$data);
        $this->load->view('student/lib/footer');
@@ -30,7 +31,7 @@ class Studentcourse extends CI_Controller {
 	}
 	
 
-		/*
+	/*
 	!----------------------------------------
 	!	student apply Course Details about
 	!----------------------------------------
@@ -79,9 +80,6 @@ class Studentcourse extends CI_Controller {
 		$data['pay_tra_id'] = $this->input->post('pay_tra_id');
 		$data['stu_id'] = $this->session->stu_id;
 		$data['pay_date'] = date("Y-m-d");
-		
-	   
-		
 		
 		$this->db->insert('tbl_payment',$data);
 

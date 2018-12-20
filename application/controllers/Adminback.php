@@ -52,9 +52,6 @@ class Adminback extends CI_Controller {
 	{  
       $data['sites']  = $this->db->get('tbl_site')->result_object();
 
-     // echo "<pre>";
-	  //print_r( $data['sites']); die;
-
        $this->load->view('front/admin_back/lib/header',$data);
        $this->load->view('front/admin_back/site');
        $this->load->view('front/admin_back/lib/footer');
@@ -65,11 +62,8 @@ class Adminback extends CI_Controller {
 	! save site View
 	!----------------------------------------
 	*/
-	
 	public function update_site()
 	{ 
-
-		
         //$data['site_id'] = $this->input->post('site_id');
         $data['site_title'] = $this->input->post('site_title');
         $data['site_address'] = $this->input->post('site_address');
@@ -86,7 +80,6 @@ class Adminback extends CI_Controller {
 		$this->db->set($data);
 		$this->db->where(array('site_id'=> 9));
 		$this->db->update('tbl_site');
-
 		$this->session->set_flashdata('success', 'Updated Sucessfully');
 		redirect('webmaster');
 	}
@@ -100,9 +93,6 @@ class Adminback extends CI_Controller {
     public function update_site_map()
     {
 
-   	// echo "<pre>";
-   	// print_r($_FILES); die;
-
      $data['map_code']  = $this->input->post('map_code');
      
      $this->db->set($data);
@@ -113,9 +103,6 @@ class Adminback extends CI_Controller {
      redirect('webmaster');
     }
 
-
-
-
 	/*
 	!----------------------------------------
 	!  	Update Image
@@ -124,60 +111,49 @@ class Adminback extends CI_Controller {
 	public function update_logo($site_id)
 	{  
 
-		//echo $site_id; die;
-		// logo(image ) upload
-        if (!empty($_FILES['site_logo']['name'])) {
+			//echo $site_id; die;
+			// logo(image ) upload
+       		if (!empty($_FILES['site_logo']['name'])) {
         	$site = $this->db->where('site_id',$site_id )->get('tbl_site')->result_object();
-        	// echo $staff[0]->staff_image ; die;
-        	// //secho "<pre>";
-	        // //sprint_r($site); die;
-        	// echo $site[0]->site_logo; die;
         
             if (file_exists('uploads/front/site/'.$site[0]->site_logo)) {
                unlink('uploads/front/site/'.$site[0]->site_logo);
             }
 
-	            $config['upload_path']   = './uploads/front/site/';
-	            $config['allowed_types'] = 'gif|jpg|png';
-	            $config['max_size']      = 10000;
-	            $config['max_width']     = 10000;
-	            $config['max_height']    = 10000;
+            $config['upload_path']   = './uploads/front/site/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size']      = 10000;
+            $config['max_width']     = 10000;
+            $config['max_height']    = 10000;
 
-                $this->load->library('upload', $config);
+            $this->load->library('upload', $config);
 
-                if ($this->upload->do_upload('site_logo')) {
-                     $upload_data = array('upload_data' => $this->upload->data());
+            if ($this->upload->do_upload('site_logo')) {
+                 $upload_data = array('upload_data' => $this->upload->data());
 
-                     $data['image'] = $upload_data['upload_data']['file_name'];
+                 $data['image'] = $upload_data['upload_data']['file_name'];
 
-                     $this->db->set('site_logo',$data['image']);
-                     $this->db->where('site_id',$site_id);
-                     $this->db->update('tbl_site');
-                     $this->session->set_userdata(array(
-                     	'site_logo' => $data['image']
-                     ));
+                 $this->db->set('site_logo',$data['image']);
+                 $this->db->where('site_id',$site_id);
+                 $this->db->update('tbl_site');
+                 $this->session->set_userdata(array(
+                 	'site_logo' => $data['image']
+                 ));
 
-                } 
+        	} 
         }
 		
 	}
   
-
-
-
-
-
     /*
 	!----------------------------------------
 	!	admin back page_create
 	!----------------------------------------
 	*/
-	
 	public function page_create()
 	{  
        $data['pages']  = $this->db->get('tbl_page')->result_object();
-        //echo "<pre>";
-	    //print_r( $data['pages']); die;
+       
        $this->load->view('front/admin_back/lib/header');
        $this->load->view('front/admin_back/page_create',$data);
        $this->load->view('front/admin_back/lib/footer');
@@ -224,7 +200,6 @@ class Adminback extends CI_Controller {
 	*/
 	public function upload_image($page_id)
 	{  
-
 		// logo(image ) upload
         if (!empty($_FILES['page_image']['name'])) {
 
@@ -235,7 +210,6 @@ class Adminback extends CI_Controller {
             $config['max_height']    = 10000;
 
             $this->load->library('upload', $config);
-
             if ($this->upload->do_upload('page_image')) {
                  $upload_data = array('upload_data' => $this->upload->data());
 
@@ -251,39 +225,30 @@ class Adminback extends CI_Controller {
 	}
 
 
-
     /*
 	!----------------------------------------
 	!	admin back edit_page_create
 	!----------------------------------------
 	*/
-	
 	public function edit_page_create($page_id)
 	{  
 
-	 $data= array();
-     $data['edit_page'] = $this->adminbackmodel->edit_page_create($page_id);
-      
-        //echo "<pre>";
-	    //print_r( $data['edit_page']); die;
+	 	$data= array();
+    	$data['edit_page'] = $this->adminbackmodel->edit_page_create($page_id);
 
-       $this->load->view('front/admin_back/lib/header');
-       $this->load->view('front/admin_back/edit_page_create',$data);
-       $this->load->view('front/admin_back/lib/footer');
+        $this->load->view('front/admin_back/lib/header');
+        $this->load->view('front/admin_back/edit_page_create',$data);
+        $this->load->view('front/admin_back/lib/footer');
 	}
 
 
-	 /*
+	/*
 	!--------------------------------------------
 	! 		update_page_create
 	!--------------------------------------------
 	*/ 
-
-
     public function update_page_create($page_id)
     {
-
-        
         $data['page_title'] = $this->input->post('page_title');
 		$data['page_type'] = $this->input->post('page_type');
 		$data['page_description'] = $this->input->post('page_description');
@@ -294,7 +259,6 @@ class Adminback extends CI_Controller {
 		$data['page_updated_date'] = date('Y-m-d');
 	    $this->update_image($page_id);
 
-	   
 		$this->db->set($data);
 		$this->db->where(array('page_id'=>$page_id));
 		$this->db->update('tbl_page');
@@ -337,35 +301,24 @@ class Adminback extends CI_Controller {
                      $this->db->set('page_image',$data['image']);
                      $this->db->where('page_id',$page_id);
                      $this->db->update('tbl_page');
-                    
                 } 
         }
 		
 	}
 
 
-      /*
+    /*
 	!--------------------------------------------
 	! 		delete_page_create
 	!--------------------------------------------
 	*/ 
-
-	 public function delete_page_create($page_id)
+	public function delete_page_create($page_id)
     {          
-           
-
-          $this->adminbackmodel->delete_page_create($page_id);
-    	  $data =array();
-    	  $data = $this->session->set_flashdata('success', 'Deleted Sucessfully ');
-         redirect('front/admin_back/index');
-		
+        $this->adminbackmodel->delete_page_create($page_id);
+    	$data =array();
+    	$data = $this->session->set_flashdata('success', 'Deleted Sucessfully ');
+        redirect('front/admin_back/index');
     }
-
-
-
-
-
-
 }
 
 ?>

@@ -8,8 +8,6 @@ class Admin extends CI_Controller {
 		parent::__construct();
 		$this->load->model('loginmodel');
 		date_default_timezone_set('Asia/Dhaka');
-		
-
 	}
 
 	/*
@@ -25,7 +23,6 @@ class Admin extends CI_Controller {
 
 		$this->load->view('back/login');
 		$this->load->view('back/lib/footer');
-		
 	}
 
 	/*
@@ -39,17 +36,10 @@ class Admin extends CI_Controller {
             redirect('admin');
         }
 
-
-        // $data['site']  = $this->db->get('tbl_site')->result_object();
-       // echo "<pre>";
-        //print_r($data['sites']); die;
-
-           //totall pending course application
+        //totall pending course application
         $data['totall_current_student']  =  $this->db->select('count(tbl_student.stu_id) as totall_current_student')->get('tbl_student')->result_object();
 
-
-        //totall pending course application
-
+        //total pending course application
         $this->db->join("tbl_student","tbl_student.stu_id =  tbl_courseapply.stu_id");
 		$this->db->join("tbl_course","tbl_course.course_id =  tbl_courseapply.course_id");
 		$this->db->join("tbl_payment","tbl_payment.pay_id =  tbl_courseapply.pay_id");
@@ -57,13 +47,8 @@ class Admin extends CI_Controller {
 		
         $data['pending_course_application']  =  $this->db->select('count(tbl_courseapply.capply_id) as pending_course_application')->get('tbl_courseapply')->result_object();
 
-
-
-         //totall pending payment request
-
-         $data['pending_payment_request']  =  $this->db->select('count(tbl_admin_payment.apay_id) as pending_payment_request')->get('tbl_admin_payment')->result_object();
-
-
+        //totall pending payment request
+        $data['pending_payment_request']  =  $this->db->select('count(tbl_admin_payment.apay_id) as pending_payment_request')->get('tbl_admin_payment')->result_object();
 
         //totall course complited
         $this->db->join("tbl_student","tbl_student.stu_id =  tbl_courseapply.stu_id");
@@ -72,12 +57,6 @@ class Admin extends CI_Controller {
 		$this->db->where('tbl_courseapply.capply_status','Complete');
 		
         $data['complited_course']  =  $this->db->select('count(tbl_courseapply.capply_id) as complited_course')->get('tbl_courseapply')->result_object();
-
-         
-       //   echo "<pre>";
-       // print_r( $data['complited_course'] );die;
-
-
 		$this->load->view('back/lib/header',$data);
 		$this->load->view('back/dashboard');
 		$this->load->view('back/lib/footer');
@@ -98,7 +77,6 @@ class Admin extends CI_Controller {
 		$password = $this->input->post('password');
 		$status = $this->loginmodel->login($username, $password);
 		
-
 		$row = $status->result_id->num_rows;
 		if ($row > 0) 
 		{
@@ -106,7 +84,6 @@ class Admin extends CI_Controller {
 
 			$site_logo = $this->db->get('tbl_site')->result_object();
 
-			
 			$this->session->set_userdata(array(
 				'admin' 		 => true,
 				'id' 			 => $data[0]->admin_id,
@@ -141,7 +118,7 @@ class Admin extends CI_Controller {
 	}
 
 
-		/*
+	/*
 	!--------------------------------------------
 	! 	Settings
 	!--------------------------------------------

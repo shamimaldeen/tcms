@@ -9,8 +9,8 @@ class Course extends CI_Controller {
 		if (!$this->session->has_userdata('admin')) {
             redirect('admin');
         }
-	
 	}
+
 	/*
 	!----------------------------------------
 	! ADD account View
@@ -18,47 +18,42 @@ class Course extends CI_Controller {
 	*/
 	public function add_course()
 	{
-        
 	   $this->load->view('back/lib/header');
        $this->load->view('back/add_course');
        $this->load->view('back/lib/footer');
 	}
 
-	
+
 	/*
 	!----------------------------------------
 	! save account View
 	!----------------------------------------
 	*/
-	
 	public function save_course()
 	{ 
         $data['course_status'] = $this->input->post('course_status');
         $data['course_title'] = $this->input->post('course_title');
 		$data['course_duration'] = $this->input->post('course_duration');
 		$data['course_fee'] = $this->input->post('course_fee');
-		
 		$data['course_details'] = $this->input->post('course_details');
 		
 		$this->db->insert('tbl_course',$data);
 			$this->session->set_flashdata('success', 'Course Data Added Successfully.');
 		redirect('course_list');
 	}
-		/*
+
+	/*
 	!----------------------------------------
 	!	Course Llist
 	!----------------------------------------
 	*/
-	
 	public function course_list()
 	{  
        
-      
-      $data['courses']  = $this->db->get('tbl_course')->result_object();
-      
-       $this->load->view('back/lib/header');
-       $this->load->view('back/course_list',$data);
-       $this->load->view('back/lib/footer');
+      	$data['courses']  = $this->db->get('tbl_course')->result_object();
+       	$this->load->view('back/lib/header');
+       	$this->load->view('back/course_list',$data);
+       	$this->load->view('back/lib/footer');
    
 	}
 	/*
@@ -69,23 +64,20 @@ class Course extends CI_Controller {
     public function edit_course($course_id)
     {
 
-     $data= array();
-     $data['all_edit_course'] = $this->coursemodel->all_edit_course($course_id);
-     //echo "<pre>";
-     //print_r($data['all_edit_course']); die;
-
-     $this->load->view('back/lib/header');
-	 $this->load->view('back/edit_course',$data);
-	 $this->load->view('back/lib/footer');
+      $data= array();
+      $data['all_edit_course'] = $this->coursemodel->all_edit_course($course_id);
+      $this->load->view('back/lib/header');
+	  $this->load->view('back/edit_course',$data);
+	  $this->load->view('back/lib/footer');
 
     }
+
+
     /*
 	!--------------------------------------------
 	! 		update Course
 	!--------------------------------------------
 	*/ 
-
-
     public function update_course($course_id)
     {
 
@@ -109,7 +101,8 @@ class Course extends CI_Controller {
 			redirect('course_list');
 		
     }
-      /*
+
+    /*
 	!--------------------------------------------
 	! 		delete Course
 	!--------------------------------------------
@@ -124,6 +117,8 @@ class Course extends CI_Controller {
           redirect('course_list');
 		
     }
+
+
     /*
 	!----------------------------------------
 	! course application View
@@ -139,74 +134,57 @@ class Course extends CI_Controller {
 		
 		$data['applications'] = $this->db->get('tbl_courseapply')->result_object();
 		$data['batchs']  = $this->db->get('tbl_batch')->result_object();
-		//echo "<pre>";
-		//print_r($data['batchs'] );
 
-
-	   $this->load->view('back/lib/header',$data);
-       $this->load->view('back/courseapp');
-       $this->load->view('back/lib/footer');
+	    $this->load->view('back/lib/header',$data);
+        $this->load->view('back/courseapp');
+        $this->load->view('back/lib/footer');
 	}
 
 
-		/*
+	/*
 	!----------------------------------------
 	! course application approved  View
 	!----------------------------------------
 	*/
-	
 	public function select_batch($capply_id,$pay_id) //here course is for changing pending to approved in payment table
 	{ 
 
-
-	$data['capply_id'] = $capply_id; 
-    $data['pay_id']    = $pay_id;
-
-  
-	$data['batchs']  = $this->db->get('tbl_batch')->result_object();
-
-	
-       $this->load->view('back/lib/header');
-       $this->load->view('back/select_batch',$data);
-       $this->load->view('back/lib/footer');
+		$data['capply_id'] = $capply_id; 
+    	$data['pay_id']    = $pay_id;
+		$data['batchs']  = $this->db->get('tbl_batch')->result_object();
+        $this->load->view('back/lib/header');
+        $this->load->view('back/select_batch',$data);
+        $this->load->view('back/lib/footer');
 		
 	}
 
-		/*
+
+	/*
 	!----------------------------------------
 	! course application approved  View
 	!----------------------------------------
 	*/
-	
 	public function save_courseapply() //here course is for changing pending to approved in payment table
 	{ 
-	
-		
+
         $data['capply_id'] = $this->input->post('capply_id');
         $data['pay_id']    = $this->input->post('pay_id');
         $data['batch_id']    = $this->input->post('batch_id');
-     
-   
         $this->db->set(array(
 			'batch_id'=> $data['batch_id']
 			));
-
-        
-         $this->db->where('capply_id',$data['capply_id']);
-         $this->db->update('tbl_courseapply');
-
-
+        $this->db->where('capply_id',$data['capply_id']);
+        $this->db->update('tbl_courseapply');
         $this->db->set(array(
 			'pay_status'=>'approved',
 			'pay_approved_date'=> date('Y-m-d')
 			));
-       
         $this->db->where('pay_id',$data['pay_id'] );
         $this->db->update('tbl_payment');
         $this->session->set_flashdata('success', ' Students Data Approved Sucessfully ');
         redirect('dashboard');
-
 	}
+
 
     /*
 	!----------------------------------------
@@ -226,17 +204,14 @@ class Course extends CI_Controller {
 			'tbl_courseapply.capply_status' =>'Incomplete'
 		));
 		$this->db->group_by('tbl_courseapply.course_id,tbl_courseapply.batch_id');
+
 		$data['applications'] = $this->db->get('tbl_courseapply')->result_object();
-		//echo "<pre>";
-		//print_r($data['applications'] );die;
-
-
-	   $this->load->view('back/lib/header',$data);
-       $this->load->view('back/current_course');
-       $this->load->view('back/lib/footer');
+	    $this->load->view('back/lib/header',$data);
+        $this->load->view('back/current_course');
+        $this->load->view('back/lib/footer');
 	}
 
-	    /*
+	/*
 	!----------------------------------------
 	! Current course /Student info  View
 	!----------------------------------------
@@ -325,7 +300,7 @@ class Course extends CI_Controller {
 
     /*
 	!----------------------------------------
-	!  Complited  Student course   View
+	!  Completed  Student course   View
 	!----------------------------------------
 	*/
 	public function complited_course()
@@ -344,14 +319,9 @@ class Course extends CI_Controller {
 		));
 	
 		$data['applications'] = $this->db->get('tbl_courseapply')->result_object();
-		
-          // echo "<pre>";
-          // print_r($data['applications'] );die;
-		
-
-	   $this->load->view('back/lib/header');
-       $this->load->view('back/complited_course',$data);
-       $this->load->view('back/lib/footer');
+	    $this->load->view('back/lib/header');
+        $this->load->view('back/complited_course',$data);
+        $this->load->view('back/lib/footer');
 	}
 
 	/*
@@ -372,9 +342,6 @@ class Course extends CI_Controller {
 		$this->session->set_flashdata('success', ' Students Data updated Sucessfully ');
         redirect('dashboard');
 	}
-
-
-
 
 }
 ?>

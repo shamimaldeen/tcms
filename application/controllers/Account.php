@@ -53,12 +53,11 @@ class Account extends CI_Controller {
    
 	}
 
-		/*
+	/*
 	!----------------------------------------
 	!	 Edit Account Llist
 	!----------------------------------------
 	*/
-	
 	public function edit_account_list($account_id)
 	{  
        
@@ -66,9 +65,6 @@ class Account extends CI_Controller {
       $this->db->join('tbl_account_category','tbl_account_category.acc_cat_id = tbl_account.acc_cat_id');
      
        $data['accounts'] = $this->accountmodel->all_edit_account($account_id);
-
-     // echo "<pre>";
-     //print_r($data['categories']); die;
       
        $this->load->view('back/lib/header');
        $this->load->view('back/edit_account_list',$data);
@@ -81,25 +77,15 @@ class Account extends CI_Controller {
 	! 		update Account 
 	!--------------------------------------------
 	*/ 
-
-
     public function update_account($account_id)
     {
 
     	$data['account_description'] = $this->input->post('account_description'); 
     	$data['acc_cat_id']          = $this->input->post('acc_cat_id'); 
-
     	$data['account_cash_in']     = $this->input->post('account_cash_in'); 
     	$data['account_cash_out']    = $this->input->post('account_cash_out'); 
-    	$this->db->set($data);
 
-		//$this->db->set(array(
-				//'account_description'=>$account_description,
-				//'acc_cat_id'=>$acc_cat_id,
-				//'account_cash_in'=>$account_cash_in,
-				//'account_cash_out'=>$account_cash_out
-			//));
-		
+    	$this->db->set($data);
 		$this->db->where(array('account_id'=>$account_id));
 		$this->db->update('tbl_account');
 		$this->session->set_flashdata('success', 'Updated Sucessfully');
@@ -107,28 +93,19 @@ class Account extends CI_Controller {
 		
     }
 
-      /*
+    /*
 	!--------------------------------------------
 	! 		delete Account 
 	!--------------------------------------------
 	*/ 
-
-	 public function delete_account($account_id)
-    {          
-           
-
-          $this->accountmodel->delete_account($account_id);
-    	  $data =array();
-    	  $data = $this->session->set_flashdata('success', 'Deleted Sucessfully ');
-          redirect('account_list');
+	public function delete_account($account_id)
+    {           
+	    $this->accountmodel->delete_account($account_id);
+		$data =array();
+		$data = $this->session->set_flashdata('success', 'Deleted Sucessfully ');
+	    redirect('account_list');
 		
     }
-
-
-
-
-
-
 }
 
 ?>

@@ -12,7 +12,7 @@ class Certificate extends CI_Controller {
 	
 	}
 
-		/*
+	/*
 	!----------------------------------------
 	! Certificates archive view
 	!----------------------------------------
@@ -27,18 +27,15 @@ class Certificate extends CI_Controller {
 		$this->db->join("tbl_payment","tbl_payment.pay_id =  tbl_courseapply.pay_id");
 		$this->db->join("tbl_batch","tbl_batch.batch_id =  tbl_courseapply.batch_id");
 		$this->db->where(array(
-			'tbl_payment.pay_status'=>'approved',
-			'tbl_courseapply.capply_status'=>'Complete',
-			'tbl_courseapply.capply_result !='=>'F',
-			
+			'tbl_payment.pay_status'			=>'approved',
+			'tbl_courseapply.capply_status' 	=>'Complete',
+			'tbl_courseapply.capply_result !='	=>'F',
 		));
 	
 		$data['applications'] = $this->db->get('tbl_courseapply')->result_object();
-		
-	   $this->load->view('back/lib/header');
-       $this->load->view('back/certificates_archive',$data);
-       $this->load->view('back/lib/footer');
-
+	    $this->load->view('back/lib/header');
+        $this->load->view('back/certificates_archive',$data);
+        $this->load->view('back/lib/footer');
 	}
 
 
@@ -66,17 +63,12 @@ class Certificate extends CI_Controller {
 		$status = $this->db->get('tbl_courseapply');
 		if($status->result_id->num_rows > 0){
 			$data['certificate'] = $status->result_object();
-			//echo "<pre>";
-			//print_r($data['certificate']); die;
 			$this->load->view('back/certificate/certificate',$data);
 		}else{
 			$this->session->set_flashdata('error', 'No certificate found');
   			redirect('dashboard');
 		}
-
-		
 	}
-
 
 }
 

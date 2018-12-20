@@ -6,71 +6,51 @@ class Front extends CI_Controller {
 	public function __construct()
 	 {
 		parent::__construct();
-		
-	
 	}
 
 
     /*
 	!----------------------------------------
-	      front index
+	!      front index
 	!----------------------------------------
 	*/
-	
 	public function index()
 	{  
-       $this->db->where('page_type','Slider');
-	   $data['sliders']  = $this->db->get('tbl_page')->result_object();
-
-	   $this->db->where(array(
-	   	'page_id'=> 42,
-	   	'page_type'=>'About Us'
-	   ));
-	   $data['abouts']  = $this->db->get('tbl_page')->result_object();
-
+        $this->db->where('page_type','Slider');
+	    $data['sliders']  = $this->db->get('tbl_page')->result_object();
 
 	    $this->db->where(array(
-	   	'page_id !=' => 42,
-	   	'page_type'=>'About Us'
-	   ));
-	   $data['about_helpers']  = $this->db->get('tbl_page')->result_object();
-	   //echo "<pre>";
-	 // print_r($data['about_mission']); die;
+	   		'page_id'=> 42,
+	   		'page_type'=>'About Us'
+	   	));
+	  	$data['abouts']  = $this->db->get('tbl_page')->result_object();
 
-  
-       $this->db->where('page_type','News');
-       $this->db->order_by('page_id','desc') ;
-       $this->db->limit(3);
-	   $data['News']  = $this->db->get('tbl_page')->result_object();
+	    $this->db->where(array(
+	   		'page_id !=' => 42,
+	   		'page_type'=>'About Us'
+	    ));
+	    $data['about_helpers']  = $this->db->get('tbl_page')->result_object();
+	  
+        $this->db->where('page_type','News');
+        $this->db->order_by('page_id','desc') ;
+        $this->db->limit(3);
+	    $data['News']  = $this->db->get('tbl_page')->result_object();
 
-       $this->db->where('page_type','Blog');
-       $this->db->order_by('page_id','desc') ;
-       $this->db->limit(3);
-	   $data['blogs']  = $this->db->get('tbl_page')->result_object();
+        $this->db->where('page_type','Blog');
+        $this->db->order_by('page_id','desc') ;
+        $this->db->limit(3);
+	    $data['blogs']  = $this->db->get('tbl_page')->result_object();
 
-
-
-	   $this->db->where('page_type','Testimonial');
-	   $data['testimonials'] = $this->db->get('tbl_page')->result_object();
-
-
-	   //$this->db->where('page_type','Our Teams');
-	   //$data['teams'] = $this->db->get('tbl_page')->result_object();
-
+	    $this->db->where('page_type','Testimonial');
+	    $data['testimonials'] = $this->db->get('tbl_page')->result_object();
 	    $this->db->limit(3);
-		 $data['courses']  = $this->db->get('tbl_course')->result_object();
+		$data['courses']  = $this->db->get('tbl_course')->result_object();
 
 
-	  $data['staffs']  = $this->db->get('tbl_staff')->result_object();
-	  //echo "<pre>";
-	  //print_r($data['staffs']); die;
+	  	$data['staffs']  = $this->db->get('tbl_staff')->result_object();
+	 
+	  	$data['sites']  = $this->db->get('tbl_site')->result_object();
 
-      // site view logo
-	  $data['sites']  = $this->db->get('tbl_site')->result_object();
-
-        //echo "<pre>";
-	    //print_r($data['sites']); die;
-          
        $this->load->view('front/lib/header',$data);
        $this->load->view('front/index');
        $this->load->view('front/lib/footer');
@@ -104,18 +84,17 @@ class Front extends CI_Controller {
       $data['sites']  = $this->db->get('tbl_site')->result_object();
 	  $data['staffs']  = $this->db->get('tbl_staff')->result_object();
 
-
        $this->load->view('front/lib/header',$data);
        $this->load->view('front/about');
        $this->load->view('front/lib/footer');
    
 	}
+
 	/*
 	!----------------------------------------
-	      front news
+	!      front news
 	!----------------------------------------
 	*/
-	
 	public function news($pageid="")
 	{  
        if($pageid == '' || $pageid == null)
@@ -154,7 +133,7 @@ class Front extends CI_Controller {
    
 	}
 
-		/*
+	/*
 	!----------------------------------------
 	      front news_details
 	!----------------------------------------
@@ -163,16 +142,13 @@ class Front extends CI_Controller {
 	public function news_details($page_id)
 	{  
        
-      $this->db->where(array(
-       'page_type'=>'News',
-      'page_id'  =>$page_id
+	      $this->db->where(array(
+	       'page_type'=>'News',
+	      'page_id'  =>$page_id
 
-
-      ));
+	      ));
 	   $data['News']  = $this->db->get('tbl_page')->result_object();
 
-       //echo "<pre>";
-     // print_r($data['blogs']); die;
 
 	   $this->db->where('page_type','About Us');
 	   $data['abouts']  = $this->db->get('tbl_page')->result_object();
