@@ -27,20 +27,7 @@
 					<div class="nav-collapse collapse navbar-inverse-collapse">
 						<ul class="nav pull-right">
 						<li><a href="<?php echo base_url();?>dashboard" > <i class="menu-icon icon-dashboard"></i>  Dashboard</a></li>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="menu-icon icon-list"></i> Menu<b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="<?php echo base_url();?>student" target="_blank"> <i class="menu-icon icon-user"></i>  Students Login</a></li>
-							</ul>
-						</li>
-						<li class="dropdown">
-							<a href="" class="dropdown-toggle" data-toggle="dropdown"><i class="menu-icon icon-globe"></i> Web<b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="<?php echo base_url();?>" target="_blank"> <i class="menu-icon icon-globe"></i>  Web View</a></li>
-								<li><a href="<?php echo base_url(); ?>webmaster" > <i class="menu-icon icon-globe"></i> Webmaster</a></li>
-								
-							</ul>
-						</li>
+						
 						
 						<li class="nav-user dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">

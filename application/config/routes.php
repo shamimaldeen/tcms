@@ -12,38 +12,11 @@ $route['default_controller'] = 'front';
 $route['admin']     = 'admin/index';
 $route['dashboard'] = 'admin/dashboard';
 
-/*
-!--------------------------------------------------------------------
-! 				Front Routes
-!--------------------------------------------------------------------
-*/
-$route['front'] 		= 'front/index';
-$route['front/contact'] = 'front/contact';
-$route['front/about'] 	= 'front/about';
-$route['front/news/(:num)'] 	   = 'front/news/$1';
-$route['front/news_details/(.+)']  = 'front/news_details/$1';
-$route['front/blog/(:num)'] 	   = 'front/blog/$1';
-$route['front/blog_details/(.+)']  = 'front/blog_details/$1';
-$route['front/course'] 			   = 'front/course';
-//$route['front/testimonial'] = 'front/testimonial';
 
-
-
-
-/*
-!--------------------------------------------------------------------
-! 				Admin_back  Routes
-!--------------------------------------------------------------------
-*/
-
-$route['front/admin_back/index']                 = 'adminback/index';
 $route['webmaster']                				 = 'adminback/index';
 $route['webmaster/profile']                		 = 'adminback/profile';
 $route['webmaster/site']                		 = 'adminback/site';
-$route['front/admin_back/page_create']           = 'adminback/page_create';
-$route['front/admin_back/edit_page_create/(.+)'] = 'adminback/edit_page_create/$1';
-$route['front/admin_back/update_page_create/(.+)'] = 'adminback/update_page_create/$1';
-$route['front/admin_back/delete_page_create/(.+)'] = 'adminback/delete_page_create/$1';
+
 
 
 
@@ -127,14 +100,6 @@ $route['delete_students_archive/(.+)']= 'studentsarchive/delete_students_archive
 $route['view_students_archive/(.+)']  = 'studentsarchive/view_students_archive/$1';
 $route['edit_students_archive/(.+)']  = 'studentsarchive/edit_students_archive/$1';
 
-/*
-!--------------------------------------------------------------------
-! 				students_ login  Routes
-!--------------------------------------------------------------------
-*/
-$route['student']           = 'student/index';
-$route['student/dashboard'] = 'student/dashboard';
-$route['student/view_routine_details/(.+)'] = 'student/view_routine_details/$1';
 
 
 /*
@@ -143,35 +108,8 @@ $route['student/view_routine_details/(.+)'] = 'student/view_routine_details/$1';
 !--------------------------------------------------------------------
 */
 $route['edit_student']     = 'student/edit_student';
-/*
-!--------------------------------------------------------------------
-! 		 student apply course  Routes
-!--------------------------------------------------------------------
-*/
-$route['student/applycourse_list']     = 'studentcourse/applycourse_list';
-$route['student/applycourse_details/(.+)'] = 'studentcourse/applycourse_details/$1';
-$route['student/applycourse/(.+)']     = 'studentcourse/applycourse/$1';
-
-/*
-!--------------------------------------------------------------------
-! 		 student payment  Routes
-!--------------------------------------------------------------------
-*/
-$route['student/payment']     = 'student/payment';
 
 
-
-/*
-!--------------------------------------------------------------------
-! 		Student Inquiry   Routes
-!--------------------------------------------------------------------
-*/
-$route['student/inquiry'] = 'student/inquiry';
-/*
-!--------------------------------------------------------------------
-! 		course application   Routes
-!--------------------------------------------------------------------
-*/
 $route['courseapp'] = 'course/courseapp';
 /*
 !--------------------------------------------------------------------

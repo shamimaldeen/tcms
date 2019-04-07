@@ -22,7 +22,6 @@ $autoload['model'] =
 		'staffmodel','coursemodel',
 		'batchmodel','routinemodel',
 		'publiccontrollermodel',
-		'messagemodel',
 		'studentsarchivemodel',
 		'studentmodel',
 		'studentcoursemodel',
@@ -30,6 +29,4 @@ $autoload['model'] =
 		'attendancemodel',
 		'reportmodel',
 		'paymentmodel',
-		'certificatemodel',
-		'adminbackmodel',
 	);

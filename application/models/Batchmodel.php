@@ -54,10 +54,6 @@
           $this->db->delete('tbl_batch');
              
         }
-
-        
-
-       
     }
 
 ?>
